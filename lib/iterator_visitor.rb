@@ -97,6 +97,9 @@ include_class 'org.jruby.ast.ZSuperNode'
 include_class 'org.jruby.evaluator.Instruction'
 include_class 'org.jruby.ast.visitor.NodeVisitor'
 
+# This is a Ruby port of a visitor in the JRuby code, but it seems to barf on some Ruby
+# code.  The RecursiveVisitor is being used instead for now, but it may not parse everything
+# in the right order.  I might need to come back to this instead eventually.
 class IteratorVisitor
   include NodeVisitor
   

@@ -5,6 +5,7 @@ require 'checking_visitor'
 require 'iterator_visitor'
 require 'recursive_visitor'
 require 'checks/class_name_check'
+require 'checks/magic_number_check'
 require 'checks/method_name_check'
 require 'checks/method_line_count_check'
 
@@ -17,7 +18,7 @@ include_class 'java.util.ArrayList'
 
 @runtime = Ruby.newInstance(RubyInstanceConfig.new)
 checking_visitor = CheckingVisitor.new
-checking_visitor.checks = [MethodNameCheck.new, ClassNameCheck.new, MethodLineCountCheck.new]
+checking_visitor.checks = [MethodNameCheck.new, ClassNameCheck.new, MethodLineCountCheck.new, MagicNumberCheck.new]
 
 @iterator_visitor = RecursiveVisitor.new
 @iterator_visitor.visitor = checking_visitor

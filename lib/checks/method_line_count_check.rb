@@ -11,7 +11,7 @@ class MethodLineCountCheck < Check
   def evaluate(node)
     if interested_in?(node)
       line_count = count_lines(node)
-      puts "#{position(node)} - Method name \"#{node.getName}\" has #{line_count} lines.  It should have 5 or less" unless line_count <= 5
+      puts "#{position(node)} - Method name \"#{node.getName}\" has #{line_count} lines.  It should have 5 or less." unless line_count <= 5
     end
   end
   
