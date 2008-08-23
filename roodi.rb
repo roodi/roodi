@@ -32,9 +32,7 @@ end
 def check_all_joodi_files
   ruby_files = File.join(File.dirname(__FILE__), "**", "*.rb")
   Dir.glob(ruby_files).each do |file|
-    puts "=== Checking #{file} ==="
     check_file(file)
-    puts ""
   end
 end
 
