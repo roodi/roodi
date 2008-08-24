@@ -13,6 +13,8 @@ class MethodLineCountCheck < Check
     add_error "#{position(node)} - Method name \"#{node.getName}\" has #{line_count} lines.  It should have 5 or less." unless line_count <= 5
   end
   
+  private
+  
   def count_lines(node)
     count = 0
     count = count + 1 if node.class == NewlineNode
