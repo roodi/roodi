@@ -18,6 +18,7 @@ task :roodi do
   roodi = Roodi.new(MethodNameCheck.new, ClassNameCheck.new, MethodLineCountCheck.new, MagicNumberCheck.new)
   ruby_files = File.join(File.dirname(__FILE__), "**", "*.rb")
   Dir.glob(ruby_files).each do |file|
-    roodi.check_file(file)
+    errors = roodi.check_file(file)
+    errors.each {|error| puts error}
   end
 end

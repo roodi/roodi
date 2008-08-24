@@ -9,6 +9,6 @@ class MethodNameCheck < Check
 
   def evaluate(node)
     pattern = /^[a-z_?=]*$/
-    puts "#{position(node)} - Method name \"#{node.getName}\" should match pattern #{pattern}." unless node.getName =~ pattern
+    add_error "#{position(node)} - Method name \"#{node.getName}\" should match pattern #{pattern}." unless node.getName =~ pattern
   end
 end

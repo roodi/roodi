@@ -9,6 +9,6 @@ class MagicNumberCheck < Check
   end
 
   def evaluate(node)
-    puts "#{position(node)} - #{node.getValue} is a magic number.  Use a meaningful constant or variable instead." unless [-1,0,1,2].include? node.getValue
+    add_error "#{position(node)} - #{node.getValue} is a magic number.  Use a meaningful constant or variable instead." unless [-1,0,1,2].include? node.getValue
   end
 end

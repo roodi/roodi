@@ -7,9 +7,10 @@ include_class 'org.jruby.RubyInstanceConfig'
 
 class Roodi
   def initialize(*checks)
+    @checks = checks
     @runtime = Ruby.newInstance(RubyInstanceConfig.new)
     checking_visitor = CheckingVisitor.new
-    checking_visitor.checks = checks
+    checking_visitor.checks = @checks
 
     @iterator_visitor = RecursiveVisitor.new
     @iterator_visitor.visitor = checking_visitor
@@ -18,6 +19,8 @@ class Roodi
   def check(filename, content)
     node = @runtime.parse(content, filename, nil, 0, false)
     node.accept(@iterator_visitor)
+    all_errors = @checks.collect {|check| check.errors}
+    all_errors.flatten
   end
 
   def check_content(content)

@@ -9,11 +9,11 @@ describe ClassNameCheck do
   
   it "should reject class names starting in lowercase letters" do
     content = <<-END
-    class badClassName 
+    class Bad_ClassName 
     end
     END
     errors = @roodi.check_content(content)
-    # errors.should_not be_empty
-    # errors[0].should eql("dummy-file.rb:1 - Class name \"badClassName\" should match pattern /^[A-Z][a-zA-Z0-9]*$/.")
+    errors.should_not be_empty
+    errors[0].should eql("dummy-file.rb:1 - Class name \"Bad_ClassName\" should match pattern (?-mix:^[A-Z][a-zA-Z0-9]*$).")
   end
 end
