@@ -1,0 +1,30 @@
+require 'java'
+require 'checking_visitor'
+require 'recursive_visitor'
+
+include_class 'org.jruby.Ruby'
+include_class 'org.jruby.RubyInstanceConfig'
+
+class Roodi
+  def initialize(*checks)
+    @runtime = Ruby.newInstance(RubyInstanceConfig.new)
+    checking_visitor = CheckingVisitor.new
+    checking_visitor.checks = checks
+
+    @iterator_visitor = RecursiveVisitor.new
+    @iterator_visitor.visitor = checking_visitor
+  end
+
+  def check(filename, content)
+    node = @runtime.parse(content, filename, nil, 0, false)
+    node.accept(@iterator_visitor)
+  end
+
+  def check_content(content)
+    check("dummy-file.rb", content)
+  end
+  
+  def check_file(filename)
+    check(filename, File.read(filename))
+  end
+end

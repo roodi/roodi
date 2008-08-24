@@ -1,18 +1,19 @@
-$: << File.join(File.dirname(__FILE__), '..', 'lib')
+require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require 'roodi'
 require 'checks/class_name_check'
 
 describe ClassNameCheck do
-  it "should accept camel case class names" do
-    position = mock("position")
-    position.stub!(:getFile).and_return("dummy_class_name_check.rb")
-    position.stub!(:getStartLine).and_return(0)
-    c_path = mock("c_path")
-    c_path.stub!(:getName).and_return("GoodClassName")
-    node = mock("class_node")
-    node.stub!(:getCPath).and_return(c_path)
-    node.stub!(:getPosition).and_return(position)
-    
-    check = ClassNameCheck.new
-    check.evaluate(node)
+  before(:all) do
+    @roodi = Roodi.new(ClassNameCheck.new)
+  end
+  
+  it "should reject class names starting in lowercase letters" do
+    content = <<-END
+    class badClassName 
+    end
+    END
+    errors = @roodi.check_content(content)
+    # errors.should_not be_empty
+    # errors[0].should eql("dummy-file.rb:1 - Class name \"badClassName\" should match pattern /^[A-Z][a-zA-Z0-9]*$/.")
   end
 end
