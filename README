@@ -18,7 +18,53 @@ So I end up using JRuby to run a Ruby app that uses JRuby API's to parse Ruby co
 
 == Ideas for checks to write ==
 
-EmptyMethodCheck
-CyclomaticComplexityCheck
-NPathComplexityCheck
+Naming Conventions
+	ModuleName
+	VariableName
 
+Size Violations
+	FileLength
+	LineLength
+	BlockLength
+	ParameterNumber
+
+Whitespace
+	TabCharacter
+
+Modifiers
+	ModifierOrder
+
+Block Checks
+	EmptyBlock
+
+Coding
+	ArrayTrailingComma
+	IllegalInstantiation
+	IllegalToken
+	MagicNumber
+	MissingCaseDefault
+	SimplifyBooleanExpression
+	SimplifyBooleanReturn
+	NestedBlockDepth
+	IllegalCatch
+	ReturnCount
+	FallThrough
+	MultipleStringLiterals
+	UnnecessaryParenthese
+
+Metrics
+	BooleanExpressionComplexity
+	ClassDataAbstractionCoupling
+	ClassFanOutComplexity
+	CyclomaticComplexity
+	NPathComplexity
+
+Unused Code
+	UnusedMethodParameter
+	UnusedLocalVariable
+
+Miscellaneous
+	GenericIllegalRegularExpression
+	NewlineAtEndOfFile
+	TodoComment
+	TrailingComment
