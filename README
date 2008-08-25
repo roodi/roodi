@@ -18,7 +18,6 @@ So I end up using JRuby to run a Ruby app that uses JRuby API's to parse Ruby co
 
 == Ideas for checks to write ==
 
-EmptyRescueBlockCheck
 EmptyMethodCheck
 CyclomaticComplexityCheck
 NPathComplexityCheck
