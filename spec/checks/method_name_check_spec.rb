@@ -13,8 +13,8 @@ describe MethodNameCheck do
     def good_method_name
     end
     END
-    errors = @roodi.check_content(content)
-    errors.should be_empty
+    @roodi.check_content(content)
+    @roodi.errors.should be_empty
   end
 
   it "should reject camel case method names" do
@@ -22,7 +22,8 @@ describe MethodNameCheck do
     def badMethodName
     end
     END
-    errors = @roodi.check_content(content)
+    @roodi.check_content(content)
+    errors = @roodi.errors
     errors.should_not be_empty
     errors[0].should eql("dummy-file.rb:1 - Method name \"badMethodName\" should match pattern (?-mix:^[a-z_?=]*$).")
   end

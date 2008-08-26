@@ -13,8 +13,8 @@ describe ClassNameCheck do
     class GoodClassName 
     end
     END
-    errors = @roodi.check_content(content)
-    errors.should be_empty
+    @roodi.check_content(content)
+    @roodi.errors.should be_empty
   end
 
   it "should reject class names with underscores" do
@@ -22,7 +22,8 @@ describe ClassNameCheck do
     class Bad_ClassName 
     end
     END
-    errors = @roodi.check_content(content)
+    @roodi.check_content(content)
+    errors = @roodi.errors
     errors.should_not be_empty
     errors[0].should eql("dummy-file.rb:1 - Class name \"Bad_ClassName\" should match pattern (?-mix:^[A-Z][a-zA-Z0-9]*$).")
   end

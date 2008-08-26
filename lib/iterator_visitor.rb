@@ -305,15 +305,15 @@ class IteratorVisitor
 
 	def visitDefnNode( iVisited) 
 		iVisited.accept(@payload)
-		iVisited.getBodyNode().accept(self)
-		 nil
+		iVisited.getBodyNode().accept(self) if iVisited.getBodyNode
+		nil
 	end
 
 	def visitDefsNode( iVisited) 
 		iVisited.accept(@payload)
 		iVisited.getReceiverNode().accept(self)
-		iVisited.getBodyNode().accept(self)
-		 nil
+		iVisited.getBodyNode().accept(self) if iVisited.getBodyNode
+		nil
 	end
 
 	def visitDotNode( iVisited) 
@@ -384,14 +384,12 @@ class IteratorVisitor
 		 nil
 	end
 
-	def visitIfNode( iVisited) 
+	def visitIfNode(iVisited) 
 		iVisited.accept(@payload)
 		iVisited.getCondition().accept(self)
-		iVisited.getThenBody().accept(self)
-		if (iVisited.getElseBody() != nil) 
-			iVisited.getElseBody().accept(self)
-		end
-		 nil
+		iVisited.getThenBody().accept(self) if iVisited.getThenBody
+		iVisited.getElseBody().accept(self) if iVisited.getElseBody
+		nil
 	end
 
 	def visitIterNode( iVisited) 

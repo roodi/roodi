@@ -1,6 +1,6 @@
 require 'java'
 require 'checking_visitor'
-require 'recursive_visitor'
+require 'iterator_visitor'
 
 include_class 'org.jruby.Ruby'
 include_class 'org.jruby.RubyInstanceConfig'
@@ -11,9 +11,7 @@ class Roodi
     @runtime = Ruby.newInstance(RubyInstanceConfig.new)
     checking_visitor = CheckingVisitor.new
     checking_visitor.checks = @checks
-
-    @iterator_visitor = RecursiveVisitor.new
-    @iterator_visitor.visitor = checking_visitor
+    @iterator_visitor = IteratorVisitor.new(checking_visitor)
   end
 
   def check(filename, content)

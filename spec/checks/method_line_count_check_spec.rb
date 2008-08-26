@@ -13,8 +13,8 @@ describe MethodLineCountCheck do
     def zero_line_method
     end
     END
-    errors = @roodi.check_content(content)
-    errors.should be_empty
+    @roodi.check_content(content)
+    @roodi.errors.should be_empty
   end
 
   it "should accept methods with five lines" do
@@ -27,8 +27,8 @@ describe MethodLineCountCheck do
       5
     end
     END
-    errors = @roodi.check_content(content)
-    errors.should be_empty
+    @roodi.check_content(content)
+    @roodi.errors.should be_empty
   end
 
   it "should reject methods with more than five lines" do
@@ -42,7 +42,8 @@ describe MethodLineCountCheck do
       6
     end
     END
-    errors = @roodi.check_content(content)
+    @roodi.check_content(content)
+    errors = @roodi.errors
     errors.should_not be_empty
     errors[0].should eql("dummy-file.rb:1 - Method name \"six_line_method\" has 6 lines.  It should have 5 or less.")
   end
