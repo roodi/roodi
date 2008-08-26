@@ -4,6 +4,8 @@ require 'rake'
 require 'spec/rake/spectask'
 require 'roodi'
 require 'checks/class_name_check'
+require 'checks/empty_rescue_body_check'
+require 'checks/for_loop_check'
 require 'checks/magic_number_check'
 require 'checks/method_name_check'
 require 'checks/method_line_count_check'
@@ -15,10 +17,14 @@ end
 
 desc "Run Roodi against all source files"
 task :roodi do
-  roodi = Roodi.new(MethodNameCheck.new, ClassNameCheck.new, MethodLineCountCheck.new, MagicNumberCheck.new)
+  roodi = Roodi.new(ClassNameCheck.new, 
+                    EmptyRescueBodyCheck.new,
+                    ForLoopCheck.new,
+                    # MagicNumberCheck.new,
+                    MethodNameCheck.new, 
+                    MethodLineCountCheck.new)
   ruby_files = File.join(File.dirname(__FILE__), "**", "*.rb")
-  Dir.glob(ruby_files).each do |file|
-    errors = roodi.check_file(file)
-    errors.each {|error| puts error}
-  end
+  Dir.glob(ruby_files).each { |file| roodi.check_file(file) }
+  roodi.errors.each {|error| puts error}
+  puts "\nFound #{roodi.errors.size} errors."
 end
