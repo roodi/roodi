@@ -1,11 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-
 require 'roodi'
-require 'checks/magic_number_check'
 
 describe MagicNumberCheck do
   before(:each) do
-    @roodi = Roodi.new(MagicNumberCheck.new)
+    @roodi = Runner.new(MagicNumberCheck.new)
   end
   
   it "should accept -1 as a non-magic number" do

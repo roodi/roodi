@@ -1,11 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-
 require 'roodi'
-require 'checks/class_name_check'
 
 describe ClassNameCheck do
   before(:each) do
-    @roodi = Roodi.new(ClassNameCheck.new)
+    @roodi = Runner.new(ClassNameCheck.new)
   end
   
   it "should accept camel case class names starting in capitals" do

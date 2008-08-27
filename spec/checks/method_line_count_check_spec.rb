@@ -1,11 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-
 require 'roodi'
-require 'checks/method_line_count_check'
 
 describe MethodLineCountCheck do
   before(:each) do
-    @roodi = Roodi.new(MethodLineCountCheck.new)
+    @roodi = Runner.new(MethodLineCountCheck.new)
   end
   
   it "should accept methods with zero lines" do

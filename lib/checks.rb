@@ -1,0 +1,6 @@
+require 'checks/class_name_check'
+require 'checks/empty_rescue_body_check'
+require 'checks/for_loop_check'
+require 'checks/magic_number_check'
+require 'checks/method_name_check'
+require 'checks/method_line_count_check'

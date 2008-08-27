@@ -1,11 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-
 require 'roodi'
-require 'checks/empty_rescue_body_check'
 
 describe EmptyRescueBodyCheck do
   before(:each) do
-    @roodi = Roodi.new(EmptyRescueBodyCheck.new)
+    @roodi = Runner.new(EmptyRescueBodyCheck.new)
   end
   
   it "should accept a rescue body with content and no parameter" do
