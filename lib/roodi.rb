@@ -1,2 +1,2 @@
-require 'checks'
-require 'core'
+require 'roodi/checks'
+require 'roodi/core'

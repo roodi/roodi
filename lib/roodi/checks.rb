@@ -1,0 +1,6 @@
+require 'roodi/checks/class_name_check'
+require 'roodi/checks/empty_rescue_body_check'
+require 'roodi/checks/for_loop_check'
+require 'roodi/checks/magic_number_check'
+require 'roodi/checks/method_name_check'
+require 'roodi/checks/method_line_count_check'

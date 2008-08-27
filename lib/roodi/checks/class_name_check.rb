@@ -1,5 +1,5 @@
 require 'java'
-require 'checks/check'
+require 'roodi/checks/check'
 include_class 'org.jruby.ast.ClassNode'
 
 class ClassNameCheck < Check
