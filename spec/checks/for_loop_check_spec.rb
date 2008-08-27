@@ -1,9 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-require 'roodi'
 
-describe ForLoopCheck do
+describe Roodi::Checks::ForLoopCheck do
   before(:each) do
-    @roodi = Runner.new(ForLoopCheck.new)
+    @roodi = Roodi::Core::Runner.new(Roodi::Checks::ForLoopCheck.new)
   end
   
   it "should reject for loops" do

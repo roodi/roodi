@@ -1,9 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-require 'roodi'
 
-describe MethodNameCheck do
+describe Roodi::Checks::MethodNameCheck do
   before(:each) do
-    @roodi = Runner.new(MethodNameCheck.new)
+    @roodi = Roodi::Core::Runner.new(Roodi::Checks::MethodNameCheck.new)
   end
   
   it "should accept method names with underscores" do

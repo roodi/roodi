@@ -97,530 +97,534 @@ include_class 'org.jruby.ast.ZSuperNode'
 include_class 'org.jruby.evaluator.Instruction'
 include_class 'org.jruby.ast.visitor.NodeVisitor'
 
-class PrintingVisitor
-  include NodeVisitor
+module Roodi
+  module Core
+    class PrintingVisitor
+      include NodeVisitor
   
-	def initialize
-  	@depth = 0
-	end
+    	def initialize
+      	@depth = 0
+    	end
 	
-	def print_node(node)
-	  @depth.times { print '  ' }
-	  puts node
-  end
+    	def print_node(node)
+    	  @depth.times { print '  ' }
+    	  puts node
+      end
 	
-	def visitAliasNode(visited)
-	  print_node(visited)
-		nil
-	end
+    	def visitAliasNode(visited)
+    	  print_node(visited)
+    		nil
+    	end
 
-	def visitAndNode(visited)
-		visited.getFirstNode.accept(self)
-		print_node(visited)
-		visited.getSecondNode.accept(self)
-		nil
-	end
+    	def visitAndNode(visited)
+    		visited.getFirstNode.accept(self)
+    		print_node(visited)
+    		visited.getSecondNode.accept(self)
+    		nil
+    	end
 
-	def visitArgsNode(visited)
-	  print_node(visited)
-		visited.getOptArgs.accept(self) if visited.getOptArgs
-    nil
-	end
+    	def visitArgsNode(visited)
+    	  print_node(visited)
+    		visited.getOptArgs.accept(self) if visited.getOptArgs
+        nil
+    	end
 
-	def visitArgsCatNode(visited)
-	  print_node(visited)
-		visited.getFirstNode.accept(self) if visited.getFirstNode
-		visited.getSecondNode.accept(self) if visited.getSecondNode
-    nil
-	end
+    	def visitArgsCatNode(visited)
+    	  print_node(visited)
+    		visited.getFirstNode.accept(self) if visited.getFirstNode
+    		visited.getSecondNode.accept(self) if visited.getSecondNode
+        nil
+    	end
 
-  def visitArgsPushNode(visited)
-    print_node(visited)
-    visited.getFirstNode.accept(self) if visited.getFirstNode
-    visited.getSecondNode.accept(self) if visited.getSecondNode
-    nil
-  end
-    
-  def visitAttrAssignNode(visited) 
-    print_node(visited)
-    visited.getArgsNode.accept(self) if visited.getArgsNode
-    visited.getReceiverNode.accept(self) if visited.getReceiverNode
-    nil
-  end
-
-  def visitArrayNode(visited) 
-    print_node(visited)
-    (0..(visited.size - 1)).each { |i| visited.get(i).accept(self) }
-    nil
-  end
-
-	def visitBackRefNode(visited)
-	  print_node(visited)
-    nil
-	end
-
-	def visitBeginNode(visited) 
-	  print_node(visited)
-	  visited.getBodyNode.accept(self) if visited.getBodyNode
-    nil
-	end
-
-	def visitBlockArgNode(visited) 
-	  print_node(visited)
-		nil
-	end
-
-	def visitBlockNode(visited) 
-	  print_node(visited)
-		(0..(visited.size - 1)).each { |i| visited.get(i).accept(self) }
-		nil
-	end
-
-	def visitBlockPassNode(visited) 
-	  print_node(visited)
-	  nil
-	end
-
-	def visitBreakNode(visited)
-	  print_node(visited)
-	  nil
-	end
-
-	def visitConstDeclNode(visited)
-	  print_node(visited)
-	  visited.getValueNode.accept(self)
-	  nil
-	end
-
-	def visitClassVarAsgnNode(visited)
-	  print_node(visited)
-	  visited.getValueNode.accept(self)
-	  nil
-	end
-
-	def visitClassVarDeclNode(visited) 
-		print_node(visited)
-	  nil
-	end
-
-	def visitClassVarNode(visited) 
-		print_node(visited)
-	  nil
-	end
-
-	def visitCallNode(visited) 
-		visited.getReceiverNode.accept(self)
-		visited.getArgsNode.accept(self) if visited.getArgsNode
-		visited.getIterNode.accept(self) if visited.getIterNode
-		print_node(visited)
- 	  nil
-	end
-
-	def visitCaseNode(visited)
-	  print_node(visited)
-		nil
-	end
-
-	def visitClassNode(visited) 
-	  print_node(visited)
-		visited.getSuperNode.accept(self) if visited.getSuperNode
-		visited.getBodyNode.accept(self)
-	  nil
-	end
-
-	def visitColon2Node(visited) 
-		visited.getLeftNode.accept(self) if visited.getLeftNode
-	  print_node(visited)
-	  nil
-	end
-
-	def visitColon3Node(visited) 
-	  print_node(visited)
-	  nil
-	end
-
-	def visitConstNode(visited) 
-	  print_node(visited)
-	  nil
-	end
-
-	def visitDAsgnNode(visited) 
-	  print_node(visited)
-		visited.getValueNode.accept(self)
-	  nil
-	end
-
-	def visitDRegxNode(visited) 
-	  print_node(visited)
-	  nil
-	end
-
-	def visitDStrNode(visited) 
-	  print_node(visited)
-	  nil
-	end
-
-	def visitDSymbolNode(visited) 
-	  print_node(visited)
-	  nil
-	end
-
-	def visitDVarNode(visited) 
-	  print_node(visited)
-	  nil
-	end
-
-	def visitDXStrNode(visited) 
-	  print_node(visited)
-	  nil
-	end
-
-	def visitDefinedNode(visited) 
-	  print_node(visited)
-	  nil
-	end
-
-	def visitDefnNode(visited) 
-	  print_node(visited)
-		visited.getBodyNode.accept(self) if visited.getBodyNode
-		nil
-	end
-
-	def visitDefsNode(visited) 
-	  print_node(visited)
-		visited.getReceiverNode.accept(self)
-		visited.getBodyNode.accept(self) if visited.getBodyNode
-		nil
-	end
-
-	def visitDotNode(visited) 
-	  print_node(visited)
-	  nil
-	end
-
-	def visitEnsureNode(visited) 
-	  print_node(visited)
-	  nil
-	end
-
-	def visitEvStrNode(visited) 
-	  print_node(visited)
-	  nil
-	end
-
-	def visitFCallNode(visited) 
-		print_node(visited)
-		if(visited.getArgsNode != nil) 
-			visited.getArgsNode.accept(self)
-		end
-		if(visited.getIterNode != nil) 
-			visited.getIterNode.accept(self)
-		end
-		 nil
-	end
-
-	def visitFalseNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitFlipNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitForNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitGlobalAsgnNode(visited) 
-		print_node(visited)
-		visited.getValueNode.accept(self)
-		 nil
-	end
-
-	def visitGlobalVarNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitHashNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitInstAsgnNode(visited) 
-		print_node(visited)
-		visited.getValueNode.accept(self)
-		 nil
-	end
-
-	def visitInstVarNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitIfNode(visited) 
-		print_node(visited)
-		visited.getCondition.accept(self)
-		visited.getThenBody.accept(self) if visited.getThenBody
-		visited.getElseBody.accept(self) if visited.getElseBody
-		nil
-	end
-
-	def visitIterNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitLocalAsgnNode(visited) 
-		print_node(visited)
-		visited.getValueNode.accept(self)
-		 nil
-	end
-
-	def visitLocalVarNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitMultipleAsgnNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitMatch2Node(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitMatch3Node(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitMatchNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitModuleNode(visited) 
-		print_node(visited)
-		visited.getBodyNode.accept(self)
-		 nil
-	end
-
-	def visitNewlineNode(visited) 
-		print_node(visited)
-		visited.getNextNode.accept(self)
-		 nil
-	end
-
-	def visitNextNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitNilNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitNotNode(visited) 
-		print_node(visited)
-		visited.getConditionNode.accept(self)
-		 nil
-	end
-
-	def visitNthRefNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitOpElementAsgnNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitOpAsgnNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitOpAsgnAndNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitOpAsgnOrNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitOrNode(visited) 
-		visited.getFirstNode.accept(self)
-		print_node(visited)
-		visited.getSecondNode.accept(self)
-		 nil
-	end
-
-	def visitPostExeNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-    def visitPreExeNode(visited) 
+      def visitArgsPushNode(visited)
         print_node(visited)
-         nil
-    end
+        visited.getFirstNode.accept(self) if visited.getFirstNode
+        visited.getSecondNode.accept(self) if visited.getSecondNode
+        nil
+      end
     
-	def visitRedoNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitRescueBodyNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitRescueNode(visited) 
-		print_node(visited)
-		visited.getBodyNode.accept(self) if visited.getBodyNode
-		visited.getRescueNode.accept(self) if visited.getRescueNode
-		visited.getElseNode.accept(self) if visited.getElseNode
-		 nil
-	end
-
-	def visitRetryNode(visited) 
-		print_node(visited)
-		 nil
-	end
-    
-    def visitRootNode(visited) 
+      def visitAttrAssignNode(visited) 
         print_node(visited)
-        visited.getBodyNode.accept(self)
-         nil
+        visited.getArgsNode.accept(self) if visited.getArgsNode
+        visited.getReceiverNode.accept(self) if visited.getReceiverNode
+        nil
+      end
+
+      def visitArrayNode(visited) 
+        print_node(visited)
+        (0..(visited.size - 1)).each { |i| visited.get(i).accept(self) }
+        nil
+      end
+
+    	def visitBackRefNode(visited)
+    	  print_node(visited)
+        nil
+    	end
+
+    	def visitBeginNode(visited) 
+    	  print_node(visited)
+    	  visited.getBodyNode.accept(self) if visited.getBodyNode
+        nil
+    	end
+
+    	def visitBlockArgNode(visited) 
+    	  print_node(visited)
+    		nil
+    	end
+
+    	def visitBlockNode(visited) 
+    	  print_node(visited)
+    		(0..(visited.size - 1)).each { |i| visited.get(i).accept(self) }
+    		nil
+    	end
+
+    	def visitBlockPassNode(visited) 
+    	  print_node(visited)
+    	  nil
+    	end
+
+    	def visitBreakNode(visited)
+    	  print_node(visited)
+    	  nil
+    	end
+
+    	def visitConstDeclNode(visited)
+    	  print_node(visited)
+    	  visited.getValueNode.accept(self)
+    	  nil
+    	end
+
+    	def visitClassVarAsgnNode(visited)
+    	  print_node(visited)
+    	  visited.getValueNode.accept(self)
+    	  nil
+    	end
+
+    	def visitClassVarDeclNode(visited) 
+    		print_node(visited)
+    	  nil
+    	end
+
+    	def visitClassVarNode(visited) 
+    		print_node(visited)
+    	  nil
+    	end
+
+    	def visitCallNode(visited) 
+    		visited.getReceiverNode.accept(self)
+    		visited.getArgsNode.accept(self) if visited.getArgsNode
+    		visited.getIterNode.accept(self) if visited.getIterNode
+    		print_node(visited)
+     	  nil
+    	end
+
+    	def visitCaseNode(visited)
+    	  print_node(visited)
+    		nil
+    	end
+
+    	def visitClassNode(visited) 
+    	  print_node(visited)
+    		visited.getSuperNode.accept(self) if visited.getSuperNode
+    		visited.getBodyNode.accept(self)
+    	  nil
+    	end
+
+    	def visitColon2Node(visited) 
+    		visited.getLeftNode.accept(self) if visited.getLeftNode
+    	  print_node(visited)
+    	  nil
+    	end
+
+    	def visitColon3Node(visited) 
+    	  print_node(visited)
+    	  nil
+    	end
+
+    	def visitConstNode(visited) 
+    	  print_node(visited)
+    	  nil
+    	end
+
+    	def visitDAsgnNode(visited) 
+    	  print_node(visited)
+    		visited.getValueNode.accept(self)
+    	  nil
+    	end
+
+    	def visitDRegxNode(visited) 
+    	  print_node(visited)
+    	  nil
+    	end
+
+    	def visitDStrNode(visited) 
+    	  print_node(visited)
+    	  nil
+    	end
+
+    	def visitDSymbolNode(visited) 
+    	  print_node(visited)
+    	  nil
+    	end
+
+    	def visitDVarNode(visited) 
+    	  print_node(visited)
+    	  nil
+    	end
+
+    	def visitDXStrNode(visited) 
+    	  print_node(visited)
+    	  nil
+    	end
+
+    	def visitDefinedNode(visited) 
+    	  print_node(visited)
+    	  nil
+    	end
+
+    	def visitDefnNode(visited) 
+    	  print_node(visited)
+    		visited.getBodyNode.accept(self) if visited.getBodyNode
+    		nil
+    	end
+
+    	def visitDefsNode(visited) 
+    	  print_node(visited)
+    		visited.getReceiverNode.accept(self)
+    		visited.getBodyNode.accept(self) if visited.getBodyNode
+    		nil
+    	end
+
+    	def visitDotNode(visited) 
+    	  print_node(visited)
+    	  nil
+    	end
+
+    	def visitEnsureNode(visited) 
+    	  print_node(visited)
+    	  nil
+    	end
+
+    	def visitEvStrNode(visited) 
+    	  print_node(visited)
+    	  nil
+    	end
+
+    	def visitFCallNode(visited) 
+    		print_node(visited)
+    		if(visited.getArgsNode != nil) 
+    			visited.getArgsNode.accept(self)
+    		end
+    		if(visited.getIterNode != nil) 
+    			visited.getIterNode.accept(self)
+    		end
+    		 nil
+    	end
+
+    	def visitFalseNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitFlipNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitForNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitGlobalAsgnNode(visited) 
+    		print_node(visited)
+    		visited.getValueNode.accept(self)
+    		 nil
+    	end
+
+    	def visitGlobalVarNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitHashNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitInstAsgnNode(visited) 
+    		print_node(visited)
+    		visited.getValueNode.accept(self)
+    		 nil
+    	end
+
+    	def visitInstVarNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitIfNode(visited) 
+    		print_node(visited)
+    		visited.getCondition.accept(self)
+    		visited.getThenBody.accept(self) if visited.getThenBody
+    		visited.getElseBody.accept(self) if visited.getElseBody
+    		nil
+    	end
+
+    	def visitIterNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitLocalAsgnNode(visited) 
+    		print_node(visited)
+    		visited.getValueNode.accept(self)
+    		 nil
+    	end
+
+    	def visitLocalVarNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitMultipleAsgnNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitMatch2Node(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitMatch3Node(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitMatchNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitModuleNode(visited) 
+    		print_node(visited)
+    		visited.getBodyNode.accept(self)
+    		 nil
+    	end
+
+    	def visitNewlineNode(visited) 
+    		print_node(visited)
+    		visited.getNextNode.accept(self)
+    		 nil
+    	end
+
+    	def visitNextNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitNilNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitNotNode(visited) 
+    		print_node(visited)
+    		visited.getConditionNode.accept(self)
+    		 nil
+    	end
+
+    	def visitNthRefNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitOpElementAsgnNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitOpAsgnNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitOpAsgnAndNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitOpAsgnOrNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitOrNode(visited) 
+    		visited.getFirstNode.accept(self)
+    		print_node(visited)
+    		visited.getSecondNode.accept(self)
+    		 nil
+    	end
+
+    	def visitPostExeNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+        def visitPreExeNode(visited) 
+            print_node(visited)
+             nil
+        end
+    
+    	def visitRedoNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitRescueBodyNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitRescueNode(visited) 
+    		print_node(visited)
+    		visited.getBodyNode.accept(self) if visited.getBodyNode
+    		visited.getRescueNode.accept(self) if visited.getRescueNode
+    		visited.getElseNode.accept(self) if visited.getElseNode
+    		 nil
+    	end
+
+    	def visitRetryNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+    
+        def visitRootNode(visited) 
+            print_node(visited)
+            visited.getBodyNode.accept(self)
+             nil
+        end
+
+    	def visitReturnNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitSClassNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitSelfNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitSplatNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitStrNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitSValueNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitSuperNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitToAryNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitTrueNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitUndefNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitUntilNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitVAliasNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitVCallNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitWhenNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitWhileNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitXStrNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitYieldNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitZArrayNode(visited) 
+    		print_node(visited)
+    		 nil
+    	end
+
+    	def visitZSuperNode(visited) 
+    		print_node(visited)
+    		nil
+    	end
+
+    	def visitBignumNode(visited) 
+    		print_node(visited)
+    		nil
+    	end
+
+    	def visitFixnumNode(visited) 
+    		print_node(visited)
+    		nil
+    	end
+
+    	def visitFloatNode(visited) 
+    		print_node(visited)
+    		nil
+    	end
+
+    	def visitRegexpNode(visited) 
+    		print_node(visited)
+    		nil
+    	end
+
+    	def visitSymbolNode(visited) 
+    		print_node(visited)
+    		nil
+    	end
     end
-
-	def visitReturnNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitSClassNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitSelfNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitSplatNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitStrNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitSValueNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitSuperNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitToAryNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitTrueNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitUndefNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitUntilNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitVAliasNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitVCallNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitWhenNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitWhileNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitXStrNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitYieldNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitZArrayNode(visited) 
-		print_node(visited)
-		 nil
-	end
-
-	def visitZSuperNode(visited) 
-		print_node(visited)
-		nil
-	end
-
-	def visitBignumNode(visited) 
-		print_node(visited)
-		nil
-	end
-
-	def visitFixnumNode(visited) 
-		print_node(visited)
-		nil
-	end
-
-	def visitFloatNode(visited) 
-		print_node(visited)
-		nil
-	end
-
-	def visitRegexpNode(visited) 
-		print_node(visited)
-		nil
-	end
-
-	def visitSymbolNode(visited) 
-		print_node(visited)
-		nil
-	end
+  end
 end
