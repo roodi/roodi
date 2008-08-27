@@ -1,6 +1,7 @@
 require 'java'
 require 'checking_visitor'
 require 'iterator_visitor'
+require 'printing_visitor'
 
 include_class 'org.jruby.Ruby'
 include_class 'org.jruby.RubyInstanceConfig'
@@ -25,6 +26,19 @@ class Roodi
   
   def check_file(filename)
     check(filename, File.read(filename))
+  end
+  
+  def print(filename, content)
+    node = @runtime.parse(content, filename, nil, 0, false)
+    node.accept(PrintingVisitor.new)
+  end
+
+  def print_content(content)
+    print("dummy-file.rb", content)
+  end
+  
+  def print_file(filename)
+    print(filename, File.read(filename))
   end
   
   def errors

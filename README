@@ -50,7 +50,7 @@ Coding
 	ReturnCount
 	FallThrough
 	MultipleStringLiterals
-	UnnecessaryParenthese
+	UnnecessaryParentheses
 
 Metrics
 	BooleanExpressionComplexity
