@@ -16,7 +16,15 @@ The design of Roodi is intriguing.  It basically builds an Abstract Syntax Tree 
 
 So I end up using JRuby to run a Ruby app that uses JRuby API's to parse Ruby code.
 
-== Ideas for checks to write ==
+== Checks currently supported ==
+	ClassNameCheck					Check that class names match convention.
+	CyclomaticComplexityCheck		Check that the cyclomatic complexity of all methods is below the threshold.
+	EmptyRescueBodyCheck			Check that there are no empty rescue blocks.
+	ForLoopCheck					Check that for loops aren't used (Use Enumerable.each instead)
+	MethodNameCheck					Check that method names match convention.
+	MethodLineCountCheck			Check that all methods have a line count lower than the threshold
+  
+== Ideas for checks to write (from Checkstyle) ==
 
 Naming Conventions
 	ModuleName
@@ -56,7 +64,6 @@ Metrics
 	BooleanExpressionComplexity
 	ClassDataAbstractionCoupling
 	ClassFanOutComplexity
-	CyclomaticComplexity
 	NPathComplexity
 
 Unused Code
