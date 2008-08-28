@@ -220,6 +220,8 @@ module Roodi
 
     	def visitCaseNode(visited)
     	  print_node(visited)
+    	  visited.getCaseNode.accept(self)
+    	  visited.getFirstWhenNode.accept(self)
     		nil
     	end
 
@@ -573,7 +575,10 @@ module Roodi
 
     	def visitWhenNode(visited) 
     		print_node(visited)
-    		 nil
+    		visited.getExpressionNodes.accept(self) if visited.getExpressionNodes
+    		visited.getBodyNode.accept(self) if visited.getBodyNode
+    		visited.getNextCase.accept(self) if visited.getNextCase
+  		  nil
     	end
 
     	def visitWhileNode(visited) 
