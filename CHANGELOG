@@ -1,0 +1,4 @@
+= 0.1
+=== 31st August, 2008
+
+* A first version of a design checking tool for Ruby, with a few checks built in to get started.
