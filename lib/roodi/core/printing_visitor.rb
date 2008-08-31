@@ -11,6 +11,14 @@ module Roodi
       	@depth = 0
     	end
 	
+      def begin_children
+        @depth = @depth + 1
+      end
+      
+      def end_children
+        @depth = @depth - 1
+      end
+      
     	def process_node(node)
     	  @depth.times { print '  ' }
     	  puts node

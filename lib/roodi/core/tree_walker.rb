@@ -102,6 +102,12 @@ module Roodi
     module TreeWalker
       include NodeVisitor
   
+      def begin_children
+      end
+      
+      def end_children
+      end
+  
     	def visitAliasNode(visited)
     	  process_node(visited)
     		nil
@@ -109,41 +115,53 @@ module Roodi
 
     	def visitAndNode(visited)
     		process_node(visited)
+    		begin_children
     		visited.getFirstNode.accept(self)
     		visited.getSecondNode.accept(self)
+    		end_children
     		nil
     	end
 
     	def visitArgsNode(visited)
     	  process_node(visited)
+    	  begin_children
     		visited.getOptArgs.accept(self) if visited.getOptArgs
+    		end_children
         nil
     	end
 
     	def visitArgsCatNode(visited)
     	  process_node(visited)
+    	  begin_children
     		visited.getFirstNode.accept(self) if visited.getFirstNode
     		visited.getSecondNode.accept(self) if visited.getSecondNode
+    		end_children
         nil
     	end
 
       def visitArgsPushNode(visited)
         process_node(visited)
+        begin_children
         visited.getFirstNode.accept(self) if visited.getFirstNode
         visited.getSecondNode.accept(self) if visited.getSecondNode
+        end_children
         nil
       end
     
       def visitAttrAssignNode(visited) 
         process_node(visited)
+        begin_children
         visited.getArgsNode.accept(self) if visited.getArgsNode
         visited.getReceiverNode.accept(self) if visited.getReceiverNode
+    		end_children
         nil
       end
 
       def visitArrayNode(visited) 
         process_node(visited)
+        begin_children
         (0..(visited.size - 1)).each { |i| visited.get(i).accept(self) }
+    		end_children
         nil
       end
 
@@ -154,7 +172,9 @@ module Roodi
 
     	def visitBeginNode(visited) 
     	  process_node(visited)
+        begin_children
     	  visited.getBodyNode.accept(self) if visited.getBodyNode
+    		end_children
         nil
     	end
 
@@ -165,7 +185,9 @@ module Roodi
 
     	def visitBlockNode(visited) 
     	  process_node(visited)
+        begin_children
     		(0..(visited.size - 1)).each { |i| visited.get(i).accept(self) }
+    		end_children
     		nil
     	end
 
@@ -181,13 +203,17 @@ module Roodi
 
     	def visitConstDeclNode(visited)
     	  process_node(visited)
+        begin_children
     	  visited.getValueNode.accept(self)
+    		end_children
     	  nil
     	end
 
     	def visitClassVarAsgnNode(visited)
     	  process_node(visited)
+        begin_children
     	  visited.getValueNode.accept(self)
+    		end_children
     	  nil
     	end
 
@@ -203,29 +229,37 @@ module Roodi
 
     	def visitCallNode(visited) 
     		process_node(visited)
+        begin_children
     		visited.getReceiverNode.accept(self)
     		visited.getArgsNode.accept(self) if visited.getArgsNode
     		visited.getIterNode.accept(self) if visited.getIterNode
+    		end_children
      	  nil
     	end
 
     	def visitCaseNode(visited)
     	  process_node(visited)
+        begin_children
     	  visited.getCaseNode.accept(self)
     	  visited.getFirstWhenNode.accept(self)
+    		end_children
     		nil
     	end
 
     	def visitClassNode(visited) 
     	  process_node(visited)
+        begin_children
     		visited.getSuperNode.accept(self) if visited.getSuperNode
     		visited.getBodyNode.accept(self)
+    		end_children
     	  nil
     	end
 
     	def visitColon2Node(visited) 
     	  process_node(visited)
+        begin_children
     		visited.getLeftNode.accept(self) if visited.getLeftNode
+    		end_children
     	  nil
     	end
 
@@ -241,7 +275,9 @@ module Roodi
 
     	def visitDAsgnNode(visited) 
     	  process_node(visited)
+        begin_children
     		visited.getValueNode.accept(self)
+    		end_children
     	  nil
     	end
 
@@ -277,14 +313,18 @@ module Roodi
 
     	def visitDefnNode(visited) 
     	  process_node(visited)
+        begin_children
     		visited.getBodyNode.accept(self) if visited.getBodyNode
+    		end_children
     		nil
     	end
 
     	def visitDefsNode(visited) 
     	  process_node(visited)
+        begin_children
     		visited.getReceiverNode.accept(self)
     		visited.getBodyNode.accept(self) if visited.getBodyNode
+    		end_children
     		nil
     	end
 
@@ -305,8 +345,10 @@ module Roodi
 
     	def visitFCallNode(visited) 
     		process_node(visited)
+        begin_children
   			visited.getArgsNode.accept(self) if visited.getArgsNode
   			visited.getIterNode.accept(self) if visited.getIterNode
+    		end_children
   		  nil
     	end
 
@@ -327,7 +369,9 @@ module Roodi
 
     	def visitGlobalAsgnNode(visited) 
     		process_node(visited)
+        begin_children
     		visited.getValueNode.accept(self)
+    		end_children
     		nil
     	end
 
@@ -343,7 +387,9 @@ module Roodi
 
     	def visitInstAsgnNode(visited) 
     		process_node(visited)
+        begin_children
     		visited.getValueNode.accept(self)
+    		end_children
     		nil
     	end
 
@@ -354,20 +400,28 @@ module Roodi
 
     	def visitIfNode(visited) 
     		process_node(visited)
+        begin_children
     		visited.getCondition.accept(self)
     		visited.getThenBody.accept(self) if visited.getThenBody
     		visited.getElseBody.accept(self) if visited.getElseBody
+    		end_children
     		nil
     	end
 
     	def visitIterNode(visited) 
     		process_node(visited)
+        begin_children
+    		visited.getVarNode.accept(self) if visited.getVarNode
+    		visited.getBodyNode.accept(self) if visited.getBodyNode
+    		end_children
     		nil
     	end
 
     	def visitLocalAsgnNode(visited) 
     		process_node(visited)
+        begin_children
     		visited.getValueNode.accept(self)
+    		end_children
     		nil
     	end
 
@@ -398,13 +452,17 @@ module Roodi
 
     	def visitModuleNode(visited) 
     		process_node(visited)
+        begin_children
     		visited.getBodyNode.accept(self)
+    		end_children
     		nil
     	end
 
     	def visitNewlineNode(visited) 
     		process_node(visited)
+        begin_children
     		visited.getNextNode.accept(self)
+    		end_children
     		nil
     	end
 
@@ -420,7 +478,9 @@ module Roodi
 
     	def visitNotNode(visited) 
     		process_node(visited)
+        begin_children
     		visited.getConditionNode.accept(self)
+    		end_children
     		nil
     	end
 
@@ -451,8 +511,10 @@ module Roodi
 
     	def visitOrNode(visited) 
     		process_node(visited)
+        begin_children
     		visited.getFirstNode.accept(self)
     		visited.getSecondNode.accept(self)
+    		end_children
     		nil
     	end
 
@@ -478,9 +540,11 @@ module Roodi
 
     	def visitRescueNode(visited) 
     		process_node(visited)
+        begin_children
     		visited.getBodyNode.accept(self) if visited.getBodyNode
     		visited.getRescueNode.accept(self) if visited.getRescueNode
     		visited.getElseNode.accept(self) if visited.getElseNode
+    		end_children
     		nil
     	end
 
@@ -491,7 +555,9 @@ module Roodi
     
       def visitRootNode(visited) 
         process_node(visited)
+        begin_children
         visited.getBodyNode.accept(self)
+    		end_children
         nil
       end
 
@@ -562,9 +628,11 @@ module Roodi
 
     	def visitWhenNode(visited) 
     		process_node(visited)
+        begin_children
     		visited.getExpressionNodes.accept(self) if visited.getExpressionNodes
     		visited.getBodyNode.accept(self) if visited.getBodyNode
     		visited.getNextCase.accept(self) if visited.getNextCase
+    		end_children
   		  nil
     	end
 
