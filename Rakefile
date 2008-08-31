@@ -22,7 +22,8 @@ end
 
 def roodi(ruby_files)
   roodi = Roodi::Core::Runner.new(Roodi::Checks::ClassNameCheck.new, 
-                                  Roodi::Checks::CyclomaticComplexityCheck.new,
+                                  Roodi::Checks::CyclomaticComplexityBlockCheck.new,
+                                  Roodi::Checks::CyclomaticComplexityMethodCheck.new,
                                   Roodi::Checks::EmptyRescueBodyCheck.new,
                                   Roodi::Checks::ForLoopCheck.new,
                                   # Roodi::Checks::MagicNumberCheck.new,
