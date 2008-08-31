@@ -1,5 +1,6 @@
 require 'roodi/checks/class_name_check'
-require 'roodi/checks/cyclomatic_complexity_check'
+require 'roodi/checks/cyclomatic_complexity_block_check'
+require 'roodi/checks/cyclomatic_complexity_method_check'
 require 'roodi/checks/empty_rescue_body_check'
 require 'roodi/checks/for_loop_check'
 require 'roodi/checks/magic_number_check'

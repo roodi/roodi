@@ -1,15 +1,15 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe Roodi::Checks::CyclomaticComplexityCheck do
+describe Roodi::Checks::CyclomaticComplexityMethodCheck do
   before(:each) do
-    @roodi = Roodi::Core::Runner.new(Roodi::Checks::CyclomaticComplexityCheck.new(0))
+    @roodi = Roodi::Core::Runner.new(Roodi::Checks::CyclomaticComplexityMethodCheck.new(0))
   end
 
   def verify_content_complexity(content, complexity)
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:1 - Cyclomatic complexity is #{complexity}.  It should be 0 or less.")
+    errors[0].should eql("dummy-file.rb:1 - Method cyclomatic complexity is #{complexity}.  It should be 0 or less.")
   end
   
   it "should find an if block" do

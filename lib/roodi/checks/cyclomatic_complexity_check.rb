@@ -19,21 +19,20 @@ module Roodi
         @complexity = complexity
       end
       
-      def interesting_nodes
-        [DefnNode]
-      end
-
-      def evaluate(node)
-        complexity = count_complexity(node) + 1
-        add_error "#{position(node)} - Cyclomatic complexity is #{complexity}.  It should be #{@complexity} or less." unless complexity <= @complexity
-      end
+      protected
       
       def count_complexity(node)
+        count_branches(node) + 1
+      end
+
+      private
+
+      def count_branches(node)
         complexity_node_classes = [IfNode, WhileNode, UntilNode, ForNode, RescueNode, CaseNode, WhenNode, AndNode, OrNode]
         
         count = 0
         count = count + 1 if complexity_node_classes.include? node.class
-        node.children.each {|node| count += count_complexity(node)}
+        node.children.each {|node| count += count_branches(node)}
         count
       end
     end
