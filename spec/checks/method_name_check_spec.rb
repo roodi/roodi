@@ -14,6 +14,33 @@ describe Roodi::Checks::MethodNameCheck do
     @roodi.errors.should be_empty
   end
 
+  it "should accept method names with numbers" do
+    content = <<-END
+    def good_method_1_name
+    end
+    END
+    @roodi.check_content(content)
+    @roodi.errors.should be_empty
+  end
+
+  it "should accept method names ending a question mark" do
+    content = <<-END
+    def good_method_name?
+    end
+    END
+    @roodi.check_content(content)
+    @roodi.errors.should be_empty
+  end
+
+  it "should accept method names ending an exclamation mark" do
+    content = <<-END
+    def good_method_name!
+    end
+    END
+    @roodi.check_content(content)
+    @roodi.errors.should be_empty
+  end
+
   it "should reject camel case method names" do
     content = <<-END
     def badMethodName
@@ -22,6 +49,6 @@ describe Roodi::Checks::MethodNameCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:1 - Method name \"badMethodName\" should match pattern (?-mix:^[a-z_?=]*$).")
+    errors[0].should eql("dummy-file.rb:1 - Method name \"badMethodName\" should match pattern (?-mix:^[a-z]+[a-z0-9_]*[!\\?]?$).")
   end
 end
