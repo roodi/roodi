@@ -21,14 +21,7 @@ task :roodi_runway do
 end
 
 def roodi(ruby_files)
-  roodi = Roodi::Core::Runner.new(Roodi::Checks::ClassNameCheck.new, 
-                                  Roodi::Checks::CyclomaticComplexityBlockCheck.new,
-                                  Roodi::Checks::CyclomaticComplexityMethodCheck.new,
-                                  Roodi::Checks::EmptyRescueBodyCheck.new,
-                                  Roodi::Checks::ForLoopCheck.new,
-                                  # Roodi::Checks::MagicNumberCheck.new,
-                                  Roodi::Checks::MethodNameCheck.new, 
-                                  Roodi::Checks::MethodLineCountCheck.new)
+  roodi = Roodi::Core::Runner.new
   ruby_files.each { |file| roodi.check_file(file) }
   roodi.errors.each {|error| puts error}
   puts "\nFound #{roodi.errors.size} errors."

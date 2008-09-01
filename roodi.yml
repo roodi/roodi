@@ -1,0 +1,9 @@
+checks:
+- { name: ClassNameCheck }
+- { name: CyclomaticComplexityBlockCheck, complexity: 2 }
+- { name: CyclomaticComplexityMethodCheck, complexity: 5 }
+- { name: EmptyRescueBodyCheck }
+- { name: ForLoopCheck }
+- { name: MethodLineCountCheck, line_count: 20 }
+- { name: MethodNameCheck }
+
