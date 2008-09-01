@@ -100,8 +100,6 @@ include_class 'org.jruby.ast.visitor.NodeVisitor'
 module Roodi
   module Core
     module TreeWalker
-      include NodeVisitor
-  
       def begin_children
       end
       

@@ -1,12 +1,13 @@
 require 'java'
 require 'roodi/core/tree_walker'
 
+include_class 'org.jruby.ast.visitor.NodeVisitor'
+
 module Roodi
   module Core
-    class PrintingVisitor
-
+    class PrintingVisitor      
       include TreeWalker
-      
+
     	def initialize
       	@depth = 0
     	end
@@ -23,7 +24,6 @@ module Roodi
     	  @depth.times { print '  ' }
     	  puts node
       end
-      
     end 
 	end
 end
