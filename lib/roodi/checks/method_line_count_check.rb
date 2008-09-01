@@ -6,13 +6,18 @@ include_class 'org.jruby.ast.NewlineNode'
 module Roodi
   module Checks
     class MethodLineCountCheck < Check
+      def initialize(line_count = 20)
+        super()
+        @line_count = line_count
+      end
+      
       def interesting_nodes
         [DefnNode]
       end
 
       def evaluate(node)
         line_count = count_lines(node)
-        add_error "#{position(node)} - Method name \"#{node.getName}\" has #{line_count} lines.  It should have 5 or less." unless line_count <= 5
+        add_error "#{position(node)} - Method name \"#{node.getName}\" has #{line_count} lines.  It should have #{@line_count} or less." unless line_count <= @line_count
       end
   
       private

@@ -2,10 +2,10 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Roodi::Checks::MethodLineCountCheck do
   before(:each) do
-    @roodi = Roodi::Core::Runner.new(Roodi::Checks::MethodLineCountCheck.new)
+    @roodi = Roodi::Core::Runner.new(Roodi::Checks::MethodLineCountCheck.new(1))
   end
   
-  it "should accept methods with zero lines" do
+  it "should accept methods with less lines than the threshold" do
     content = <<-END
     def zero_line_method
     end
@@ -14,34 +14,26 @@ describe Roodi::Checks::MethodLineCountCheck do
     @roodi.errors.should be_empty
   end
 
-  it "should accept methods with five lines" do
+  it "should accept methods with the same number of lines as the threshold" do
     content = <<-END
-    def five_line_method
+    def one_line_method
       1
-      2
-      3
-      4
-      5
     end
     END
     @roodi.check_content(content)
     @roodi.errors.should be_empty
   end
 
-  it "should reject methods with more than five lines" do
+  it "should reject methods with more lines than the threshold" do
     content = <<-END
-    def six_line_method
+    def two_line_method
       1
       2
-      3
-      4
-      5
-      6
     end
     END
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:1 - Method name \"six_line_method\" has 6 lines.  It should have 5 or less.")
+    errors[0].should eql("dummy-file.rb:1 - Method name \"two_line_method\" has 2 lines.  It should have 1 or less.")
   end
 end
