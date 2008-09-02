@@ -1,11 +1,21 @@
 #!/usr/bin/env jruby
 
 $LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
+
 require 'roodi'
 
-pattern = File.join(ARGV[0], "**", "*.rb")
-roodi = Roodi::Core::Runner.new
-Dir.glob(pattern).each { |file| roodi.check_file(file) }
-roodi.errors.each {|error| puts error}
-puts "\nFound #{roodi.errors.size} errors."
-exit roodi.errors.size
+runner = Roodi::Core::Runner.new
+
+config_param = ARGV.detect {|arg| arg =~ /-config=.*/}
+runner.config = config_param.split("=")[1] if config_param
+ARGV.delete config_param
+
+ARGV.each do |arg|
+  Dir.glob(arg).each { |file| runner.check_file(file) }
+end
+
+runner.errors.each {|error| puts error}
+
+puts "\nFound #{runner.errors.size} errors."
+
+exit runner.errors.size
