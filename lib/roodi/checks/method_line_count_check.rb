@@ -9,7 +9,7 @@ module Roodi
       end
       
       def interesting_nodes
-        [:method]
+        [:defn]
       end
 
       def evaluate(node)
@@ -21,7 +21,7 @@ module Roodi
   
       def count_lines(node)
         count = 0
-        count = count + 1 if node.class == NewlineNode
+        count = count + 1 if node.node_type == :newline
         node.childNodes.each {|node| count += count_lines(node)}
         count
       end
