@@ -1,1 +1,0 @@
-require 'roodi/jruby/ast'
