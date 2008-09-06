@@ -9,7 +9,7 @@ describe Roodi::Checks::CyclomaticComplexityBlockCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:2 - Block cyclomatic complexity is #{complexity}.  It should be 0 or less.")
+    errors[0].should eql("dummy-file.rb - Block cyclomatic complexity is #{complexity}.  It should be 0 or less.")
   end
   
   it "should find a simple block" do

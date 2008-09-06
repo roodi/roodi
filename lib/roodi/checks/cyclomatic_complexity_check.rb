@@ -24,10 +24,10 @@ module Roodi
       private
 
       def count_branches(node)
-        complexity_node_classes = [:if, :while, :until, :for, :rescue, :case, :when, :and, :or]
+        complexity_node_types = [:if, :while, :until, :for, :rescue, :case, :when, :and, :or]
         
         count = 0
-        count = count + 1 if complexity_node_classes.include? node.class
+        count = count + 1 if complexity_node_types.include? node.node_type
         node.children.each {|node| count += count_branches(node)}
         count
       end
