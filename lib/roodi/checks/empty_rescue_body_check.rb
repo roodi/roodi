@@ -4,7 +4,7 @@ module Roodi
   module Checks
     class EmptyRescueBodyCheck < Check
       def interesting_nodes
-        [:rescue]
+        [:resbody]
       end
 
       def evaluate(node)
@@ -15,11 +15,8 @@ module Roodi
   
       def has_statement?(node)
         found_statement = false
-        if (node)
-          found_statement = found_statement || node.class == NewlineNode
-          children = node.childNodes
-          children.each { |child| found_statement = found_statement || has_statement?(child) } if children
-        end
+        found_statement = found_statement || node.node_type == :fcall
+        node.children.each { |child| found_statement = found_statement || has_statement?(child) }
         found_statement
       end
     end

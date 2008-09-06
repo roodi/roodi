@@ -13,6 +13,7 @@ describe Roodi::Checks::EmptyRescueBodyCheck do
       puts "Recover from the call"
     end
     END
+    # @roodi.print_content(content)
     @roodi.check_content(content)
     @roodi.errors.should be_empty
   end
@@ -36,10 +37,11 @@ describe Roodi::Checks::EmptyRescueBodyCheck do
     rescue
     end
     END
+    # @roodi.print_content(content)
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:3 - Rescue block should not be empty.")
+    errors[0].should eql("dummy-file.rb - Rescue block should not be empty.")
   end
 
   it "should reject an empty rescue block with a parameter" do
@@ -52,6 +54,6 @@ describe Roodi::Checks::EmptyRescueBodyCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:3 - Rescue block should not be empty.")
+    errors[0].should eql("dummy-file.rb - Rescue block should not be empty.")
   end
 end

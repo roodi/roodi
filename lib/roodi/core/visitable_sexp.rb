@@ -12,6 +12,10 @@ module Roodi
         first
       end
       
+      def children
+        sexp_body.select {|each| each.class == VisitableSexp }
+      end
+      
       def is_language_node?
         first.class == Symbol
       end
