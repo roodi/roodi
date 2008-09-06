@@ -1,12 +1,10 @@
-require 'java'
 require 'roodi/checks/check'
-include_class 'org.jruby.ast.DefnNode'
 
 module Roodi
   module Checks
     class MethodNameCheck < Check
       def interesting_nodes
-        [DefnNode]
+        [:method]
       end
 
       def evaluate(node)

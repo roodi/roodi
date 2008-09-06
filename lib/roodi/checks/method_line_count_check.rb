@@ -1,7 +1,4 @@
-require 'java'
 require 'roodi/checks/check'
-include_class 'org.jruby.ast.DefnNode'
-include_class 'org.jruby.ast.NewlineNode'
 
 module Roodi
   module Checks
@@ -12,7 +9,7 @@ module Roodi
       end
       
       def interesting_nodes
-        [DefnNode]
+        [:method]
       end
 
       def evaluate(node)

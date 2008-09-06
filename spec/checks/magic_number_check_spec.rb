@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Roodi::Checks::MagicNumberCheck do
   before(:each) do
-    @roodi = Roodi::Core::Runner.new(Roodi::Checks::MagicNumberCheck.new)
+    @roodi = Roodi::Core::ParseTreeRunner.new(Roodi::Checks::MagicNumberCheck.new)
   end
   
   it "should accept -1 as a non-magic number" do

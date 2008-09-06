@@ -1,12 +1,9 @@
-require 'java'
-include_class 'org.jruby.ast.visitor.AbstractVisitor'
-
 module Roodi
   module Core
-    class CheckingVisitor < AbstractVisitor
-      def checks=(checks)
+    class CheckingVisitor
+      def initialize(*checks)
         @checks ||= {}
-        checks.each do |check|
+        checks.first.each do |check|
           nodes = check.interesting_nodes
           nodes.each do |node|
             @checks[node] ||= []
@@ -16,8 +13,8 @@ module Roodi
         end
       end
 
-      def visitNode(node)
-        checks = @checks[node.class]
+      def visit(node)
+        checks = @checks[node.node_type]
         checks.each {|check| check.evaluate(node)} unless checks.nil?
         nil
       end

@@ -1,13 +1,10 @@
-require 'java'
 require 'roodi/checks/check'
-include_class 'org.jruby.ast.FixnumNode'
-include_class 'org.jruby.ast.BignumNode'
 
 module Roodi
   module Checks
     class MagicNumberCheck < Check
       def interesting_nodes
-        [FixnumNode, BignumNode]
+        [:fixnum, :bignum]
       end
 
       def evaluate(node)

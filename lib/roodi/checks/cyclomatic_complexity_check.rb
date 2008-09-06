@@ -1,8 +1,4 @@
-require 'java'
 require 'roodi/checks/check'
-include_class 'org.jruby.ast.ForNode'
-
-require 'roodi/jruby'
 
 module Roodi
   module Checks
@@ -28,7 +24,7 @@ module Roodi
       private
 
       def count_branches(node)
-        complexity_node_classes = [IfNode, WhileNode, UntilNode, ForNode, RescueNode, CaseNode, WhenNode, AndNode, OrNode]
+        complexity_node_classes = [:if, :while, :until, :for, :rescue, :case, :when, :and, :or]
         
         count = 0
         count = count + 1 if complexity_node_classes.include? node.class

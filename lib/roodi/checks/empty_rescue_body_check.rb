@@ -1,13 +1,10 @@
-require 'java'
 require 'roodi/checks/check'
-include_class 'org.jruby.ast.RescueBodyNode'
-include_class 'org.jruby.ast.NewlineNode'
 
 module Roodi
   module Checks
     class EmptyRescueBodyCheck < Check
       def interesting_nodes
-        [RescueBodyNode]
+        [:rescue]
       end
 
       def evaluate(node)

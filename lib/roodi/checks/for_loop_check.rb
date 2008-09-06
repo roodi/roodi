@@ -1,12 +1,10 @@
-require 'java'
 require 'roodi/checks/check'
-include_class 'org.jruby.ast.ForNode'
 
 module Roodi
   module Checks
     class ForLoopCheck < Check
       def interesting_nodes
-        [ForNode]
+        [:for]
       end
 
       def evaluate(node)

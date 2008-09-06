@@ -1,6 +1,4 @@
-require 'java'
 require 'roodi/checks/cyclomatic_complexity_check'
-require 'roodi/jruby'
 
 module Roodi
   module Checks
@@ -10,7 +8,7 @@ module Roodi
       end
       
       def interesting_nodes
-        [IterNode]
+        [:block]
       end
 
       def evaluate(node)
