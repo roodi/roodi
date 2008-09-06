@@ -1,3 +1,10 @@
+= 0.2
+=== 6th September, 2008
+
+* Now use ParseTree instead of JRuby, which makes the tool much more accessible.
+* Removed MagicNumberCheck
+* Line numbers no longer supported as a result of the move.
+
 = 0.1
 === 31st August, 2008
 
