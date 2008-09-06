@@ -21,7 +21,7 @@ task :roodi_runway do
 end
 
 def roodi(ruby_files)
-  roodi = Roodi::Core::Runner.new
+  roodi = Roodi::Core::ParseTreeRunner.new
   ruby_files.each { |file| roodi.check_file(file) }
   roodi.errors.each {|error| puts error}
   puts "\nFound #{roodi.errors.size} errors."
