@@ -12,9 +12,7 @@ Roodi is almost identical in design to the Java tool called Checkstyle (http://c
 
 == Design
 
-The design of Roodi is intriguing.  It basically builds an Abstract Syntax Tree (AST) of the Ruby source code, then uses the visitor patten to walk every node in the tree and see if the checks can infer any design issues with them.  Usually, the existence of an AST would mean running a grammar file through a parser to build it.  No such grammar file exists for the Ruby language, so I used the object model built by the JRuby team instead.  However, Roodi is written in Ruby to be more attractive to the Ruby community.  It does have to be run through JRuby because it uses the JRuby API.
-
-So I end up using JRuby to run a Ruby app that uses JRuby API's to parse Ruby code.
+Roodi builds an Abstract Syntax Tree (AST) of the Ruby source code, then uses the visitor patten to walk every node in the tree and see if the checks can infer any design issues with them.  Usually, the existence of an AST would mean running a grammar file through a parser to build it.  No such grammar file exists to build a complete representation of the source (including whitespace characters and comments) for the Ruby language, so I originally used the object model built by the JRuby team instead.  That design soon switched to use ParseTree instead, which makes Roodi more portable (it doesn't depend on JRuby anymore), but slightly less functional (mainly because ParseTree doesn't support line numbers).
 
 == Checks currently supported
 	ClassNameCheck					Check that class names match convention.
@@ -23,56 +21,3 @@ So I end up using JRuby to run a Ruby app that uses JRuby API's to parse Ruby co
 	EmptyRescueBodyCheck			Check that there are no empty rescue blocks.
 	ForLoopCheck					Check that for loops aren't used (Use Enumerable.each instead)
 	MethodNameCheck					Check that method names match convention.
-	MethodLineCountCheck			Check that all methods have a line count lower than the threshold
-  
-== Ideas for checks to write (from Checkstyle)
-
-Naming Conventions
-	ModuleName
-	VariableName
-
-Size Violations
-	FileLength
-	LineLength
-	BlockLength
-	ParameterNumber
-
-Whitespace
-	TabCharacter
-
-Modifiers
-	ModifierOrder
-
-Block Checks
-	EmptyBlock
-
-Coding
-	ArrayTrailingComma
-	IllegalInstantiation
-	IllegalToken
-	MagicNumber
-	MissingCaseDefault
-	SimplifyBooleanExpression
-	SimplifyBooleanReturn
-	NestedBlockDepth
-	IllegalCatch
-	ReturnCount
-	FallThrough
-	MultipleStringLiterals
-	UnnecessaryParentheses
-
-Metrics
-	BooleanExpressionComplexity
-	ClassDataAbstractionCoupling
-	ClassFanOutComplexity
-	NPathComplexity
-
-Unused Code
-	UnusedMethodParameter
-	UnusedLocalVariable
-
-Miscellaneous
-	GenericIllegalRegularExpression
-	NewlineAtEndOfFile
-	TodoComment
-	TrailingComment
