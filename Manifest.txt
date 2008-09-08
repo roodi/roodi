@@ -1,6 +1,4 @@
-CHANGELOG
 History.txt
-LICENSE
 Manifest.txt
 README.txt
 Rakefile
