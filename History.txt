@@ -1,11 +1,14 @@
+= 1.0.0
+
+* First release of Roodi.
+
 = 0.2
-=== 6th September, 2008
 
 * Now use ParseTree instead of JRuby, which makes the tool much more accessible.
 * Removed MagicNumberCheck
 * Line numbers no longer supported as a result of the move.
 
 = 0.1
-=== 31st August, 2008
 
 * A first version of a design checking tool for Ruby, with a few checks built in to get started.
+

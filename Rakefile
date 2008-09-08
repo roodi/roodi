@@ -1,5 +1,7 @@
 $:.unshift(File.join(File.dirname(__FILE__), 'lib'))
 
+require 'rubygems'
+require 'hoe'
 require 'rake'
 require 'spec/rake/spectask'
 require 'roodi'
@@ -25,4 +27,9 @@ def roodi(ruby_files)
   ruby_files.each { |file| roodi.check_file(file) }
   roodi.errors.each {|error| puts error}
   puts "\nFound #{roodi.errors.size} errors."
+end
+
+Hoe.new('roodi', Roodi::VERSION) do |p|
+  p.developer('Marty Andrews', 'marty@cogentconsulting.com.au')
+  p.remote_rdoc_dir = '' # Release to root
 end
