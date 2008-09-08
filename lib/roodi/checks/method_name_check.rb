@@ -8,7 +8,7 @@ module Roodi
       end
 
       def evaluate(node)
-        pattern = /^[a-z]+[a-z0-9_]*[!\?]?$/
+        pattern = /^[a-z<>=\[\]]+[a-z0-9_<>=\[\]]*[=!\?]?$/
         add_error "#{position(node)} - Method name \"#{node[1]}\" should match pattern #{pattern.inspect}" unless node[1].to_s =~ pattern
       end
     end
