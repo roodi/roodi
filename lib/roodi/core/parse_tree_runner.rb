@@ -45,6 +45,7 @@ module Roodi
       end
   
       def errors
+        @checks ||= []
         all_errors = @checks.collect {|check| check.errors}
         all_errors.flatten
       end
