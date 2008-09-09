@@ -1,10 +1,34 @@
 = roodi
 
-* http://www.rubyforge.org/
+* http://roodi.rubyforge.org
 
 == DESCRIPTION:
 
 Roodi stands for Ruby Object Oriented Design Inferometer.  It parses your Ruby code and warns you about design issues you have based on the checks that is has configured.
+
+== INSTALL:
+
+* sudo gem install roodi
+
+== SYNOPSIS:
+
+To check one or more files using the default configuration that comes with Roodi, use:
+    roodi [patterns]
+
+=== EXAMPLE USAGE
+
+Check all ruby files in a rails app:
+    roodi "rails_app/**/*.rb"
+
+Check one controller and one model file in a rails app:
+    roodi app/controller/sample_controller.rb app/models/sample.rb
+
+Check one controller and all model files in a rails app:
+    roodi app/controller/sample_controller.rb "app/models/*.rb"
+
+
+If you're writing a check, it is useful to see the structure of a file the way that Roodi tokenizes it (via ParesTree). Use:
+    roodi-describe [filename]
 
 == SUPPORTED CHECKS:
 
@@ -15,14 +39,6 @@ Roodi stands for Ruby Object Oriented Design Inferometer.  It parses your Ruby c
 * ForLoopCheck - Check that for loops aren't used (Use Enumerable.each instead)
 * MethodNameCheck - Check that method names match convention.
 * MethodLineCountCheck - Check that the number of lines in a method is below the threshold.
-
-== SYNOPSIS:
-
-* TBD.  See the Rakefile in this project for an example of how to get started if you're on the bleeding edge.
-
-== INSTALL:
-
-* sudo gem install roodi
 
 == LICENSE:
 
