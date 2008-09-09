@@ -21,7 +21,6 @@ lib/roodi/core/iterator_visitor.rb
 lib/roodi/core/parse_tree_runner.rb
 lib/roodi/core/parser.rb
 lib/roodi/core/visitable_sexp.rb
-roodi.gemspec
 roodi.yml
 spec/checks/class_name_check_spec.rb
 spec/checks/cyclomatic_complexity_block_check_spec.rb

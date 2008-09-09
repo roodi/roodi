@@ -1,3 +1,8 @@
+= 1.1.0
+
+* Added support back in for line numbers in error messages.
+* Re-enabled MethodLineCountCheck as part of the default check set.
+
 = 1.0.0
 
 * First release of Roodi.
