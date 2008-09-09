@@ -15,7 +15,7 @@ describe Roodi::Checks::CyclomaticComplexityBlockCheck do
   it "should find a simple block" do
     content = <<-END
     def method_name
-      it "should be a complex block" do
+      it "should be a simple block" do
         call_foo
       end
     end
