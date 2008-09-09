@@ -19,8 +19,12 @@ module Roodi
       
       def check(filename, content)
         @checks ||= load_checks
-        node = @parser.parse(content, filename)
-        node.accept(IteratorVisitor.new(CheckingVisitor.new(@checks)))
+        begin
+          node = @parser.parse(content, filename)
+          node.accept(IteratorVisitor.new(CheckingVisitor.new(@checks)))
+        rescue Exception
+          puts "#{filename} looks like it's not a valid Ruby file.  Skipping..."
+        end
       end
 
       def check_content(content)
