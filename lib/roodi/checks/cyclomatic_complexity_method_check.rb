@@ -13,7 +13,7 @@ module Roodi
 
       def evaluate(node)
         complexity = count_complexity(node)
-        add_error "#{position(node)} - Method name \"#{node[1]}\" has a cyclomatic complexity is #{complexity}.  It should be #{@complexity} or less." unless complexity <= @complexity
+        add_error "Method name \"#{node[1]}\" has a cyclomatic complexity is #{complexity}.  It should be #{@complexity} or less." unless complexity <= @complexity
       end
     end
   end

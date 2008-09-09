@@ -8,12 +8,12 @@ module Roodi
       end
       
       def interesting_nodes
-        [:block]
+        [:iter]
       end
 
       def evaluate(node)
         complexity = count_complexity(node)
-        add_error "#{position(node)} - Block cyclomatic complexity is #{complexity}.  It should be #{@complexity} or less." unless complexity <= @complexity
+        add_error "Block cyclomatic complexity is #{complexity}.  It should be #{@complexity} or less." unless complexity <= @complexity
       end
     end
   end

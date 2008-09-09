@@ -19,14 +19,6 @@ module Roodi
       def is_language_node?
         first.class == Symbol
       end
-      
-      def filename=(filename)
-        @filename = filename
-      end
-      
-      def filename
-        @filename
-      end
     end
   end
 end

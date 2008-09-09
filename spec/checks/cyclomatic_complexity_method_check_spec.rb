@@ -9,7 +9,7 @@ describe Roodi::Checks::CyclomaticComplexityMethodCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb - Method name \"method_name\" has a cyclomatic complexity is #{complexity}.  It should be 0 or less.")
+    errors[0].should eql("dummy-file.rb:1 - Method name \"method_name\" has a cyclomatic complexity is #{complexity}.  It should be 0 or less.")
   end
   
   it "should find an if block" do

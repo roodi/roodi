@@ -4,5 +4,6 @@ checks:
 - { name: CyclomaticComplexityMethodCheck, complexity: 5 }
 - { name: EmptyRescueBodyCheck }
 - { name: ForLoopCheck }
+- { name: MethodLineCountCheck }
 - { name: MethodNameCheck }
 

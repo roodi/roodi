@@ -8,7 +8,7 @@ module Roodi
       end
 
       def evaluate(node)
-        add_error "#{position(node)} - Rescue block should not be empty." unless has_statement?(node)
+        add_error("Rescue block should not be empty.", 1) unless has_statement?(node)
       end
   
       private

@@ -13,6 +13,6 @@ describe Roodi::Checks::ForLoopCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb - Don't use 'for' loops. Use Enumerable.each instead.")
+    errors[0].should eql("dummy-file.rb:1 - Don't use 'for' loops. Use Enumerable.each instead.")
   end
 end

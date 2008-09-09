@@ -8,7 +8,7 @@ module Roodi
       end
 
       def evaluate(node)
-        add_error "#{position(node)} - Don't use 'for' loops. Use Enumerable.each instead."
+        add_error "Don't use 'for' loops. Use Enumerable.each instead."
       end
     end
   end
