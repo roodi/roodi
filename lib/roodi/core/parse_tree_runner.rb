@@ -22,7 +22,8 @@ module Roodi
         begin
           node = @parser.parse(content, filename)
           node.accept(IteratorVisitor.new(CheckingVisitor.new(@checks)))
-        rescue Exception
+        rescue Exception => e
+          # puts e
           puts "#{filename} looks like it's not a valid Ruby file.  Skipping..."
         end
       end

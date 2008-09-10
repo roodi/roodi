@@ -147,7 +147,7 @@ describe Roodi::Checks::MethodNameCheck do
     END
     @roodi.check_content(content)
     errors = @roodi.errors
-    errors.should_not be_empty    
-    errors[0].should eql("dummy-file.rb:1 - Method name \"badMethodName\" should match pattern /^[a-z<>=\\[\\]]+[a-z0-9_<>=\\[\\]]*[=!\\?]?$/")
+    errors.should_not be_empty
+    errors[0].should eql("dummy-file.rb:1 - Method name \"badMethodName\" should match pattern /^[_a-z<>=\\[\\]|+-\\/\\*`]+[_a-z0-9_<>=~@\\[\\]]*[=!\\?]?$/")
   end
 end
