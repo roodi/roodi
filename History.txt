@@ -1,11 +1,19 @@
-= 1.1.0
+= 0.5
+
+* expanded regex matching for method name check.
+* suppressed noisy output from ParseTree using facets API.
+* updated dependencies and version as a result of facets change.
+* made Roodi tolerant of being asked to parse files which aren't really Ruby files.
+* updated the documentation with usage examples.
+
+= 0.4
 
 * Added support back in for line numbers in error messages.
 * Re-enabled MethodLineCountCheck as part of the default check set.
 
-= 1.0.0
+= 0.3
 
-* First release of Roodi.
+* First version of Roodi to be published to Rubyforge.
 
 = 0.2
 
