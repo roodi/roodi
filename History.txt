@@ -1,3 +1,7 @@
+= 0.6
+
+* class name check no longer gets confused about scoped class names like Module::Classname.
+
 = 0.5
 
 * expanded regex matching for method name check.
