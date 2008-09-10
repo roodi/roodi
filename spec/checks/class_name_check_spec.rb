@@ -14,6 +14,18 @@ describe Roodi::Checks::ClassNameCheck do
     @roodi.errors.should be_empty
   end
 
+  it "should be able to parse scoped class names" do
+    content = <<-END
+    class MyScope::GoodClassName 
+      def method
+      end
+    end
+    END
+    # @roodi.print_content(content)
+    @roodi.check_content(content)
+    @roodi.errors.should be_empty
+  end
+
   it "should reject class names with underscores" do
     content = <<-END
     class Bad_ClassName 
