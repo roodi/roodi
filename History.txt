@@ -2,6 +2,7 @@
 
 * added module name check.
 * added parameter number check.
+* added module line count check.
 
 = 1.1.1
 
