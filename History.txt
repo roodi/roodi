@@ -1,3 +1,8 @@
+= 1.2.0
+
+* added module name check.
+* added parameter number check.
+
 = 1.1.1
 
 * I'd initially published to Rubyforge under a 1.0.0 gem, and I've since tried to retrospectively fix up the version number system.  It turns out that Rubyforge caches old gems permanently, so I have to re-start at a larger number again.

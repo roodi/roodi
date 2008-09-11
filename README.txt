@@ -39,6 +39,8 @@ If you're writing a check, it is useful to see the structure of a file the way t
 * ForLoopCheck - Check that for loops aren't used (Use Enumerable.each instead)
 * MethodNameCheck - Check that method names match convention.
 * MethodLineCountCheck - Check that the number of lines in a method is below the threshold.
+* ModuleNameCheck - Check that module names match convention.
+* ParameterNumberCheck - Check that the number of parameters on a method is below the threshold.
 
 == LICENSE:
 
