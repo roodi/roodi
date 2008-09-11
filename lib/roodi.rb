@@ -2,5 +2,5 @@ require 'roodi/checks'
 require 'roodi/core'
 
 module Roodi
-  VERSION = '0.6'
+  VERSION = '1.1.1'
 end
