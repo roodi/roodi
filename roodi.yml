@@ -1,12 +1,13 @@
 checks:
-# - { name: ClassNameCheck }
-# - { name: CyclomaticComplexityBlockCheck }
-# - { name: CyclomaticComplexityMethodCheck }
-# - { name: EmptyRescueBodyCheck }
-# - { name: ForLoopCheck }
-# - { name: MethodLineCountCheck }
-# - { name: MethodNameCheck }
+- { name: ClassLineCountCheck }
+- { name: ClassNameCheck }
+- { name: CyclomaticComplexityBlockCheck }
+- { name: CyclomaticComplexityMethodCheck }
+- { name: EmptyRescueBodyCheck }
+- { name: ForLoopCheck }
+- { name: MethodLineCountCheck }
+- { name: MethodNameCheck }
 - { name: ModuleLineCountCheck }
-# - { name: ModuleNameCheck }
-# - { name: ParameterNumberCheck }
+- { name: ModuleNameCheck }
+- { name: ParameterNumberCheck }
 
