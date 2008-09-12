@@ -1,4 +1,5 @@
 checks:
+- { name: CaseMissingElseCheck }
 - { name: ClassLineCountCheck }
 - { name: ClassNameCheck }
 - { name: CyclomaticComplexityBlockCheck }

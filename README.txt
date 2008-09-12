@@ -32,13 +32,16 @@ If you're writing a check, it is useful to see the structure of a file the way t
 
 == SUPPORTED CHECKS:
 
+* CaseMissingElseCheck - Check that case statements have an else statement so that all cases are covered.
+* ClassLineCountCheck - Check that the number of lines in a class is below the threshold.
 * ClassNameCheck - Check that class names match convention.
 * CyclomaticComplexityBlockCheck - Check that the cyclomatic complexity of all blocks is below the threshold.
 * CyclomaticComplexityMethodCheck - Check that the cyclomatic complexity of all methods is below the threshold.
 * EmptyRescueBodyCheck - Check that there are no empty rescue blocks.
 * ForLoopCheck - Check that for loops aren't used (Use Enumerable.each instead)
-* MethodNameCheck - Check that method names match convention.
 * MethodLineCountCheck - Check that the number of lines in a method is below the threshold.
+* MethodNameCheck - Check that method names match convention.
+* ModuleLineCountCheck - Check that the number of lines in a module is below the threshold.
 * ModuleNameCheck - Check that module names match convention.
 * ParameterNumberCheck - Check that the number of parameters on a method is below the threshold.
 

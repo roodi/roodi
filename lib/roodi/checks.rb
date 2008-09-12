@@ -1,3 +1,4 @@
+require 'roodi/checks/case_missing_else_check'
 require 'roodi/checks/class_line_count_check'
 require 'roodi/checks/class_name_check'
 require 'roodi/checks/cyclomatic_complexity_block_check'
