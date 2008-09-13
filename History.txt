@@ -3,6 +3,7 @@
 * added case missing else check.
 * updated checks to take a hash of options with built-in defaults.
 * added support for complete configuration via external file.
+* added support for passing in a custom config file via 'roodi -config=<filename> [pattern]'
 
 = 1.2.0
 

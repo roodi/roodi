@@ -11,6 +11,8 @@ module Roodi
     class ParseTreeRunner
       DEFAULT_CONFIG = File.join(File.dirname(__FILE__), "..", "..", "..", "roodi.yml")
       
+      attr_writer :config
+      
       def initialize(*checks)
         @config = DEFAULT_CONFIG
         @checks = checks unless checks.empty?
