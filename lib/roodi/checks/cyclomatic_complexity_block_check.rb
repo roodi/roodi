@@ -6,7 +6,7 @@ module Roodi
       DEFAULT_COMPLEXITY = 4
       
       def initialize(options = {})
-        complexity = options[:complexity] || DEFAULT_COMPLEXITY
+        complexity = options['complexity'] || DEFAULT_COMPLEXITY
         super(complexity)
       end
       

@@ -7,7 +7,7 @@ module Roodi
       
       def initialize(options = {})
         super()
-        @pattern = options[:pattern] || DEFAULT_PATTERN
+        @pattern = options['pattern'] || DEFAULT_PATTERN
       end
 
       def interesting_nodes

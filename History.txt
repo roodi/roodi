@@ -1,6 +1,8 @@
 = 1.3.0
 
 * added case missing else check.
+* updated checks to take a hash of options with built-in defaults.
+* added support for complete configuration via external file.
 
 = 1.2.0
 

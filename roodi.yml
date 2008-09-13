@@ -1,5 +1,5 @@
 CaseMissingElseCheck:            { }
-ClassLineCountCheck:             { line_count: 3 }
+ClassLineCountCheck:             { line_count: 300 }
 ClassNameCheck:                  { pattern: !ruby/regexp /^[A-Z][a-zA-Z0-9]*$/ }
 CyclomaticComplexityBlockCheck:  { complexity: 4 }
 CyclomaticComplexityMethodCheck: { complexity: 8 }

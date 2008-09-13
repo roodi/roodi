@@ -7,7 +7,7 @@ module Roodi
       
       def initialize(options = {})
         super()
-        @line_count = options[:line_count] || DEFAULT_LINE_COUNT
+        @line_count = options['line_count'] || DEFAULT_LINE_COUNT
       end
       
       def interesting_nodes

@@ -7,7 +7,7 @@ module Roodi
       
       def initialize(options = {})
         super()
-        @parameter_count = options[:parameter_count] || DEFAULT_PARAMETER_COUNT
+        @parameter_count = options['parameter_count'] || DEFAULT_PARAMETER_COUNT
       end
       
       def interesting_nodes

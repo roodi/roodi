@@ -64,7 +64,10 @@ module Roodi
       def load_checks
         check_objects = []
         checks = YAML.load_file @config
-        checks.each { |check| check_objects << eval("Roodi::Checks::#{check[0]}.new") }
+        checks.each do |check| 
+          klass = eval("Roodi::Checks::#{check[0]}")
+          check_objects << (check[1].empty? ? klass.new : klass.new(check[1]))
+        end
         check_objects
       end
     end
