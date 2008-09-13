@@ -10,7 +10,7 @@ module Roodi
     # Generally 1-4 is considered good, 5-7 ok, 8-10 consider re-factoring, and 
     # 11+ re-factor now!
     class CyclomaticComplexityCheck < Check
-      def initialize(complexity = 8)
+      def initialize(complexity)
         super()
         @complexity = complexity
       end

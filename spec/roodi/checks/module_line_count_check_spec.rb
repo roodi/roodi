@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Roodi::Checks::ModuleLineCountCheck do
   before(:each) do
-    @roodi = Roodi::Core::ParseTreeRunner.new(Roodi::Checks::ModuleLineCountCheck.new(1))
+    @roodi = Roodi::Core::ParseTreeRunner.new(Roodi::Checks::ModuleLineCountCheck.new({:line_count => 1}))
   end
   
   it "should accept modules with less lines than the threshold" do

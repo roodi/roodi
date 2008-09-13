@@ -3,9 +3,11 @@ require 'roodi/checks/check'
 module Roodi
   module Checks
     class ParameterNumberCheck < Check
-      def initialize(parameter_count = 5)
+      DEFAULT_PARAMETER_COUNT = 5
+      
+      def initialize(options = {})
         super()
-        @parameter_count = parameter_count
+        @parameter_count = options[:parameter_count] || DEFAULT_PARAMETER_COUNT
       end
       
       def interesting_nodes

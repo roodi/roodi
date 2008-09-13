@@ -3,9 +3,11 @@ require 'roodi/checks/check'
 module Roodi
   module Checks
     class MethodLineCountCheck < Check
-      def initialize(line_count = 20)
+      DEFAULT_LINE_COUNT = 20
+      
+      def initialize(options = {})
         super()
-        @line_count = line_count
+        @line_count = options[:line_count] || DEFAULT_LINE_COUNT
       end
       
       def interesting_nodes

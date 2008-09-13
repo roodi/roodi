@@ -3,9 +3,11 @@ require 'roodi/checks/check'
 module Roodi
   module Checks
     class ModuleNameCheck < Check
-      def initialize(pattern = /^[A-Z][a-zA-Z0-9]*$/)
+      DEFAULT_PATTERN = /^[A-Z][a-zA-Z0-9]*$/
+      
+      def initialize(options = {})
         super()
-        @pattern = pattern
+        @pattern = options[:pattern] || DEFAULT_PATTERN
       end
 
       def interesting_nodes

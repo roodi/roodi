@@ -3,7 +3,10 @@ require 'roodi/checks/cyclomatic_complexity_check'
 module Roodi
   module Checks
     class CyclomaticComplexityBlockCheck < CyclomaticComplexityCheck
-      def initialize(complexity = 4)
+      DEFAULT_COMPLEXITY = 4
+      
+      def initialize(options = {})
+        complexity = options[:complexity] || DEFAULT_COMPLEXITY
         super(complexity)
       end
       
