@@ -1,14 +1,13 @@
 checks:
 - { name: CaseMissingElseCheck }
-- { name: ClassLineCountCheck }
-- { name: ClassNameCheck }
-- { name: CyclomaticComplexityBlockCheck }
-- { name: CyclomaticComplexityMethodCheck }
+- { name: ClassLineCountCheck, line_count: 300 }
+- { name: ClassNameCheck, pattern: !ruby/regexp /^[A-Z][a-zA-Z0-9]*$/ }
+- { name: CyclomaticComplexityBlockCheck, complexity: 4 }
+- { name: CyclomaticComplexityMethodCheck, complexity: 8 }
 - { name: EmptyRescueBodyCheck }
 - { name: ForLoopCheck }
-- { name: MethodLineCountCheck }
-- { name: MethodNameCheck }
-- { name: ModuleLineCountCheck }
-- { name: ModuleNameCheck }
-- { name: ParameterNumberCheck }
-
+- { name: MethodLineCountCheck, line_count: 20 }
+- { name: MethodNameCheck, pattern: /^[_a-z<>=\\[\\]|+-\\/\\*`]+[_a-z0-9_<>=~@\\[\\]]*[=!\\?]?$/ }
+- { name: ModuleLineCountCheck, line_count: 200 }
+- { name: ModuleNameCheck, pattern: !ruby/regexp /^[A-Z][a-zA-Z0-9]*$/ }
+- { name: ParameterNumberCheck, parameter_count: 5 }
