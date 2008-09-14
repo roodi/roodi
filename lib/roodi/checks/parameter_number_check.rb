@@ -2,6 +2,11 @@ require 'roodi/checks/check'
 
 module Roodi
   module Checks
+    # Checks a method to make sure the number of parameters it has is under the specified limit.
+    # 
+    # A method taking too many parameters is a code smell that indicates it might be doing too 
+    # much, or that the parameters should be grouped into one or more objects of their own.  It
+    # probably needs some refactoring. 
     class ParameterNumberCheck < Check
       DEFAULT_PARAMETER_COUNT = 5
       

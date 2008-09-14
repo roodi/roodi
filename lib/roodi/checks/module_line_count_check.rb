@@ -2,6 +2,10 @@ require 'roodi/checks/check'
 
 module Roodi
   module Checks
+    # Checks a module to make sure the number of lines it has is under the specified limit.
+    # 
+    # A module getting too large is a code smell that indicates it might be taking on too many 
+    # responsibilities.  It should probably be refactored into multiple smaller modules. 
     class ModuleLineCountCheck < Check
       DEFAULT_LINE_COUNT = 300
       

@@ -2,6 +2,11 @@ require 'roodi/checks/check'
 
 module Roodi
   module Checks
+    # Checks a method to make sure the number of lines it has is under the specified limit.
+    # 
+    # A method getting too large is a code smell that indicates it might be doing more than one 
+    # thing and becoming hard to test.  It should probably be refactored into multiple methods 
+    # that each do a single thing well. 
     class MethodLineCountCheck < Check
       DEFAULT_LINE_COUNT = 20
       
