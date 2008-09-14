@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Roodi::Checks::ClassLineCountCheck do
   before(:each) do
-    @roodi = Roodi::Core::ParseTreeRunner.new(Roodi::Checks::ClassLineCountCheck.new({:line_count => 1}))
+    @roodi = Roodi::Core::ParseTreeRunner.new(Roodi::Checks::ClassLineCountCheck.new({'line_count' => 1}))
   end
   
   it "should accept classes with less lines than the threshold" do
