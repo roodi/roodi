@@ -45,6 +45,11 @@ If you're writing a check, it is useful to see the structure of a file the way t
 * ModuleNameCheck - Check that module names match convention.
 * ParameterNumberCheck - Check that the number of parameters on a method is below the threshold.
 
+== SUGGESTED CHECKS:
+
+* ConditionalAssignmentCheck - Check for the assignment of a value to a variable inside a conditional.  It's probably a mistaken equality comparison.
+* BlockVariableShadowCheck - Check that a block variable does not have the same name as a method parameter or local variable.  It may be mistakenly referenced within the block.
+
 == LICENSE:
 
 (The MIT License)
