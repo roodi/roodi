@@ -10,7 +10,8 @@ module Roodi
       DEFAULT_LINE_COUNT = 300
       
       def initialize(options = {})
-        super([:module], options['line_count'], 'Module')
+        line_count = options['line_count'] || DEFAULT_LINE_COUNT
+        super([:module], line_count, 'Module')
       end
     end
   end

@@ -3,10 +3,10 @@ require 'roodi/checks/check'
 module Roodi
   module Checks
     class LineCountCheck < Check
-      def initialize(interesting_nodes, configured_line_count, message_prefix)
+      def initialize(interesting_nodes, line_count, message_prefix)
         super()
         @interesting_nodes = interesting_nodes
-        @line_count = configured_line_count || DEFAULT_LINE_COUNT
+        @line_count = line_count
         @message_prefix = message_prefix
       end
 
