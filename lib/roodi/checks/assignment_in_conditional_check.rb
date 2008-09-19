@@ -2,11 +2,10 @@ require 'roodi/checks/check'
 
 module Roodi
   module Checks
-    # Checks a method to make sure the number of parameters it has is under the specified limit.
+    # Checks a conditional to see if it contains an assignment.
     # 
-    # A method taking too many parameters is a code smell that indicates it might be doing too 
-    # much, or that the parameters should be grouped into one or more objects of their own.  It
-    # probably needs some refactoring. 
+    # A conditional containing an assignment is likely to be a mistyped equality check.  You
+    # should either fix the typo or factor out the assignment so that the code is clearer.
     class AssignmentInConditionalCheck < Check
       def initialize(options = {})
         super()

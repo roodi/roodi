@@ -13,7 +13,7 @@ Roodi stands for Ruby Object Oriented Design Inferometer.  It parses your Ruby c
 == SYNOPSIS:
 
 To check one or more files using the default configuration that comes with Roodi, use:
-    roodi [patterns]
+    roodi [-config=file] [pattern ...]
 
 === EXAMPLE USAGE
 
@@ -26,9 +26,29 @@ Check one controller and one model file in a rails app:
 Check one controller and all model files in a rails app:
     roodi app/controller/sample_controller.rb "app/models/*.rb"
 
+Check all ruby files in a rails app with a custom configuration file:
+    roodi -config=my_roodi_config.yml "rails_app/**/*.rb"
 
-If you're writing a check, it is useful to see the structure of a file the way that Roodi tokenizes it (via ParesTree). Use:
+If you're writing a check, it is useful to see the structure of a file the way that Roodi tokenizes it (via ParseTree). Use:
     roodi-describe [filename]
+
+== CUSTOM CONFIGURATION
+
+To change the set of checks included, or to change the default values of the checks, you can provide your own config file.  The config file is a YAML file that lists the checks to be included.  Each check can optionally include a hash of options that are passed to the check to configure it.  For example, the default config file looks like this:
+
+    AssignmentInConditionalCheck:    { }
+    CaseMissingElseCheck:            { }
+    ClassLineCountCheck:             { line_count: 300 }
+    ClassNameCheck:                  { pattern: !ruby/regexp /^[A-Z][a-zA-Z0-9]*$/ }
+    CyclomaticComplexityBlockCheck:  { complexity: 4 }
+    CyclomaticComplexityMethodCheck: { complexity: 8 }
+    EmptyRescueBodyCheck:            { }
+    ForLoopCheck:                    { }
+    MethodLineCountCheck:            { line_count: 20 }
+    MethodNameCheck:                 { pattern: !ruby/regexp /^[_a-z<>=\[\]|+-\/\*`]+[_a-z0-9_<>=~@\[\]]*[=!\?]?$/ }
+    ModuleLineCountCheck:            { line_count: 300 }
+    ModuleNameCheck:                 { pattern: !ruby/regexp /^[A-Z][a-zA-Z0-9]*$/ }
+    ParameterNumberCheck:            { parameter_count: 5 }
 
 == SUPPORTED CHECKS:
 
