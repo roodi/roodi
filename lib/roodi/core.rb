@@ -1,6 +1,1 @@
-# require 'roodi/core/checking_visitor'
-# require 'roodi/core/iterator_visitor'
 require 'roodi/core/parse_tree_runner'
-# require 'roodi/core/printing_visitor'
-# require 'roodi/core/runner'
-# require 'roodi/core/tree_walker'

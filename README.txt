@@ -32,6 +32,7 @@ If you're writing a check, it is useful to see the structure of a file the way t
 
 == SUPPORTED CHECKS:
 
+* AssignmentInConditionalCheck - Check for an assignment inside a conditional.  It's probably a mistaken equality comparison.
 * CaseMissingElseCheck - Check that case statements have an else statement so that all cases are covered.
 * ClassLineCountCheck - Check that the number of lines in a class is below the threshold.
 * ClassNameCheck - Check that class names match convention.
@@ -47,7 +48,6 @@ If you're writing a check, it is useful to see the structure of a file the way t
 
 == SUGGESTED CHECKS:
 
-* ConditionalAssignmentCheck - Check for the assignment of a value to a variable inside a conditional.  It's probably a mistaken equality comparison.
 * BlockVariableShadowCheck - Check that a block variable does not have the same name as a method parameter or local variable.  It may be mistakenly referenced within the block.
 
 == LICENSE:
