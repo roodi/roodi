@@ -31,7 +31,7 @@ describe Roodi::Checks::ParameterNumberCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:1 - Method name \"two_parameter_method\" has 2 parameters.  It should have 1 or less.")
+    errors[0].to_s.should eql("dummy-file.rb:1 - Method name \"two_parameter_method\" has 2 parameters.  It should have 1 or less.")
   end
 
   it "should cope with default values on parameters" do
@@ -42,6 +42,6 @@ describe Roodi::Checks::ParameterNumberCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:1 - Method name \"two_parameter_method\" has 2 parameters.  It should have 1 or less.")
+    errors[0].to_s.should eql("dummy-file.rb:1 - Method name \"two_parameter_method\" has 2 parameters.  It should have 1 or less.")
   end
 end

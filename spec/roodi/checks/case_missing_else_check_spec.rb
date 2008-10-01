@@ -27,6 +27,6 @@ describe Roodi::Checks::CaseMissingElseCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:1 - Case statement is missing an else clause.")
+    errors[0].to_s.should eql("dummy-file.rb:1 - Case statement is missing an else clause.")
   end
 end

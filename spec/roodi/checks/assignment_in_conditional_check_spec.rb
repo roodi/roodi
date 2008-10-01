@@ -21,7 +21,7 @@ describe Roodi::Checks::AssignmentInConditionalCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:1 - Found = in conditional.  It should probably be an ==")
+    errors[0].to_s.should eql("dummy-file.rb:1 - Found = in conditional.  It should probably be an ==")
   end
 
   it "should reject an assignment inside an unless clause" do
@@ -31,7 +31,7 @@ describe Roodi::Checks::AssignmentInConditionalCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:1 - Found = in conditional.  It should probably be an ==")
+    errors[0].to_s.should eql("dummy-file.rb:1 - Found = in conditional.  It should probably be an ==")
   end
 
   it "should reject an assignment inside a while clause" do
@@ -41,7 +41,7 @@ describe Roodi::Checks::AssignmentInConditionalCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:1 - Found = in conditional.  It should probably be an ==")
+    errors[0].to_s.should eql("dummy-file.rb:1 - Found = in conditional.  It should probably be an ==")
   end
 
   it "should reject an assignment inside an unless clause" do
@@ -51,7 +51,7 @@ describe Roodi::Checks::AssignmentInConditionalCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:1 - Found = in conditional.  It should probably be an ==")
+    errors[0].to_s.should eql("dummy-file.rb:1 - Found = in conditional.  It should probably be an ==")
   end
 
   it "should reject an assignment inside a a ternary operator check clause" do
@@ -61,6 +61,6 @@ describe Roodi::Checks::AssignmentInConditionalCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:1 - Found = in conditional.  It should probably be an ==")
+    errors[0].to_s.should eql("dummy-file.rb:1 - Found = in conditional.  It should probably be an ==")
   end
 end

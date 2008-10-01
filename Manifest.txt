@@ -25,6 +25,7 @@ lib/roodi/checks/name_check.rb
 lib/roodi/checks/parameter_number_check.rb
 lib/roodi/core.rb
 lib/roodi/core/checking_visitor.rb
+lib/roodi/core/error.rb
 lib/roodi/core/iterator_visitor.rb
 lib/roodi/core/parse_tree_runner.rb
 lib/roodi/core/parser.rb

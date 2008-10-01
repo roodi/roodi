@@ -34,6 +34,6 @@ describe Roodi::Checks::MethodLineCountCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:1 - Method \"two_line_method\" has 2 lines.  It should have 1 or less.")
+    errors[0].to_s.should eql("dummy-file.rb:1 - Method \"two_line_method\" has 2 lines.  It should have 1 or less.")
   end
 end

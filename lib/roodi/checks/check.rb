@@ -1,3 +1,5 @@
+require 'roodi/core/error'
+
 module Roodi
   module Checks
     class Check
@@ -15,7 +17,7 @@ module Roodi
       end
   
       def add_error(error, offset = 0)
-        @errors << "#{position(offset)} - #{error}"
+        @errors << Roodi::Core::Error.new("#{@line[2]}", "#{@line[1] + offset}", error)
       end
   
       def errors

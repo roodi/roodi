@@ -22,6 +22,6 @@ describe Roodi::Checks::ModuleNameCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:1 - Module name \"Bad_ModuleName\" should match pattern /^[A-Z][a-zA-Z0-9]*$/")
+    errors[0].to_s.should eql("dummy-file.rb:1 - Module name \"Bad_ModuleName\" should match pattern /^[A-Z][a-zA-Z0-9]*$/")
   end
 end

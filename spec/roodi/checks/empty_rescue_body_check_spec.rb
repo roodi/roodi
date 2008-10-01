@@ -39,7 +39,7 @@ describe Roodi::Checks::EmptyRescueBodyCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:3 - Rescue block should not be empty.")
+    errors[0].to_s.should eql("dummy-file.rb:3 - Rescue block should not be empty.")
   end
 
   it "should reject an empty rescue block with a parameter" do
@@ -52,6 +52,6 @@ describe Roodi::Checks::EmptyRescueBodyCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].should eql("dummy-file.rb:3 - Rescue block should not be empty.")
+    errors[0].to_s.should eql("dummy-file.rb:3 - Rescue block should not be empty.")
   end
 end
