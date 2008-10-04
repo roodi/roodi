@@ -17,6 +17,18 @@ describe Roodi::Checks::EmptyRescueBodyCheck do
     @roodi.errors.should be_empty
   end
 
+  it "should accept a rescue body with a return" do
+    content = <<-END
+    begin
+      call_method
+    rescue
+      return true
+    end
+    END
+    @roodi.check_content(content)
+    @roodi.errors.should be_empty
+  end
+
   it "should accept a rescue body with content and a parameter" do
     content = <<-END
     begin
