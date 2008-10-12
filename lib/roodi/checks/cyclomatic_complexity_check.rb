@@ -19,7 +19,6 @@ module Roodi
       private
 
       def count_branches(node)
-        
         count = 0
         count = count + 1 if COMPLEXITY_NODE_TYPES.include? node.node_type
         node.children.each {|node| count += count_branches(node)}
