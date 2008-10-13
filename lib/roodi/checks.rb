@@ -1,3 +1,4 @@
+require 'roodi/checks/abc_metric_method_check'
 require 'roodi/checks/assignment_in_conditional_check'
 require 'roodi/checks/case_missing_else_check'
 require 'roodi/checks/class_line_count_check'
