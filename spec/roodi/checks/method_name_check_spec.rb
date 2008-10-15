@@ -40,7 +40,7 @@ describe Roodi::Checks::MethodNameCheck do
     @roodi.check_content(content)
     @roodi.errors.should be_empty
   end
-
+  
   it "should accept method names ending an equals sign" do
     content = <<-END
     def good_method_name=
@@ -50,94 +50,17 @@ describe Roodi::Checks::MethodNameCheck do
     @roodi.errors.should be_empty
   end
 
-  it "should accept << as a method name" do
-    content = <<-END
-    def <<
+  describe "when processing non-text based method names" do
+    ['<<', '>>', '==', '=', '<', '<=', '>', '>=', '[]', '[]='].each do |each|
+      it "should accept #{each} as a method name" do
+        content = <<-END
+        def #{each}
+        end
+        END
+        @roodi.check_content(content)
+        @roodi.errors.should be_empty
+      end
     end
-    END
-    @roodi.check_content(content)
-    @roodi.errors.should be_empty
-  end
-
-  it "should accept >> as a method name" do
-    content = <<-END
-    def >>
-    end
-    END
-    @roodi.check_content(content)
-    @roodi.errors.should be_empty
-  end
-
-  it "should accept == as a method name" do
-    content = <<-END
-    def ==
-    end
-    END
-    @roodi.check_content(content)
-    @roodi.errors.should be_empty
-  end
-
-  it "should accept === as a method name" do
-    content = <<-END
-    def ===
-    end
-    END
-    @roodi.check_content(content)
-    @roodi.errors.should be_empty
-  end
-
-  it "should accept < as a method name" do
-    content = <<-END
-    def <
-    end
-    END
-    @roodi.check_content(content)
-    @roodi.errors.should be_empty
-  end
-
-  it "should accept <= as a method name" do
-    content = <<-END
-    def <=
-    end
-    END
-    @roodi.check_content(content)
-    @roodi.errors.should be_empty
-  end
-
-  it "should accept > as a method name" do
-    content = <<-END
-    def >
-    end
-    END
-    @roodi.check_content(content)
-    @roodi.errors.should be_empty
-  end
-
-  it "should accept >= as a method name" do
-    content = <<-END
-    def >=
-    end
-    END
-    @roodi.check_content(content)
-    @roodi.errors.should be_empty
-  end
-
-  it "should accept [] as a method name" do
-    content = <<-END
-    def []
-    end
-    END
-    @roodi.check_content(content)
-    @roodi.errors.should be_empty
-  end
-
-  it "should accept []= as a method name" do
-    content = <<-END
-    def []=
-    end
-    END
-    @roodi.check_content(content)
-    @roodi.errors.should be_empty
   end
 
   it "should reject camel case method names" do
