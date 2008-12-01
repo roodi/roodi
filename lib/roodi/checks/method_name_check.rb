@@ -6,7 +6,7 @@ module Roodi
     # 
     # Keeping to a consistent nameing convention makes your code easier to read.
     class MethodNameCheck < NameCheck
-      DEFAULT_PATTERN = /^[_a-z<>=\[\]|+-\/\*`]+[_a-z0-9_<>=~@\[\]]*[=!\?]?$/
+      DEFAULT_PATTERN = /^[_a-z<>=\[|+-\/\*`]+[_a-z0-9_<>=~@\[\]]*[=!\?]?$/
       
       def initialize(options = {})
         pattern = options['pattern'] || DEFAULT_PATTERN
