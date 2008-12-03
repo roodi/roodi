@@ -20,11 +20,9 @@ module Roodi
       private
   
       def has_statement?(node)
-        found_statement = false
-        found_statement = found_statement || STATEMENT_NODES.include?(node.node_type)
-        found_statement = found_statement || assigning_other_than_exception_to_local_variable?(node) 
-        node.children.each { |child| found_statement = found_statement || has_statement?(child) }
-        found_statement
+        return true if STATEMENT_NODES.include?(node.node_type)
+        return true if assigning_other_than_exception_to_local_variable?(node) 
+        return true if node.children.any? { |child| has_statement?(child) }
       end
 
       def assigning_other_than_exception_to_local_variable?(node)
