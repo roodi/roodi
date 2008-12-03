@@ -53,6 +53,18 @@ describe Roodi::Checks::EmptyRescueBodyCheck do
     @roodi.errors.should be_empty
   end
 
+  it "should accept a rescue body with an attribute assignment" do
+    content = <<-END
+    begin
+      call_method
+    rescue Exception => e
+      self.var = 1
+    end
+    END
+    @roodi.check_content(content)
+    @roodi.errors.should be_empty
+  end
+
   it "should reject an empty rescue block with no parameter" do
     content = <<-END
     begin
