@@ -22,8 +22,13 @@ module Roodi
       def has_statement?(node)
         found_statement = false
         found_statement = found_statement || STATEMENT_NODES.include?(node.node_type)
+        found_statement = found_statement || assigning_other_than_exception_to_local_variable?(node) 
         node.children.each { |child| found_statement = found_statement || has_statement?(child) }
         found_statement
+      end
+
+      def assigning_other_than_exception_to_local_variable?(node)
+        node.node_type == :lasgn && node[2].to_a != [:gvar, :$!]
       end
     end
   end
