@@ -13,7 +13,9 @@ module Roodi
   
       def evaluate_node_at_line(node, line)
         @line = line
-        evaluate(node)
+        eval_method = "evaluate_#{node.node_type}"
+        self.send(eval_method, node) if self.respond_to? eval_method
+        evaluate(node) if self.respond_to? :evaluate
       end
   
       def add_error(error, offset = 0)
