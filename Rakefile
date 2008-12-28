@@ -30,3 +30,4 @@ task :roodi do
   roodi(Dir.glob(pattern))
 end
 
+task :default => :spec
