@@ -29,6 +29,18 @@ describe Roodi::Checks::EmptyRescueBodyCheck do
     @roodi.errors.should be_empty
   end
 
+  it "should accept a method call that Ruby won't tell apart from a variable (a vcall)" do
+    content = <<-END
+    begin
+      call_method
+    rescue
+      show_error
+    end
+    END
+    @roodi.check_content(content)
+    @roodi.errors.should be_empty
+  end
+
   it "should accept a rescue body with content and a parameter" do
     content = <<-END
     begin
