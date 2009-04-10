@@ -1,3 +1,7 @@
+= 1.3.3
+
+* Added a rake task
+
 = 1.3.1
 
 * wrapped errors in an object to become more usable as an API.

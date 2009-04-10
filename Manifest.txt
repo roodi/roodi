@@ -5,7 +5,6 @@ Rakefile
 bin/roodi
 bin/roodi-describe
 lib/roodi.rb
-lib/roodi_task.rb
 lib/roodi/checks.rb
 lib/roodi/checks/abc_metric_method_check.rb
 lib/roodi/checks/assignment_in_conditional_check.rb
@@ -34,6 +33,7 @@ lib/roodi/core/iterator_visitor.rb
 lib/roodi/core/parse_tree_runner.rb
 lib/roodi/core/parser.rb
 lib/roodi/core/visitable_sexp.rb
+lib/roodi_task.rb
 roodi.yml
 spec/roodi/checks/abc_metric_method_check_spec.rb
 spec/roodi/checks/assignment_in_conditional_check_spec.rb
