@@ -5,6 +5,7 @@ Rakefile
 bin/roodi
 bin/roodi-describe
 lib/roodi.rb
+lib/roodi_task.rb
 lib/roodi/checks.rb
 lib/roodi/checks/abc_metric_method_check.rb
 lib/roodi/checks/assignment_in_conditional_check.rb
