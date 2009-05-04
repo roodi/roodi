@@ -1,3 +1,7 @@
+= 1.3.6
+
+* Added nil as a valid response for an empty rescue block
+
 = 1.3.5
 
 * Fixed bug in rake task
