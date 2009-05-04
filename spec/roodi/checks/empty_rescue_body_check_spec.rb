@@ -90,6 +90,15 @@ describe Roodi::Checks::EmptyRescueBodyCheck do
     errors[0].to_s.should eql("dummy-file.rb:3 - Rescue block should not be empty.")
   end
 
+  it "should accept a rescue block with an explicit nil" do
+    content = <<-END
+    call_method rescue nil
+    END
+    @roodi.check_content(content)
+    errors = @roodi.errors
+    errors.should be_empty
+  end
+
   it "should reject an empty rescue block with a parameter" do
     content = <<-END
     begin
