@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Roodi::Checks::EmptyRescueBodyCheck do
   before(:each) do
-    @roodi = Roodi::Core::ParseTreeRunner.new(Roodi::Checks::EmptyRescueBodyCheck.new)
+    @roodi = Roodi::Core::RubyParserRunner.new(Roodi::Checks::EmptyRescueBodyCheck.new)
   end
   
   it "should accept a rescue body with content and no parameter" do
@@ -87,7 +87,7 @@ describe Roodi::Checks::EmptyRescueBodyCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].to_s.should eql("dummy-file.rb:3 - Rescue block should not be empty.")
+    errors[0].to_s.should match(/dummy-file.rb:[3-4] - Rescue block should not be empty./)
   end
 
   it "should accept a rescue block with an explicit nil" do
@@ -109,6 +109,6 @@ describe Roodi::Checks::EmptyRescueBodyCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].to_s.should eql("dummy-file.rb:3 - Rescue block should not be empty.")
+    errors[0].to_s.should match(/dummy-file.rb:[3-4] - Rescue block should not be empty./)
   end
 end

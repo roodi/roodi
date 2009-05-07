@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Roodi::Checks::CaseMissingElseCheck do
   before(:each) do
-    @roodi = Roodi::Core::ParseTreeRunner.new(Roodi::Checks::CaseMissingElseCheck.new)
+    @roodi = Roodi::Core::RubyParserRunner.new(Roodi::Checks::CaseMissingElseCheck.new)
   end
   
   it "should accept case statements that do have an else" do
@@ -27,6 +27,6 @@ describe Roodi::Checks::CaseMissingElseCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].to_s.should eql("dummy-file.rb:1 - Case statement is missing an else clause.")
+    errors[0].to_s.should match(/dummy-file.rb:[1-2] - Case statement is missing an else clause./)
   end
 end

@@ -7,14 +7,14 @@ module Roodi
     # When the body of a rescue block is empty, exceptions can get caught and swallowed without
     # any feedback to the user.
     class EmptyRescueBodyCheck < Check
-      STATEMENT_NODES = [:fcall, :return, :attrasgn, :vcall, :nil]
+      STATEMENT_NODES = [:fcall, :return, :attrasgn, :vcall, :nil, :call]
       
       def interesting_nodes
         [:resbody]
       end
 
       def evaluate(node)
-        add_error("Rescue block should not be empty.", 1) unless has_statement?(node)
+        add_error("Rescue block should not be empty.") unless has_statement?(node)
       end
   
       private

@@ -14,9 +14,8 @@ module Roodi
       end
 
       def visit(node)
-        @last_newline = node if node.node_type == :newline
         checks = @checks[node.node_type]
-        checks.each {|check| check.evaluate_node_at_line(node, @last_newline)} unless checks.nil?
+        checks.each {|check| check.evaluate_node(node)} unless checks.nil?
         nil
       end
     end

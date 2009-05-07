@@ -1,11 +1,11 @@
 require 'rubygems'
-require 'parse_tree'
+require 'ruby_parser'
 require 'facets'
 
 
 module Roodi
   module Core
-    class Parser
+    class RubyParserParser
       def parse(content, filename)
         silence_stream(STDERR) do 
           return silent_parse(content, filename)
@@ -15,11 +15,8 @@ module Roodi
       private
       
       def silent_parse(content, filename)
-        @parser ||= ParseTree.new(true)
-        node = @parser.parse_tree_for_string(content, filename)
-        sexp = VisitableSexp.from_array node
-        sexp.filename = filename
-        sexp
+        @parser ||= RubyParser.new
+        @parser.parse(content, filename)
       end
     end
   end

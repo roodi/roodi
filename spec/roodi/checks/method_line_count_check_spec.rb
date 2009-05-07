@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Roodi::Checks::MethodLineCountCheck do
   before(:each) do
-    @roodi = Roodi::Core::ParseTreeRunner.new(Roodi::Checks::MethodLineCountCheck.new({'line_count' => 1}))
+    @roodi = Roodi::Core::RubyParserRunner.new(Roodi::Checks::MethodLineCountCheck.new({'line_count' => 1}))
   end
   
   it "should accept methods with less lines than the threshold" do

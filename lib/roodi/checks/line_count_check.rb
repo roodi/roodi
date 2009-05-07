@@ -22,10 +22,7 @@ module Roodi
       protected
   
       def count_lines(node)
-        count = 0
-        count = count + 1 if node.node_type == :newline
-        node.children.each {|node| count += count_lines(node)}
-        count
+        node.last.line - 2
       end
     end
   end

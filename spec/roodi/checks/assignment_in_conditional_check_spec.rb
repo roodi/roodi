@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Roodi::Checks::AssignmentInConditionalCheck do
   before(:each) do
-    @roodi = Roodi::Core::ParseTreeRunner.new(Roodi::Checks::AssignmentInConditionalCheck.new)
+    @roodi = Roodi::Core::RubyParserRunner.new(Roodi::Checks::AssignmentInConditionalCheck.new)
   end
   
   it "should accept an assignment before an if clause" do
@@ -55,9 +55,7 @@ describe Roodi::Checks::AssignmentInConditionalCheck do
   end
 
   it "should reject an assignment inside a a ternary operator check clause" do
-    content = <<-END
-    call_foo (bar = bam) ? baz : bad
-    END
+    content = 'call_foo (bar = bam) ? baz : bad'
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty

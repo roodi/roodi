@@ -28,7 +28,7 @@ class RoodiTask < Rake::TaskLib
 
       runner.errors.each {|error| puts error}
 
-      raise "Found #{runner.errors.size} errors." if runner.errors
+      raise "Found #{runner.errors.size} errors." unless runner.errors.empty?
     end
     self
   end

@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Roodi::Checks::ClassNameCheck do
   before(:each) do
-    @roodi = Roodi::Core::ParseTreeRunner.new(Roodi::Checks::ClassNameCheck.new)
+    @roodi = Roodi::Core::RubyParserRunner.new(Roodi::Checks::ClassNameCheck.new)
   end
   
   it "should accept camel case class names starting in capitals" do

@@ -9,8 +9,7 @@ module Roodi
 
       def evaluate_defn(node)
         @method_name = node[1]
-        @arguments = node[2][1][1]
-        @arguments.delete_at 0
+        @arguments = node[2][1..-1]
       end
         
       def evaluate_lvar(node)

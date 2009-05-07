@@ -3,12 +3,12 @@ require 'yaml'
 
 require 'roodi/core/checking_visitor'
 require 'roodi/core/iterator_visitor'
-require 'roodi/core/parse_tree_parser'
+require 'roodi/core/ruby_parser_parser'
 require 'roodi/core/visitable_sexp'
 
 module Roodi
   module Core
-    class ParseTreeRunner
+    class RubyParserRunner
       DEFAULT_CONFIG = File.join(File.dirname(__FILE__), "..", "..", "..", "roodi.yml")
       
       attr_writer :config
@@ -16,7 +16,7 @@ module Roodi
       def initialize(*checks)
         @config = DEFAULT_CONFIG
         @checks = checks unless checks.empty?
-        @parser = ParseTreeParser.new
+        @parser = RubyParserParser.new
       end
       
       def check(filename, content)
@@ -35,6 +35,7 @@ module Roodi
   
       def print(filename, content)
         node = @parser.parse(content, filename)
+        puts "Line: #{node.line}"
         pp node
       end
 

@@ -21,7 +21,7 @@ module Roodi
 
       def evaluate(node)
         method_name = node[1]
-        arguments = node[2][1][1]
+        arguments = node[2]
         parameter_count = arguments.inject(-1) { |count, each| count = count + (each.class == Symbol ? 1 : 0) }
         add_error "Method name \"#{method_name}\" has #{parameter_count} parameters.  It should have #{@parameter_count} or less." unless parameter_count <= @parameter_count
       end
