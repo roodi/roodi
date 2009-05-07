@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Roodi::Checks::AssignmentInConditionalCheck do
   before(:each) do
-    @roodi = Roodi::Core::RubyParserRunner.new(Roodi::Checks::AssignmentInConditionalCheck.new)
+    @roodi = Roodi::Core::Runner.new(Roodi::Checks::AssignmentInConditionalCheck.new)
   end
   
   it "should accept an assignment before an if clause" do

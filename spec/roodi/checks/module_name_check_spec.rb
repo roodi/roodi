@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Roodi::Checks::ModuleNameCheck do
   before(:each) do
-    @roodi = Roodi::Core::RubyParserRunner.new(Roodi::Checks::ModuleNameCheck.new)
+    @roodi = Roodi::Core::Runner.new(Roodi::Checks::ModuleNameCheck.new)
   end
   
   it "should accept camel case module names starting in capitals" do

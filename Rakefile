@@ -8,7 +8,7 @@ require 'roodi'
 
 Hoe.new('roodi', Roodi::VERSION) do |p|
   p.developer('Marty Andrews', 'marty@cogentconsulting.com.au')
-  p.extra_deps = ['ParseTree', 'facets']
+  p.extra_deps = ['ruby_parser', 'facets']
   p.remote_rdoc_dir = ''
 end
 

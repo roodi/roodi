@@ -29,7 +29,7 @@ Check one controller and all model files in a rails app:
 Check all ruby files in a rails app with a custom configuration file:
     roodi -config=my_roodi_config.yml "rails_app/**/*.rb"
 
-If you're writing a check, it is useful to see the structure of a file the way that Roodi tokenizes it (via ParseTree). Use:
+If you're writing a check, it is useful to see the structure of a file the way that Roodi tokenizes it (via ruby_parser). Use:
     roodi-describe [filename]
 
 == CUSTOM CONFIGURATION

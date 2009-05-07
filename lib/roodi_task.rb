@@ -18,7 +18,7 @@ class RoodiTask < Rake::TaskLib
   def define
     desc "Check for design issues in: #{patterns.join(', ')}"
     task name do
-      runner = Roodi::Core::ParseTreeRunner.new
+      runner = Roodi::Core::Runner.new
 
       runner.config = config if config
 

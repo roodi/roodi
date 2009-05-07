@@ -5,7 +5,7 @@ require 'facets'
 
 module Roodi
   module Core
-    class RubyParserParser
+    class Parser
       def parse(content, filename)
         silence_stream(STDERR) do 
           return silent_parse(content, filename)

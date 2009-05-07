@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Roodi::Checks::AbcMetricMethodCheck do
   before(:each) do
-    @roodi = Roodi::Core::RubyParserRunner.new(Roodi::Checks::AbcMetricMethodCheck.new({'score' => 0}))
+    @roodi = Roodi::Core::Runner.new(Roodi::Checks::AbcMetricMethodCheck.new({'score' => 0}))
   end
 
   def verify_content_score(content, a, b, c)
