@@ -30,8 +30,8 @@ lib/roodi/core.rb
 lib/roodi/core/checking_visitor.rb
 lib/roodi/core/error.rb
 lib/roodi/core/iterator_visitor.rb
-lib/roodi/core/parse_tree_runner.rb
 lib/roodi/core/parser.rb
+lib/roodi/core/runner.rb
 lib/roodi/core/visitable_sexp.rb
 lib/roodi_task.rb
 roodi.yml

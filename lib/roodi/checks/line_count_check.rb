@@ -22,7 +22,7 @@ module Roodi
       protected
   
       def count_lines(node)
-        node.last.line - 2
+        node.last.line - node.line - 1
       end
     end
   end
