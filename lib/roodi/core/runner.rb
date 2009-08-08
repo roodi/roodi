@@ -2,7 +2,6 @@ require 'pp'
 require 'yaml'
 
 require 'roodi/core/checking_visitor'
-require 'roodi/core/iterator_visitor'
 require 'roodi/core/parser'
 require 'roodi/core/visitable_sexp'
 
@@ -22,7 +21,7 @@ module Roodi
       def check(filename, content)
         @checks ||= load_checks
         node = parse(filename, content)
-        node.accept(IteratorVisitor.new(CheckingVisitor.new(@checks))) if node
+        node.accept(CheckingVisitor.new(@checks)) if node
       end
 
       def check_content(content)

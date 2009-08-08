@@ -13,11 +13,17 @@ module Roodi
         end
       end
 
-      def visit(node)
+    	def visit(node)
         checks = @checks[node.node_type]
         checks.each {|check| check.evaluate_node(node)} unless checks.nil?
-        nil
-      end
+
+    		visitable_nodes = node.is_language_node? ? node.sexp_body : node
+    		visitable_nodes.each do |child| 
+    		  if child.class == Sexp then
+      		  child.accept(self)
+    		  end
+  		  end
+    	end
     end
   end
 end
