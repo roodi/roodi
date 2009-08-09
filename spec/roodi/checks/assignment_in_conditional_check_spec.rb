@@ -62,18 +62,9 @@ describe Roodi::Checks::AssignmentInConditionalCheck do
     errors[0].to_s.should eql("dummy-file.rb:1 - Found = in conditional.  It should probably be an ==")
   end
 
-  it "should reject a real example 1" do
+  it "should reject an assignment after an 'and'" do
     content = <<-END
-      if match = matches_dynamic_method?(method_symbol)
-        case match[1]
-          when 'create'  then new(match[2], *parameters).mail
-          when 'deliver' then new(match[2], *parameters).deliver!
-          when 'new'     then nil
-          else super
-        end
-      else
-        super
-      end
+      call_foo if bar and bam = baz
     END
     @roodi.check_content(content)
     errors = @roodi.errors
@@ -81,9 +72,30 @@ describe Roodi::Checks::AssignmentInConditionalCheck do
     errors[0].to_s.should eql("dummy-file.rb:1 - Found = in conditional.  It should probably be an ==")
   end
 
-  it "should reject a real example 2" do
+
+  it "should reject an assignment after an 'or'" do
     content = <<-END
-      call_foo if bar and bam = baz
+      call_foo if bar or bam = baz
+    END
+    @roodi.check_content(content)
+    errors = @roodi.errors
+    errors.should_not be_empty
+    errors[0].to_s.should eql("dummy-file.rb:1 - Found = in conditional.  It should probably be an ==")
+  end
+
+  it "should reject an assignment after an '&&'" do
+    content = <<-END
+      call_foo if bar && bam = baz
+    END
+    @roodi.check_content(content)
+    errors = @roodi.errors
+    errors.should_not be_empty
+    errors[0].to_s.should eql("dummy-file.rb:1 - Found = in conditional.  It should probably be an ==")
+  end
+
+  it "should reject an assignment after an '||'" do
+    content = <<-END
+      call_foo if bar || bam = baz
     END
     @roodi.check_content(content)
     errors = @roodi.errors

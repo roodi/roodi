@@ -24,7 +24,9 @@ module Roodi
       def has_assignment?(node)
         found_assignment = false
         found_assignment = found_assignment || node.node_type == :lasgn
-        node.children.each { |child| found_assignment = found_assignment || has_assignment?(child) }
+        if (node.node_type == :and or node.node_type == :or)
+          node.children.each { |child| found_assignment = found_assignment || has_assignment?(child) }
+        end
         found_assignment
       end
     end
