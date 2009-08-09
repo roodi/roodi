@@ -17,4 +17,9 @@ class Sexp
   def is_language_node?
     first.class == Symbol
   end
+  
+  def visitable_children
+    parent = is_language_node? ? sexp_body : self
+    parent.children
+  end
 end
