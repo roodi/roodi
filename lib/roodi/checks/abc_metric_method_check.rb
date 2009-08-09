@@ -25,7 +25,7 @@ module Roodi
         [:defn]
       end
 
-      def evaluate(node)
+      def evaluate_start(node)
         method_name = node[1]
         a = count_assignments(node)
         b = count_branches(node)

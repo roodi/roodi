@@ -15,7 +15,7 @@ module Roodi
 
     	def visit(node)
         checks = @checks[node.node_type]
-        checks.each {|check| check.evaluate_node(node)} unless checks.nil?
+        checks.each {|check| check.evaluate_node_start(node)} unless checks.nil?
 
     		visitable_nodes = node.is_language_node? ? node.sexp_body : node
     		visitable_nodes.each do |child| 
@@ -23,6 +23,8 @@ module Roodi
       		  child.accept(self)
     		  end
   		  end
+
+        checks.each {|check| check.evaluate_node_end(node)} unless checks.nil?
     	end
     end
   end

@@ -12,7 +12,7 @@ module Roodi
         [:case]
       end
   
-      def evaluate(node)
+      def evaluate_start(node)
         add_error "Case statement is missing an else clause." unless node.last
       end
     end

@@ -12,7 +12,7 @@ module Roodi
         [:for]
       end
 
-      def evaluate(node)
+      def evaluate_start(node)
         add_error "Don't use 'for' loops. Use Enumerable.each instead."
       end
     end

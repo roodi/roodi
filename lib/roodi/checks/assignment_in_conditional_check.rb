@@ -15,7 +15,7 @@ module Roodi
         [:if, :while]
       end
 
-      def evaluate(node)
+      def evaluate_start(node)
         add_error("Found = in conditional.  It should probably be an ==") if has_assignment?(node[1])
       end
       

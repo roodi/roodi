@@ -33,4 +33,35 @@ describe Roodi::Checks::CyclomaticComplexityBlockCheck do
     END
     verify_content_complexity(content, 2)
   end
+  
+  it "should evaluate real example 1 correctly" do
+    content = <<-END
+    def method_name
+      UNIXMbox.lock(@filename) {|f|
+          begin
+            f.each do |line|
+              if /\AFrom / === line
+                w.close if w
+                File.utime time, time, port.filename if time
+
+                port = @real.new_port
+                w = port.wopen
+                time = fromline2time(line)
+              else
+                w.print line if w
+              end
+            end
+          ensure
+            if w and not w.closed?
+              w.close
+              File.utime time, time, port.filename if time
+            end
+          end
+          f.truncate(0) unless @readonly
+          @updated = Time.now
+      }
+    end
+    END
+    verify_content_complexity(content, 9)
+  end
 end

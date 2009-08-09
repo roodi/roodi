@@ -13,7 +13,7 @@ class Sexp
   def children
     find_all { | sexp | Sexp === sexp }
   end
-
+  
   def is_language_node?
     first.class == Symbol
   end

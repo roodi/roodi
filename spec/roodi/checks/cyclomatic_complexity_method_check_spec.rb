@@ -180,4 +180,21 @@ describe Roodi::Checks::CyclomaticComplexityMethodCheck do
     verify_content_complexity(content, 5)
   end
 
+  it "should count only a single method" do
+    content = <<-END
+    def method_name_1
+      call_foo if some_condition
+    end
+    def method_name_2
+      call_foo if some_condition
+    end
+    END
+    
+    @roodi.check_content(content)
+    errors = @roodi.errors
+    errors.should_not be_empty
+    errors[0].to_s.should eql("dummy-file.rb:1 - Method name \"method_name_1\" cyclomatic complexity is 2.  It should be 0 or less.")
+    errors[1].to_s.should eql("dummy-file.rb:4 - Method name \"method_name_2\" cyclomatic complexity is 2.  It should be 0 or less.")
+  end
+
 end

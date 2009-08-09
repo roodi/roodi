@@ -19,7 +19,7 @@ module Roodi
         [:defn]
       end
 
-      def evaluate(node)
+      def evaluate_start(node)
         method_name = node[1]
         arguments = node[2]
         parameter_count = arguments.inject(-1) { |count, each| count = count + (each.class == Symbol ? 1 : 0) }

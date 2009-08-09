@@ -14,7 +14,7 @@ module Roodi
         @interesting_nodes
       end
 
-      def evaluate(node)
+      def evaluate_start(node)
         name = find_name(node)
         add_error "#{@message_prefix} name \"#{name}\" should match pattern #{@pattern.inspect}" unless name.to_s =~ @pattern
       end

@@ -20,12 +20,20 @@ module Roodi
       end
       
       def interesting_nodes
-        [:defn]
+        [:defn] + COMPLEXITY_NODE_TYPES
       end
 
-      def evaluate(node)
-        complexity = count_complexity(node)
-        add_error "Method name \"#{node[1]}\" cyclomatic complexity is #{complexity}.  It should be #{@complexity} or less." unless complexity <= @complexity
+      def evaluate_start_defn(node)
+        @method_name = @node[1]
+        increase_depth
+      end
+
+      def evaluate_end_defn(node)
+        decrease_depth
+      end
+      
+      def evaluate_matching_end
+        add_error "Method name \"#{@method_name}\" cyclomatic complexity is #{@count}.  It should be #{@complexity} or less." unless @count <= @complexity
       end
     end
   end

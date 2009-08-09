@@ -13,7 +13,7 @@ module Roodi
         [:resbody]
       end
 
-      def evaluate(node)
+      def evaluate_start(node)
         add_error("Rescue block should not be empty.") unless has_statement?(node)
       end
   

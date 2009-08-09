@@ -16,7 +16,7 @@ module Roodi
         [:cvar]
       end
 
-      def evaluate(node)
+      def evaluate_start(node)
         add_error "Don't use class variables. You might want to try a different design."
       end
     end
