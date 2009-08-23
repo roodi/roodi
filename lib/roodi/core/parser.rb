@@ -1,7 +1,5 @@
 require 'rubygems'
 require 'ruby_parser'
-require 'facets'
-
 
 module Roodi
   module Core
@@ -13,6 +11,15 @@ module Roodi
       end
       
       private
+      
+      def silence_stream(stream)
+        old_stream = stream.dup
+        stream.reopen(RUBY_PLATFORM =~ /mswin/ ? 'NUL:' : '/dev/null')
+        stream.sync = true
+        yield
+      ensure
+        stream.reopen(old_stream)
+      end
       
       def silent_parse(content, filename)
         @parser ||= RubyParser.new

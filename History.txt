@@ -1,3 +1,11 @@
+= 2.0.0
+
+* Changed internal structure to use a more pure visitor like pattern.
+* Got *much* faster as a result of the change.
+* Design change fixed 'feature' where nested blocks would all get listed if the inner one exceeded complexity.
+* Outline for NPath complexity check is now possible.  Not working yet though.
+* Removed dependency on facets library.
+
 = 1.4.0
 
 * Upgraded from ParseTree to ruby_parser.

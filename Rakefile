@@ -8,12 +8,12 @@ require 'roodi'
 
 Hoe.new('roodi', Roodi::VERSION) do |p|
   p.developer('Marty Andrews', 'marty@cogentconsulting.com.au')
-  p.extra_deps = ['ruby_parser', 'facets']
+  p.extra_deps = ['ruby_parser']
   p.remote_rdoc_dir = ''
 end
 
 def roodi(ruby_files)
-  roodi = Roodi::Core::ParseTreeRunner.new
+  roodi = Roodi::Core::Runner.new
   ruby_files.each { |file| roodi.check_file(file) }
   roodi.errors.each {|error| puts error}
   puts "\nFound #{roodi.errors.size} errors."

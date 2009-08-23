@@ -25,11 +25,12 @@ lib/roodi/checks/method_name_check.rb
 lib/roodi/checks/module_line_count_check.rb
 lib/roodi/checks/module_name_check.rb
 lib/roodi/checks/name_check.rb
+lib/roodi/checks/npath_complexity_check.rb
+lib/roodi/checks/npath_complexity_method_check.rb
 lib/roodi/checks/parameter_number_check.rb
 lib/roodi/core.rb
 lib/roodi/core/checking_visitor.rb
 lib/roodi/core/error.rb
-lib/roodi/core/iterator_visitor.rb
 lib/roodi/core/parser.rb
 lib/roodi/core/runner.rb
 lib/roodi/core/visitable_sexp.rb
@@ -50,5 +51,6 @@ spec/roodi/checks/method_line_count_check_spec.rb
 spec/roodi/checks/method_name_check_spec.rb
 spec/roodi/checks/module_line_count_check_spec.rb
 spec/roodi/checks/module_name_check_spec.rb
+spec/roodi/checks/npath_complexity_method_check_spec.rb
 spec/roodi/checks/parameter_number_check_spec.rb
 spec/spec_helper.rb
