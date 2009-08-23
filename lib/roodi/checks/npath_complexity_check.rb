@@ -15,50 +15,58 @@ module Roodi
         @current_value = 1
       end
       
-      COMPLEXITY_NODE_TYPES.each do |type|
-        define_method "evaluate_start_#{type}" do
-          @value_stack.push @current_value
-          @current_value = 1
-        end
+      def evalute_start_if(node)
+        push_value
+      end
+      
+      def evalute_start_while(node)
+        push_value
+      end
+
+      def evalute_start_until(node)
+        push_value
+      end
+
+      def evalute_start_for(node)
+        push_value
+      end
+
+      def evalute_start_case(node)
+        push_value
+      end
+
+      def evalute_start_rescue(node)
+        push_value
       end
       
       MULTIPLYING_NODE_TYPES.each do |type|
-        define_method "evaluate_end_#{type}" do
-          pop = @value_stack.pop
-          @current_value = (@current_value + 1) * pop
+        define_method "evaluate_end_#{type}" do |node|
+          leave_multiplying_conditional
         end
       end
 
       ADDING_NODE_TYPES.each do |type|
-        define_method "evaluate_end_#{type}" do
-          pop = @value_stack.pop
-          @current_value = @current_value - 1 + pop
+        define_method "evaluate_end_#{type}" do |node|
+          leave_multiplying_conditional
         end
       end
       
       protected
       
-      def count_complexity(node)
-        count_branches(node) + 1
-      end
-      
-      def increase_depth
-        @count = 1 unless counting?
-        @counting = @counting + 1
+      def push_value
+        @value_stack.push @current_value
+        @current_value = 1
       end
 
-      def decrease_depth
-        @counting = @counting - 1
-        if @counting <= 0
-          @counting = 0
-          evaluate_matching_end
-        end
+      def leave_multiplying_conditional
+        pop = @value_stack.pop
+        @current_value = (@current_value + 1) * pop
       end
       
-      private
-      
-      def counting?
-        @counting > 0
+      def leave_adding_conditional
+        pop = @value_stack.pop
+        puts "#{type}, so adding #{pop}"
+        @current_value = @current_value - 1 + pop
       end
     end
   end

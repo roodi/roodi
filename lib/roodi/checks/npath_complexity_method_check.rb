@@ -17,14 +17,11 @@ module Roodi
 
       def evaluate_start_defn(node)
         @method_name = @node[1]
+        push_value
       end
 
       def evaluate_end_defn(node)
         add_error "Method name \"#{@method_name}\" n-path complexity is #{@current_value}.  It should be #{@complexity} or less." unless @current_value <= @complexity
-      end
-      
-      def evaluate_matching_end
-        add_error "Method name \"#{@method_name}\" n-path complexity is #{@count}.  It should be #{@complexity} or less." unless @count <= @complexity
       end
     end
   end
