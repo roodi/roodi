@@ -1,0 +1,1 @@
+MethodNameCheck:                 { pattern: !ruby/regexp /^[A-Z]+$/ }

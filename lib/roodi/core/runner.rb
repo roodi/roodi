@@ -15,12 +15,12 @@ module Roodi
       def initialize(*checks)
         @config = DEFAULT_CONFIG
         @checks = checks unless checks.empty?
-        @checks ||= load_checks
-        @checker ||= CheckingVisitor.new(@checks)
         @parser = Parser.new
       end
       
       def check(filename, content)
+        @checks ||= load_checks
+        @checker ||= CheckingVisitor.new(@checks)
         node = parse(filename, content)
         node.accept(@checker) if node
       end
