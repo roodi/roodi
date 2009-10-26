@@ -1,3 +1,7 @@
+= 2.0.1
+
+* Fixed a bug where roodi.yml was not being loaded.  Patch supplied by Rob Mitchell.
+
 = 2.0.0
 
 * Changed internal structure to use a more pure visitor like pattern.
