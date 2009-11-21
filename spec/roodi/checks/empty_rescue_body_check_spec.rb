@@ -111,4 +111,30 @@ describe Roodi::Checks::EmptyRescueBodyCheck do
     errors.should_not be_empty
     errors[0].to_s.should match(/dummy-file.rb:[3-4] - Rescue block should not be empty./)
   end
+
+  it "should accept a rescue block that returns true" do
+    content = <<-END
+    begin
+      call_method
+    rescue Exception => e
+      true
+    end
+    END
+    @roodi.check_content(content)
+    errors = @roodi.errors
+    errors.should be_empty
+  end
+
+  it "should accept a rescue block that returns false" do
+    content = <<-END
+    begin
+      call_method
+    rescue Exception => e
+      false
+    end
+    END
+    @roodi.check_content(content)
+    errors = @roodi.errors
+    errors.should be_empty
+  end
 end
