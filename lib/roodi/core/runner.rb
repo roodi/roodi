@@ -21,12 +21,14 @@ module Roodi
       def check(filename, content)
         @checks ||= load_checks
         @checker ||= CheckingVisitor.new(@checks)
+        @checks.each {|check| check.start_file(filename)}
         node = parse(filename, content)
         node.accept(@checker) if node
+        @checks.each {|check| check.end_file(filename)}
       end
 
-      def check_content(content)
-        check("dummy-file.rb", content)
+      def check_content(content, filename = "dummy-file.rb")
+        check(filename, content)
       end
   
       def check_file(filename)

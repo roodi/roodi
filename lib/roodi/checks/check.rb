@@ -12,12 +12,18 @@ module Roodi
       NODE_TYPES.each do |node|
         start_node_method = "evaluate_start_#{node}"
         end_node_method = "evaluate_end_#{node}"
-        define_method(start_node_method) { } unless self.respond_to?(start_node_method)
-        define_method(end_node_method) { } unless self.respond_to?(end_node_method)
+        define_method(start_node_method) { |node| return } unless self.respond_to?(start_node_method)
+        define_method(end_node_method) { |node| return } unless self.respond_to?(end_node_method)
       end
 
       def position(offset = 0)
         "#{@line[2]}:#{@line[1] + offset}"
+      end
+
+      def start_file(filename)
+      end
+      
+      def end_file(filename)
       end
       
       def evaluate_start(node)
@@ -42,8 +48,9 @@ module Roodi
         evaluate_end(node)
       end
   
-      def add_error(error)
-        @errors << Roodi::Core::Error.new("#{@node.file}", "#{@node.line}", error)
+      def add_error(error, filename = @node.file, line = @node.line)
+        @errors ||= []
+        @errors << Roodi::Core::Error.new("#{filename}", "#{line}", error)
       end
   
       def errors

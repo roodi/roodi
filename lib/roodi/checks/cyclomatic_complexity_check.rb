@@ -13,7 +13,7 @@ module Roodi
       end
       
       COMPLEXITY_NODE_TYPES.each do |type|
-        define_method "evaluate_start_#{type}" do
+        define_method "evaluate_start_#{type}" do |node|
           @count = @count + 1 if counting?
         end
       end
