@@ -15,7 +15,6 @@ module Roodi
       def initialize(*checks)
         @config = DEFAULT_CONFIG
         @checks = checks unless checks.empty?
-        @parser = Parser.new
       end
       
       def check(filename, content)
@@ -36,7 +35,7 @@ module Roodi
       end
   
       def print(filename, content)
-        node = @parser.parse(content, filename)
+        node = parse(content, filename)
         puts "Line: #{node.line}"
         pp node
       end
@@ -59,7 +58,7 @@ module Roodi
       
       def parse(filename, content)
         begin
-          @parser.parse(content, filename)
+          Parser.new.parse(content, filename)
         rescue Exception => e
           puts "#{filename} looks like it's not a valid Ruby file.  Skipping..." if ENV["ROODI_DEBUG"]
           nil
