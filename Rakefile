@@ -1,16 +1,9 @@
-$:.unshift(File.join(File.dirname(__FILE__), 'lib'))
-
-require 'rubygems'
-require 'hoe'
 require 'rake'
 require 'spec/rake/spectask'
-require 'roodi'
 
-Hoe.new('roodi', Roodi::VERSION) do |p|
-  p.developer('Marty Andrews', 'marty@cogentconsulting.com.au')
-  p.extra_deps = ['ruby_parser']
-  p.remote_rdoc_dir = ''
-end
+require 'bundler'
+
+Bundler::GemHelper.install_tasks
 
 def roodi(ruby_files)
   roodi = Roodi::Core::Runner.new
