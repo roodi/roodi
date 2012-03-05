@@ -1,1 +1,2 @@
-MethodNameCheck:                 { pattern: !ruby/regexp /^[A-Z]+$/ }
+MethodNameCheck:
+  pattern: !ruby/regexp /^[A-Z]+$/
