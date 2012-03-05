@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Roodi::Checks::NpathComplexityMethodCheck do
   before(:each) do
-    @roodi = Roodi::Core::Runner.new(Roodi::Checks::NpathComplexityMethodCheck.new({'complexity' => 0}))
+    @roodi = Roodi::Core::Runner.new(Roodi::Checks::NpathComplexityMethodCheck.make({'complexity' => 0}))
   end
 
   def verify_content_complexity(content, complexity)

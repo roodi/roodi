@@ -12,11 +12,12 @@ module Roodi
     # Generally, for a block, 1-2 is considered good, 3-4 ok, 5-8 consider re-factoring, and 8+ 
     # re-factor now!
     class CyclomaticComplexityBlockCheck < CyclomaticComplexityCheck
+
       DEFAULT_COMPLEXITY = 4
       
-      def initialize(options = {})
-        complexity = options['complexity'] || DEFAULT_COMPLEXITY
-        super(complexity)
+      def initialize
+        super()
+        self.complexity = DEFAULT_COMPLEXITY
       end
       
       def interesting_nodes
@@ -34,6 +35,7 @@ module Roodi
       def evaluate_matching_end
         add_error "Block cyclomatic complexity is #{@count}.  It should be #{@complexity} or less." unless @count <= @complexity
       end
+
     end
   end
 end

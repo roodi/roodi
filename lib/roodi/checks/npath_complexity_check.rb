@@ -8,6 +8,8 @@ module Roodi
       ADDING_NODE_TYPES = [:rescue]
       COMPLEXITY_NODE_TYPES = MULTIPLYING_NODE_TYPES + ADDING_NODE_TYPES
 
+      attr_accessor :complexity
+      
       def initialize(complexity)
         super()
         @complexity = complexity

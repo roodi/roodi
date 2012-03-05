@@ -3,7 +3,22 @@ require 'roodi/core/error'
 module Roodi
   module Checks
     class Check
+
       NODE_TYPES = [:defn, :module, :resbody, :lvar, :cvar, :class, :if, :while, :until, :for, :rescue, :case, :when, :and, :or]
+
+      class << self
+      
+        def make(options = nil)
+          check = new
+          if options
+            options.each do |name, value|
+              check.send("#{name}=", value)
+            end
+          end
+          check
+        end
+
+      end
 
       def initialize
         @errors = []

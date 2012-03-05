@@ -16,9 +16,11 @@ module Roodi
       OPERATORS = [:*, :/, :%, :+, :<<, :>>, :&, :|, :^]
       DEFAULT_SCORE = 10
       
-      def initialize(options = {})
+      attr_accessor :score
+
+      def initialize
         super()
-        @score = options['score'] || DEFAULT_SCORE
+        self.score = DEFAULT_SCORE
       end
       
       def interesting_nodes

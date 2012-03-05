@@ -70,11 +70,11 @@ module Roodi
         checks = YAML.load_file @config
         checks.each do |check_class_name, options|
           check_class = Roodi::Checks.const_get(check_class_name)
-          new_args = [options].compact
-          check_objects << check_class.new(*new_args)
+          check_objects << check_class.make(options || {})
         end
         check_objects
       end
+
     end
   end
 end

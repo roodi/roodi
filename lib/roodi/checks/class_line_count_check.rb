@@ -7,12 +7,22 @@ module Roodi
     # A class getting too large is a code smell that indicates it might be taking on too many 
     # responsibilities.  It should probably be refactored into multiple smaller classes. 
     class ClassLineCountCheck < LineCountCheck
+
       DEFAULT_LINE_COUNT = 300
       
-      def initialize(options = {})
-        line_count = options['line_count'] || DEFAULT_LINE_COUNT
-        super([:class], line_count, 'Class')
+      def initialize
+        super()
+        self.line_count = DEFAULT_LINE_COUNT
       end
+
+      def interesting_nodes
+        [:class]
+      end
+
+      def message_prefix
+        'Class'
+      end
+
     end
   end
 end
