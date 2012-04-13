@@ -31,6 +31,7 @@ module Roodi
       end
   
       def check_file(filename)
+        return unless File.exists?(filename)
         check(filename, File.read(filename))
       end
   
