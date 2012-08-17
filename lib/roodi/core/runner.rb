@@ -36,7 +36,7 @@ module Roodi
       end
   
       def print(filename, content)
-        node = parse(content, filename)
+        node = parse(filename, content)
         puts "Line: #{node.line}"
         pp node
       end
