@@ -8,12 +8,22 @@ module Roodi
     # thing and becoming hard to test.  It should probably be refactored into multiple methods 
     # that each do a single thing well. 
     class MethodLineCountCheck < LineCountCheck
+
       DEFAULT_LINE_COUNT = 20
       
-      def initialize(options = {})
-        line_count = options['line_count'] || DEFAULT_LINE_COUNT
-        super([:defn], line_count, 'Method')
+      def initialize
+        super()
+        self.line_count = DEFAULT_LINE_COUNT
       end
+
+      def interesting_nodes
+        [:defn]
+      end
+
+      def message_prefix
+        'Method'
+      end
+
     end
   end
 end

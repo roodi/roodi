@@ -7,12 +7,22 @@ module Roodi
     # A module getting too large is a code smell that indicates it might be taking on too many 
     # responsibilities.  It should probably be refactored into multiple smaller modules. 
     class ModuleLineCountCheck < LineCountCheck
+
       DEFAULT_LINE_COUNT = 300
       
-      def initialize(options = {})
-        line_count = options['line_count'] || DEFAULT_LINE_COUNT
-        super([:module], line_count, 'Module')
+      def initialize
+        super()
+        self.line_count = DEFAULT_LINE_COUNT
       end
+
+      def interesting_nodes
+        [:module]
+      end
+
+      def message_prefix
+        'Module'
+      end
+
     end
   end
 end

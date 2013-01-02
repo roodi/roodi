@@ -3,11 +3,13 @@ require 'roodi/checks/check'
 module Roodi
   module Checks
     class CyclomaticComplexityCheck < Check
+      
       COMPLEXITY_NODE_TYPES = [:if, :while, :until, :for, :rescue, :case, :when, :and, :or]
 
-      def initialize(complexity)
+      attr_accessor :complexity
+
+      def initialize
         super()
-        @complexity = complexity
         @count = 0
         @counting = 0
       end
@@ -42,6 +44,7 @@ module Roodi
       def counting?
         @counting > 0
       end
+
     end
   end
 end

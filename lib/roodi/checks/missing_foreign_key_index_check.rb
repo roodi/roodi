@@ -10,6 +10,7 @@ module Roodi
     # Enumerable.each with a block instead.
     class MissingForeignKeyIndexCheck < Check
       def initialize
+        super()
         @foreign_keys = {}
         @indexes = {}
       end

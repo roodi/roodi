@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Roodi::Checks::MissingForeignKeyIndexCheck do
   before(:each) do
-    @roodi = Roodi::Core::Runner.new(Roodi::Checks::MissingForeignKeyIndexCheck.new)
+    @roodi = Roodi::Core::Runner.new(Roodi::Checks::MissingForeignKeyIndexCheck.make)
   end
 
   it "should warn about a missing foreign key" do

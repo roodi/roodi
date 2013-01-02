@@ -12,11 +12,12 @@ module Roodi
     # Generally, for a method, 1-4 is considered good, 5-8 ok, 9-10 consider re-factoring, and 
     # 11+ re-factor now!
     class CyclomaticComplexityMethodCheck < CyclomaticComplexityCheck
+      
       DEFAULT_COMPLEXITY = 8
       
-      def initialize(options = {})
-        complexity = options['complexity'] || DEFAULT_COMPLEXITY
-        super(complexity)
+      def initialize
+        super()
+        self.complexity = DEFAULT_COMPLEXITY
       end
       
       def interesting_nodes
@@ -35,6 +36,7 @@ module Roodi
       def evaluate_matching_end
         add_error "Method name \"#{@method_name}\" cyclomatic complexity is #{@count}.  It should be #{@complexity} or less." unless @count <= @complexity
       end
+
     end
   end
 end

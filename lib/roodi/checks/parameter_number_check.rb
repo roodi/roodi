@@ -8,11 +8,14 @@ module Roodi
     # much, or that the parameters should be grouped into one or more objects of their own.  It
     # probably needs some refactoring. 
     class ParameterNumberCheck < Check
+      
       DEFAULT_PARAMETER_COUNT = 5
       
-      def initialize(options = {})
+      attr_accessor :parameter_count
+
+      def initialize
         super()
-        @parameter_count = options['parameter_count'] || DEFAULT_PARAMETER_COUNT
+        self.parameter_count = DEFAULT_PARAMETER_COUNT
       end
       
       def interesting_nodes
@@ -22,9 +25,10 @@ module Roodi
       def evaluate_start(node)
         method_name = node[1]
         arguments = node[2]
-        parameter_count = arguments.inject(-1) { |count, each| count = count + (each.class == Symbol ? 1 : 0) }
-        add_error "Method name \"#{method_name}\" has #{parameter_count} parameters.  It should have #{@parameter_count} or less." unless parameter_count <= @parameter_count
+        actual_parameter_count = arguments.inject(-1) { |count, each| count = count + (each.class == Symbol ? 1 : 0) }
+        add_error "Method name \"#{method_name}\" has #{actual_parameter_count} parameters.  It should have #{@parameter_count} or less." unless actual_parameter_count <= @parameter_count
       end
+
     end
   end
 end

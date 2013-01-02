@@ -4,11 +4,11 @@ module Roodi
   module Checks
     # Checks Npath complexity of a method against a specified limit. 
     class NpathComplexityMethodCheck < NpathComplexityCheck
+
       DEFAULT_COMPLEXITY = 8
       
-      def initialize(options = {})
-        complexity = options['complexity'] || DEFAULT_COMPLEXITY
-        super(complexity)
+      def initialize
+        super(DEFAULT_COMPLEXITY)
       end
       
       def interesting_nodes
@@ -23,6 +23,7 @@ module Roodi
       def evaluate_end_defn(node)
         add_error "Method name \"#{@method_name}\" n-path complexity is #{@current_value}.  It should be #{@complexity} or less." unless @current_value <= @complexity
       end
+
     end
   end
 end

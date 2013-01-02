@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Roodi::Checks::ClassVariableCheck do
   before(:each) do
-    @roodi = Roodi::Core::Runner.new(Roodi::Checks::ClassVariableCheck.new)
+    @roodi = Roodi::Core::Runner.new(Roodi::Checks::ClassVariableCheck.make)
   end
   
   it "should reject class variables" do

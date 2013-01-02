@@ -6,16 +6,26 @@ module Roodi
     # 
     # Keeping to a consistent nameing convention makes your code easier to read.
     class MethodNameCheck < NameCheck
+
       DEFAULT_PATTERN = /^[_a-z<>=\[|+-\/\*`]+[_a-z0-9_<>=~@\[\]]*[=!\?]?$/
       
-      def initialize(options = {})
-        pattern = options['pattern'] || DEFAULT_PATTERN
-        super([:defn], pattern, 'Method')
+      def initialize
+        super()
+        self.pattern = DEFAULT_PATTERN
       end
       
+      def interesting_nodes
+        [:defn]
+      end
+
+      def message_prefix
+        'Method'
+      end
+
       def find_name(node)
         node[1]
       end
+
     end
   end
 end

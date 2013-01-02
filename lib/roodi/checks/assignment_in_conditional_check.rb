@@ -7,10 +7,7 @@ module Roodi
     # A conditional containing an assignment is likely to be a mistyped equality check.  You
     # should either fix the typo or factor out the assignment so that the code is clearer.
     class AssignmentInConditionalCheck < Check
-      def initialize(options = {})
-        super()
-      end
-      
+
       def interesting_nodes
         [:if, :while]
       end
@@ -29,6 +26,7 @@ module Roodi
         end
         found_assignment
       end
+
     end
   end
 end

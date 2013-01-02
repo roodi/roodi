@@ -15,7 +15,6 @@ module Roodi
       def initialize(*checks)
         @config = DEFAULT_CONFIG
         @checks = checks unless checks.empty?
-        @parser = Parser.new
       end
       
       def check(filename, content)
@@ -32,11 +31,12 @@ module Roodi
       end
   
       def check_file(filename)
+        return unless File.exists?(filename)
         check(filename, File.read(filename))
       end
   
       def print(filename, content)
-        node = @parser.parse(content, filename)
+        node = parse(filename, content)
         puts "Line: #{node.line}"
         pp node
       end
@@ -59,7 +59,7 @@ module Roodi
       
       def parse(filename, content)
         begin
-          @parser.parse(content, filename)
+          Parser.new.parse(content, filename)
         rescue Exception => e
           puts "#{filename} looks like it's not a valid Ruby file.  Skipping..." if ENV["ROODI_DEBUG"]
           nil
@@ -69,12 +69,13 @@ module Roodi
       def load_checks
         check_objects = []
         checks = YAML.load_file @config
-        checks.each do |check| 
-          klass = eval("Roodi::Checks::#{check[0]}")
-          check_objects << (check[1].empty? ? klass.new : klass.new(check[1]))
+        checks.each do |check_class_name, options|
+          check_class = Roodi::Checks.const_get(check_class_name)
+          check_objects << check_class.make(options || {})
         end
         check_objects
       end
+
     end
   end
 end
