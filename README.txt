@@ -6,31 +6,33 @@
 
 Roodi stands for Ruby Object Oriented Design Inferometer.  It parses your Ruby code and warns you about design issues you have based on the checks that is has configured.
 
+This is a fork for use with metric_fu that includes 1.9 compatibility and continued development
+
 == INSTALL:
 
-* sudo gem install roodi
+* gem install roodi
 
 == SYNOPSIS:
 
 To check one or more files using the default configuration that comes with Roodi, use:
-    roodi [-config=file] [pattern ...]
+    metric_fu-roodi [-config=file] [pattern ...]
 
 === EXAMPLE USAGE
 
 Check all ruby files in a rails app:
-    roodi "rails_app/**/*.rb"
+    metric_fu-roodi "rails_app/**/*.rb"
 
 Check one controller and one model file in a rails app:
-    roodi app/controller/sample_controller.rb app/models/sample.rb
+    metric_fu-roodi app/controller/sample_controller.rb app/models/sample.rb
 
 Check one controller and all model files in a rails app:
-    roodi app/controller/sample_controller.rb "app/models/*.rb"
+    metric_fu-roodi app/controller/sample_controller.rb "app/models/*.rb"
 
 Check all ruby files in a rails app with a custom configuration file:
-    roodi -config=my_roodi_config.yml "rails_app/**/*.rb"
+    metric_fu-roodi -config=my_roodi_config.yml "rails_app/**/*.rb"
 
 If you're writing a check, it is useful to see the structure of a file the way that Roodi tokenizes it (via ruby_parser). Use:
-    roodi-describe [filename]
+    metric_fu-roodi-describe [filename]
 
 == CUSTOM CONFIGURATION
 

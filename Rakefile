@@ -1,9 +1,18 @@
 require 'rake'
-require 'spec/rake/spectask'
+require 'bundler/gem_tasks'
+begin
+  require 'spec/rake/spectask'
+  desc "Run all specs in spec directory"
+  Spec::Rake::SpecTask.new(:spec) do |t|
+    t.spec_files = FileList['spec/**/*_spec.rb']
+  end
+rescue LoadError
+  require 'rspec/core/rake_task'
+  desc "Run all specs in spec directory"
+  RSpec::Core::RakeTask.new(:spec)
+end
 
-require 'bundler'
-
-Bundler::GemHelper.install_tasks
+require File.expand_path('lib/roodi',File.dirname(__FILE__))
 
 def roodi(ruby_files)
   roodi = Roodi::Core::Runner.new
