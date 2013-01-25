@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.homepage = "http://roodi.rubyforge.org"
   gem.authors = ["Marty Andrews"]
   gem.email = "marty@cogent.co"
-
+  gem.files = Dir['lib/**/*.rb'] + Dir['bin/*'] + Dir['[A-Za-z]*'] + Dir['spec/**/*']
   gem.version = Roodi::VERSION.dup
   gem.platform = Gem::Platform::RUBY
   gem.add_runtime_dependency("ruby_parser", "~> 2.3.0")
