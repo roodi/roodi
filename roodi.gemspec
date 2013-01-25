@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
 
   gem.version = Roodi::VERSION.dup
   gem.platform = Gem::Platform::RUBY
-  gem.add_runtime_dependency("ruby_parser")
+  gem.add_runtime_dependency("ruby_parser", "~> 2.3.0")
   gem.executables = ["roodi", "roodi-describe"]
 
 end
