@@ -1,7 +1,7 @@
 require 'rake'
 require 'spec/rake/spectask'
-
 require 'bundler'
+require 'roodi'
 
 Bundler::GemHelper.install_tasks
 
