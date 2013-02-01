@@ -3,7 +3,7 @@ require 'roodi/checks/check'
 module Roodi
   module Checks
     class LineCountCheck < Check
-      
+
       attr_accessor :line_count
 
       def evaluate_start(node)
@@ -12,9 +12,13 @@ module Roodi
       end
 
       protected
-  
+
       def count_lines(node)
         node.last.line - node.line - 1
+      rescue NoMethodError => e
+        STDERR.puts "!! line counting error #{e.message}\t #{node.inspect}"
+        STDERR.puts "!! Does the node have any lines?"
+        0
       end
 
     end
