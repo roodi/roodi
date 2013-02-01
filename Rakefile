@@ -22,11 +22,6 @@ def roodi(ruby_files)
   puts "\nFound #{roodi.errors.size} errors."
 end
 
-desc "Run all specs"
-Spec::Rake::SpecTask.new('spec') do |t|
-  t.spec_files = FileList['spec/**/*spec.rb']
-end
-
 desc "Run Roodi against all source files"
 task :roodi do
   pattern = File.join(File.dirname(__FILE__), "**", "*.rb")
