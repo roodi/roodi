@@ -1,4 +1,5 @@
-require 'rake'
+#!/usr/bin/env rake
+require 'bundler/setup'
 require 'bundler/gem_tasks'
 begin
   require 'spec/rake/spectask'
