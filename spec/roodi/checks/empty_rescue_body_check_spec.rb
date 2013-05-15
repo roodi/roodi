@@ -137,4 +137,18 @@ describe Roodi::Checks::EmptyRescueBodyCheck do
     errors = @roodi.errors
     errors.should be_empty
   end
+
+  it "should accept a rescue block that has only a next statement" do
+    content = <<-END
+    begin
+      call_method
+    rescue Exception => e
+      next
+    end
+    END
+    @roodi.check_content(content)
+    errors = @roodi.errors
+    errors.should be_empty
+  end
+
 end
