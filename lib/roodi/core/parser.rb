@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'ruby_parser'
+require 'rbconfig'
 
 module Roodi
   module Core
@@ -14,7 +15,8 @@ module Roodi
       
       def silence_stream(stream)
         old_stream = stream.dup
-        stream.reopen(RUBY_PLATFORM =~ /mswin/ ? 'NUL:' : '/dev/null')
+        is_windows = !!(RbConfig::CONFIG['host_os'] =~ /mingw|mswin32|cygwin/)
+        stream.reopen(is_windows ? 'NUL:' : '/dev/null')
         stream.sync = true
         yield
       ensure
