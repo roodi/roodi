@@ -1,5 +1,5 @@
 = Master
-* Better check if OS is windows
+* Better check if OS is windows (Martin Gotink)
 
 = 2.2.0
 
