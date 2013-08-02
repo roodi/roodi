@@ -1,3 +1,6 @@
+= Master
+* Better check if OS is windows (Martin Gotink)
+
 = 2.2.0
 
 * Pull down updates from https://github.com/zdennis/roodi that includes updates from https://github.com/hooroo/roodi and https://github.com/aselder/roodi re: pull request https://github.com/martinjandrews/roodi/pull/12 https://github.com/martinjandrews/roodi/pull/11
