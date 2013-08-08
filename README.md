@@ -42,19 +42,30 @@ If you're writing a check, it is useful to see the structure of a file the way t
 
 To change the set of checks included, or to change the default values of the checks, you can provide your own config file.  The config file is a YAML file that lists the checks to be included.  Each check can optionally include a hash of options that are passed to the check to configure it.  For example, the default config file looks like this:
 
-    AssignmentInConditionalCheck:    { }
-    CaseMissingElseCheck:            { }
-    ClassLineCountCheck:             { line_count: 300 }
-    ClassNameCheck:                  { pattern: !ruby/regexp /^[A-Z][a-zA-Z0-9]*$/ }
-    CyclomaticComplexityBlockCheck:  { complexity: 4 }
-    CyclomaticComplexityMethodCheck: { complexity: 8 }
-    EmptyRescueBodyCheck:            { }
-    ForLoopCheck:                    { }
-    MethodLineCountCheck:            { line_count: 20 }
-    MethodNameCheck:                 { pattern: !ruby/regexp /^[_a-z<>=\[\]|+-\/\*`]+[_a-z0-9_<>=~@\[\]]*[=!\?]?$/ }
-    ModuleLineCountCheck:            { line_count: 300 }
-    ModuleNameCheck:                 { pattern: !ruby/regexp /^[A-Z][a-zA-Z0-9]*$/ }
-    ParameterNumberCheck:            { parameter_count: 5 }
+    AssignmentInConditionalCheck:
+    CaseMissingElseCheck:
+    ClassLineCountCheck:
+      line_count: 300
+    ClassNameCheck:
+      pattern: !ruby/regexp /^[A-Z][a-zA-Z0-9]*$/
+    ClassVariableCheck:
+    CyclomaticComplexityBlockCheck:
+      complexity: 4
+    CyclomaticComplexityMethodCheck:
+      complexity: 8
+    EmptyRescueBodyCheck:
+    ForLoopCheck:
+    MethodLineCountCheck:
+      line_count: 20
+    MethodNameCheck:
+      pattern: !ruby/regexp /^[_a-z<>=\[|+-\/\*`]+[_a-z0-9_<>=~@\[\]]*[=!\?]?$/
+    # MissingForeignKeyIndexCheck:
+    ModuleLineCountCheck:
+      line_count: 300
+    ModuleNameCheck:
+      pattern: !ruby/regexp /^[A-Z][a-zA-Z0-9]*$/
+    ParameterNumberCheck:
+      parameter_count: 5
 
 ## Supported Checks
 
