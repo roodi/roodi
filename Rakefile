@@ -13,9 +13,7 @@ def roodi(ruby_files)
 end
 
 desc "Run all specs"
-RSpec::Core::RakeTask.new(:spec) do |t|
-  task :default => :spec
-end
+RSpec::Core::RakeTask.new(:spec)
 
 desc "Run Roodi against all source files"
 task :roodi do
