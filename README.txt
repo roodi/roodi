@@ -1,38 +1,44 @@
-= roodi
+# roodi
 
-* http://roodi.rubyforge.org
+[http://roodi.rubyforge.org](http://roodi.rubyforge.org)
 
-== DESCRIPTION:
+## Description
 
 Roodi stands for Ruby Object Oriented Design Inferometer.  It parses your Ruby code and warns you about design issues you have based on the checks that is has configured.
 
-== INSTALL:
+## Install
 
-* sudo gem install roodi
+`$ sudo gem install roodi`
 
-== SYNOPSIS:
+## Synopsis
 
 To check one or more files using the default configuration that comes with Roodi, use:
-    roodi [-config=file] [pattern ...]
 
-=== EXAMPLE USAGE
+`$ roodi [-config=file] [pattern ...]`
+
+## Example Usage
 
 Check all ruby files in a rails app:
-    roodi "rails_app/**/*.rb"
+
+`$ roodi "rails_app/**/*.rb"`
 
 Check one controller and one model file in a rails app:
-    roodi app/controller/sample_controller.rb app/models/sample.rb
+
+`$ roodi app/controller/sample_controller.rb app/models/sample.rb`
 
 Check one controller and all model files in a rails app:
-    roodi app/controller/sample_controller.rb "app/models/*.rb"
+
+`$ roodi app/controller/sample_controller.rb "app/models/*.rb"`
 
 Check all ruby files in a rails app with a custom configuration file:
-    roodi -config=my_roodi_config.yml "rails_app/**/*.rb"
+
+`$ roodi -config=my_roodi_config.yml "rails_app/**/*.rb"`
 
 If you're writing a check, it is useful to see the structure of a file the way that Roodi tokenizes it (via ruby_parser). Use:
-    roodi-describe [filename]
 
-== CUSTOM CONFIGURATION
+`$ roodi-describe [filename]`
+
+## Custom Configuration
 
 To change the set of checks included, or to change the default values of the checks, you can provide your own config file.  The config file is a YAML file that lists the checks to be included.  Each check can optionally include a hash of options that are passed to the check to configure it.  For example, the default config file looks like this:
 
@@ -50,7 +56,7 @@ To change the set of checks included, or to change the default values of the che
     ModuleNameCheck:                 { pattern: !ruby/regexp /^[A-Z][a-zA-Z0-9]*$/ }
     ParameterNumberCheck:            { parameter_count: 5 }
 
-== SUPPORTED CHECKS:
+## Supported Checks
 
 * AssignmentInConditionalCheck - Check for an assignment inside a conditional.  It's probably a mistaken equality comparison.
 * CaseMissingElseCheck - Check that case statements have an else statement so that all cases are covered.
@@ -66,11 +72,11 @@ To change the set of checks included, or to change the default values of the che
 * ModuleNameCheck - Check that module names match convention.
 * ParameterNumberCheck - Check that the number of parameters on a method is below the threshold.
 
-== SUGGESTED CHECKS:
+## Suggested Checks
 
 * BlockVariableShadowCheck - Check that a block variable does not have the same name as a method parameter or local variable.  It may be mistakenly referenced within the block.
 
-== LICENSE:
+## License
 
 (The MIT License)
 
