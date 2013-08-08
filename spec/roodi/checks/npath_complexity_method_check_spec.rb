@@ -28,26 +28,4 @@ describe Roodi::Checks::NpathComplexityMethodCheck do
     END
     verify_content_complexity(content, 2)
   end
-  
-  it "should find nested if block" do
-    pending "NPath Complexity implementation that can support 'else' blocks"
-    content = <<-END
-    def method_name
-      if (value1)
-        foo
-      else
-        bar
-      end
-      if (value2)
-        bam
-      else
-        baz
-      end
-      if (value3)
-        one
-      end
-    end
-    END
-    verify_content_complexity(content, 8)
-  end
 end
