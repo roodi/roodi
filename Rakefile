@@ -1,5 +1,5 @@
 require 'rake'
-require 'spec/rake/spectask'
+require 'rspec/core/rake_task'
 require 'bundler'
 require 'roodi'
 
@@ -13,8 +13,8 @@ def roodi(ruby_files)
 end
 
 desc "Run all specs"
-Spec::Rake::SpecTask.new('spec') do |t|
-  t.spec_files = FileList['spec/**/*spec.rb']
+RSpec::Core::RakeTask.new(:spec) do |t|
+  task :default => :spec
 end
 
 desc "Run Roodi against all source files"
