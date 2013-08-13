@@ -1,3 +1,7 @@
+= 3.0.0
+
+* Moved to the Roodi organisation on GitHub
+
 = 2.0.1
 
 * Fixed a bug where roodi.yml was not being loaded.  Patch supplied by Rob Mitchell.
