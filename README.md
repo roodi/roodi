@@ -1,5 +1,7 @@
 # roodi
 
+[![Build Status](https://travis-ci.org/roodi/roodi.png?branch=master)](https://travis-ci.org/roodi/roodi)
+
 ## Description
 
 Roodi stands for Ruby Object Oriented Design Inferometer.  It parses your Ruby code and warns you about design issues you have based on the checks that is has configured.
