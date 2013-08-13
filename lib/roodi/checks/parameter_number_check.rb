@@ -25,7 +25,7 @@ module Roodi
       def evaluate_start(node)
         method_name = node[1]
         arguments = node[2]
-        actual_parameter_count = arguments.inject(-1) { |count, each| count = count + (each.class == Symbol ? 1 : 0) }
+        actual_parameter_count = arguments.select {|arg| [Sexp, Symbol].include? arg.class}.count - 1
         add_error "Method name \"#{method_name}\" has #{actual_parameter_count} parameters.  It should have #{@parameter_count} or less." unless actual_parameter_count <= @parameter_count
       end
 
