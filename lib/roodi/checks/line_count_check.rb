@@ -14,7 +14,7 @@ module Roodi
       protected
   
       def count_lines(node)
-        node.last.line - node.line - 1
+        node.last.respond_to?(:line) ? node.last.line - node.line : 0
       end
 
     end

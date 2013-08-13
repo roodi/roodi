@@ -80,8 +80,13 @@ module Roodi
 
       def index_column_name(node)
         # Get index column name out of this:
-        # s(:call, nil, :add_index, s(:arglist, s(:str, "duplicate_blocks"), s(:array, s(:str, "duplicate_set_id")), s(:hash, s(:lit, :name), s(:str, "index_duplicate_blocks_on_duplicate_set_id"))))
-        node[3][2][1][1]
+        # s(:call,
+        #  nil,
+        #  :add_index,
+        #  s(:str, "revisions"),
+        #  s(:array, s(:str, "project_id")),
+        #  s(:hash, s(:lit, :name), s(:str, "index_revisions_on_project_id")))
+        node[4][1][1]
       end
 
       def end_file(filename)
