@@ -6,9 +6,9 @@ Gem::Specification.new do |gem|
   gem.name = "roodi"
   gem.summary = "Roodi stands for Ruby Object Oriented Design Inferometer"
   gem.description = "Roodi stands for Ruby Object Oriented Design Inferometer"
-  gem.homepage = "http://roodi.rubyforge.org"
-  gem.authors = ["Marty Andrews"]
-  gem.email = "marty@cogent.co"
+  gem.homepage = "http://github.com/roodi/roodi"
+  gem.authors = ["Marty Andrews", "Peter Evjan"]
+  gem.email = "peter.evjan@gmail.com"
   gem.files = Dir['lib/**/*.rb'] + Dir['bin/*'] + Dir['[A-Za-z]*'] + Dir['spec/**/*']
   gem.version = Roodi::VERSION.dup
   gem.platform = Gem::Platform::RUBY
