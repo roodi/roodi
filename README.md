@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/roodi/roodi.png?branch=master)](https://travis-ci.org/roodi/roodi)
 [![Code Climate](https://codeclimate.com/repos/5204c3fc7e00a47bf7015e4e/badges/44ede0c56a53ff100012/gpa.png)](https://codeclimate.com/repos/5204c3fc7e00a47bf7015e4e/feed)
+[![Coverage Status](https://coveralls.io/repos/roodi/roodi/badge.png?branch=master)](https://coveralls.io/r/roodi/roodi?branch=master)
 
 ## Description
 
