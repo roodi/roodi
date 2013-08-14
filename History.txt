@@ -1,6 +1,9 @@
 = 3.0.0
 
-* Moved to the Roodi organisation on GitHub
+* Better check if OS is windows (#2 Martin Gotink)
+* Accept 'next' in a rescue block (#1 Virgil Mihailovici)
+* Rescue line count when there are no lines
+* Pull down updates from https://github.com/zdennis/roodi that includes updates from https://github.com/hooroo/roodi and https://github.com/aselder/roodi re: pull request https://github.com/martinjandrews/roodi/pull/12 https://github.com/martinjandrews/roodi/pull/11
 
 = 2.0.1
 

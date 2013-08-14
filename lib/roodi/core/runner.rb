@@ -31,11 +31,12 @@ module Roodi
       end
   
       def check_file(filename)
+        return unless File.exists?(filename)
         check(filename, File.read(filename))
       end
   
       def print(filename, content)
-        node = parse(content, filename)
+        node = parse(filename, content)
         puts "Line: #{node.line}"
         pp node
       end
