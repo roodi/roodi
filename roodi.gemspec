@@ -5,7 +5,7 @@ Gem::Specification.new do |gem|
 
   gem.name = "roodi"
   gem.summary = "Roodi stands for Ruby Object Oriented Design Inferometer"
-  gem.description = "Roodi stands for Ruby Object Oriented Design Inferometer"
+  gem.description = "Roodi parses your Ruby code and warns you about design issues you have based on the checks that is has configured"
   gem.homepage = "http://github.com/roodi/roodi"
   gem.authors = ["Marty Andrews", "Peter Evjan"]
   gem.email = "peter.evjan@gmail.com"
