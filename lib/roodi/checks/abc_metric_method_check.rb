@@ -2,17 +2,13 @@ require 'roodi/checks/check'
 
 module Roodi
   module Checks
-    # TODO:  Add summary
-    #
-    # TODO:  Add detail
+    # The ABC metric method check calculates the number of Assignments,
+    # Branches and Conditionals in your code. It is similar to
+    # cyclomatic complexity, so the lower the better.
     class AbcMetricMethodCheck < Check
-      # ASSIGNMENTS = [:attrasgn, :attrset, :dasgn_curr, :iasgn, :lasgn, :masgn]
       ASSIGNMENTS = [:lasgn]
-      # BRANCHES = [:if, :else, :while, :until, :for, :rescue, :case, :when, :and, :or]
       BRANCHES = [:vcall, :call]
-      # CONDITIONS = [:and, :or]
       CONDITIONS = [:==, :"!=", :<=, :>=, :<, :>]
-      #  =  *=  /=  %=  +=  <<=  >>=  &=  |=  ^=
       OPERATORS = [:*, :/, :%, :+, :<<, :>>, :&, :|, :^]
       DEFAULT_SCORE = 10
 
