@@ -1,5 +1,8 @@
 = 3.0.0
 
+* Removed MissingForeignKeyIndexCheck, since it is specific to Rails/ActiveRecord and thus doesn't belong in Roodi
+* A build is now running on Travis for the following Ruby versions: 1.8, 1.9, 2.0, JRuby 1.8 mode, JRuby 1.9 mode, Rubinius 1.8 mode, Rubinius 1.9 mode, Ruby Enterprise Edition
+* Using ruby_parser 3.2.2
 * Better check if OS is windows (#2 Martin Gotink)
 * Accept 'next' in a rescue block (#1 Virgil Mihailovici)
 * Rescue line count when there are no lines
