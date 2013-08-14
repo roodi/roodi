@@ -9,14 +9,14 @@ module Roodi
   module Core
     class Runner
       DEFAULT_CONFIG = File.join(File.dirname(__FILE__), "..", "..", "..", "roodi.yml")
-      
+
       attr_writer :config
-      
+
       def initialize(*checks)
         @config = DEFAULT_CONFIG
         @checks = checks unless checks.empty?
       end
-      
+
       def check(filename, content)
         @checks ||= load_checks
         @checker ||= CheckingVisitor.new(@checks)
@@ -29,34 +29,33 @@ module Roodi
       def check_content(content, filename = "dummy-file.rb")
         check(filename, content)
       end
-  
+
       def check_file(filename)
         return unless File.exists?(filename)
         check(filename, File.read(filename))
       end
-  
+
       def print(filename, content)
         node = parse(filename, content)
-        puts "Line: #{node.line}"
         pp node
       end
 
       def print_content(content)
         print("dummy-file.rb", content)
       end
-  
+
       def print_file(filename)
         print(filename, File.read(filename))
       end
-  
+
       def errors
         @checks ||= []
         all_errors = @checks.collect {|check| check.errors}
         all_errors.flatten
       end
-      
+
       private
-      
+
       def parse(filename, content)
         begin
           Parser.new.parse(content, filename)
