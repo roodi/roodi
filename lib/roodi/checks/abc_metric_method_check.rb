@@ -11,7 +11,7 @@ module Roodi
       # BRANCHES = [:if, :else, :while, :until, :for, :rescue, :case, :when, :and, :or]
       BRANCHES = [:vcall, :call]
       # CONDITIONS = [:and, :or]
-      CONDITIONS = [:==, :!=, :<=, :>=, :<, :>]
+      CONDITIONS = [:==, :"!=", :<=, :>=, :<, :>]
       #  =  *=  /=  %=  +=  <<=  >>=  &=  |=  ^=
       OPERATORS = [:*, :/, :%, :+, :<<, :>>, :&, :|, :^]
       DEFAULT_SCORE = 10
