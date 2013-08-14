@@ -2,6 +2,7 @@ require 'rake'
 require 'rspec/core/rake_task'
 require 'bundler'
 require 'roodi'
+require 'bundler/gem_tasks'
 
 def roodi(ruby_files)
   roodi = Roodi::Core::Runner.new
