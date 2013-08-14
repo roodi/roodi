@@ -86,6 +86,19 @@ To change the set of checks included, or to change the default values of the che
 
 * BlockVariableShadowCheck - Check that a block variable does not have the same name as a method parameter or local variable.  It may be mistakenly referenced within the block.
 
+## Contributing
+
+### Bug reporting
+Please use the GitHub issue tracker.
+
+### Want to submit some code?
+Fantastic! Please follow this procedure:
+- Fork the repository
+- Create a well-named topic branch
+- Add specs for any changes you make
+- Write meaningful commit messages explaining why this change is needed
+- Create a pull request.
+
 ## License
 
 (The MIT License)
