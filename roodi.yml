@@ -1,25 +1,23 @@
 AssignmentInConditionalCheck:
 CaseMissingElseCheck:
-ClassLineCountCheck:             
-  line_count: 300 
-ClassNameCheck:                  
+ClassLineCountCheck:
+  line_count: 300
+ClassNameCheck:
   pattern: !ruby/regexp /^[A-Z][a-zA-Z0-9]*$/
 ClassVariableCheck:
-CyclomaticComplexityBlockCheck:  
+CyclomaticComplexityBlockCheck:
   complexity: 4
-CyclomaticComplexityMethodCheck: 
+CyclomaticComplexityMethodCheck:
   complexity: 8
 EmptyRescueBodyCheck:
 ForLoopCheck:
-MethodLineCountCheck:            
-  line_count: 20 
-MethodNameCheck:                 
-  pattern: !ruby/regexp /^[_a-z<>=\[|+-\/\*`]+[_a-z0-9_<>=~@\[\]]*[=!\?]?$/ 
-# MissingForeignKeyIndexCheck:
-ModuleLineCountCheck:            
+MethodLineCountCheck:
+  line_count: 20
+MethodNameCheck:
+  pattern: !ruby/regexp /^[_a-z<>=\[|+-\/\*`]+[_a-z0-9_<>=~@\[\]]*[=!\?]?$/
+ModuleLineCountCheck:
   line_count: 300
-ModuleNameCheck:          
+ModuleNameCheck:
   pattern: !ruby/regexp /^[A-Z][a-zA-Z0-9]*$/
-ParameterNumberCheck:            
+ParameterNumberCheck:
   parameter_count: 5
- 

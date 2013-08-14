@@ -59,7 +59,6 @@ To change the set of checks included, or to change the default values of the che
       line_count: 20
     MethodNameCheck:
       pattern: !ruby/regexp /^[_a-z<>=\[|+-\/\*`]+[_a-z0-9_<>=~@\[\]]*[=!\?]?$/
-    # MissingForeignKeyIndexCheck:
     ModuleLineCountCheck:
       line_count: 300
     ModuleNameCheck:
