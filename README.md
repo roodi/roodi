@@ -4,7 +4,7 @@
 
 ## Description
 
-Roodi stands for Ruby Object Oriented Design Inferometer.  It parses your Ruby code and warns you about design issues you have based on the checks that is has configured.
+Roodi stands for Ruby Object Oriented Design Inferometer. It parses your Ruby code and warns you about design issues you have based on the checks that is has configured.
 
 ## Install
 
