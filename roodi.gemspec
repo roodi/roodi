@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.description = "Roodi parses your Ruby code and warns you about design issues you have based on the checks that is has configured"
   gem.homepage = "http://github.com/roodi/roodi"
   gem.authors = ["Marty Andrews", "Peter Evjan"]
-  gem.email = "peter.evjan@gmail.com"
+  gem.email = "hello@peterevjan.com"
   gem.files = Dir['lib/**/*.rb'] + Dir['bin/*'] + Dir['[A-Za-z]*'] + Dir['spec/**/*']
   gem.version = Roodi::VERSION.dup
   gem.platform = Gem::Platform::RUBY
