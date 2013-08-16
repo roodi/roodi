@@ -2,6 +2,7 @@ require 'roodi/checks/check'
 
 module Roodi
   module Checks
+    # Checks how many lines there are in a ruby_parser node
     class LineCountCheck < Check
 
       attr_accessor :line_count

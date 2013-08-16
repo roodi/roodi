@@ -2,6 +2,7 @@ require 'roodi/checks/check'
 
 module Roodi
   module Checks
+    # Checking that a node's name matches a pattern
     class NameCheck < Check
 
       attr_accessor :pattern

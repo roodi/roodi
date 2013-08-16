@@ -2,12 +2,13 @@ require 'roodi/core/error'
 
 module Roodi
   module Checks
+    # Base class for all the checks
     class Check
 
       NODE_TYPES = [:defn, :module, :resbody, :lvar, :cvar, :class, :if, :while, :until, :for, :rescue, :case, :when, :and, :or]
 
       class << self
-      
+
         def make(options = nil)
           check = new
           if options
@@ -23,7 +24,7 @@ module Roodi
       def initialize
         @errors = []
       end
-  
+
       NODE_TYPES.each do |node|
         start_node_method = "evaluate_start_#{node}"
         end_node_method = "evaluate_end_#{node}"
@@ -37,10 +38,10 @@ module Roodi
 
       def start_file(filename)
       end
-      
+
       def end_file(filename)
       end
-      
+
       def evaluate_start(node)
       end
 
@@ -57,17 +58,17 @@ module Roodi
         evaluate_node(:start, node)
         evaluate_start(node)
       end
-  
+
       def evaluate_node_end(node)
         evaluate_node(:end, node)
         evaluate_end(node)
       end
-  
+
       def add_error(error, filename = @node.file, line = @node.line)
         @errors ||= []
         @errors << Roodi::Core::Error.new("#{filename}", "#{line}", error)
       end
-  
+
       def errors
         @errors
       end
