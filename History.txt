@@ -1,3 +1,15 @@
+= 3.0.1
+
+* Added brief class level documentation on all checks
+* No longer printing out "Line: 1" every time you run roodi-describe
+* Added code coverage badge from Coverall.io
+* Added code coverage through Coveralls.io
+* Pulled duplicated find_name method up to super class
+* Added Code Climate badge
+* Added info about how to contribute
+* Updated copyright info to be current
+* Re-added tasks for releasing new versions of the gem
+
 = 3.0.0
 
 * Removed MissingForeignKeyIndexCheck, since it is specific to Rails/ActiveRecord and thus doesn't belong in Roodi
