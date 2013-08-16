@@ -4,7 +4,7 @@ describe Roodi::Checks::EmptyRescueBodyCheck do
   before(:each) do
     @roodi = Roodi::Core::Runner.new(Roodi::Checks::EmptyRescueBodyCheck.make)
   end
-  
+
   it "should accept a rescue body with content and no parameter" do
     content = <<-END
     begin
@@ -149,6 +149,64 @@ describe Roodi::Checks::EmptyRescueBodyCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should be_empty
+  end
+
+  it "should accept a rescue block that has only an empty array" do
+    content = <<-END
+    begin
+      @path.dirname.children
+    rescue Errno::ENOENT
+      []
+    end
+    END
+    @roodi.check_content(content)
+    errors = @roodi.errors
+    errors.should be_empty
+  end
+
+  it "should accept a rescue block that has only the argument passed to the method" do
+    content = <<-END
+    def method_name(text)
+      begin
+        processed_text = text.some.processing.on.it
+      rescue
+        text
+      end
+    end
+    END
+
+    @roodi.check_content(content)
+    errors = @roodi.errors
+    errors.should be_empty
+  end
+
+  it "should accept a rescue block without a starting begin block" do
+    content = <<-RUBY
+    def process_text(text)
+      processed_text = text.some.processing.on.it
+    rescue
+      text
+    end
+    RUBY
+
+    @roodi.check_content(content)
+    errors = @roodi.errors
+    errors.should be_empty
+  end
+
+  it "should reject a rescue block that only contains a comment" do
+    content = <<-END
+    begin
+      @path.dirname.children
+    rescue Errno::ENOENT
+      # Comment
+    end
+    END
+
+    @roodi.check_content(content)
+    errors = @roodi.errors
+    errors.should_not be_empty
+    errors[0].to_s.should match(/dummy-file.rb:[5] - Rescue block should not be empty./)
   end
 
 end
