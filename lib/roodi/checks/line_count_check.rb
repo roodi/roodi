@@ -16,14 +16,6 @@ module Roodi
 
       def count_lines(node)
         node.last.respond_to?(:line) ? node.last.line - node.line : 0
-
-        rescue NoMethodError => e
-          #TODO: Add spec for this, nothing breaks when removing it.
-          if ENV['DEBUG'] =~ /true/i
-            STDERR.puts "!! line counting error #{e.message}\t #{node.inspect}"
-            STDERR.puts "!! Does the node have any lines?"
-          end
-          0
       end
 
     end
