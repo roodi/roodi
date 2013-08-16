@@ -52,6 +52,7 @@ module Roodi
         @checks ||= []
         all_errors = @checks.collect {|check| check.errors}
         all_errors.flatten
+        all_errors.flatten + parsing_errors
       end
 
       private
@@ -60,9 +61,13 @@ module Roodi
         begin
           Parser.new.parse(content, filename)
         rescue Exception => e
-          puts "#{filename} looks like it's not a valid Ruby file.  Skipping..." if ENV["ROODI_DEBUG"]
+          parsing_errors << "#{filename} looks like it's not a valid Ruby file."
           nil
         end
+      end
+
+      def parsing_errors
+        @parsing_errors ||= []
       end
 
       def load_checks

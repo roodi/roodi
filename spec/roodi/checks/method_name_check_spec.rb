@@ -4,7 +4,7 @@ describe Roodi::Checks::MethodNameCheck do
   before(:each) do
     @roodi = Roodi::Core::Runner.new(Roodi::Checks::MethodNameCheck.make)
   end
-  
+
   it "should accept method names with underscores" do
     content = <<-END
     def good_method_name
@@ -40,7 +40,7 @@ describe Roodi::Checks::MethodNameCheck do
     @roodi.check_content(content)
     @roodi.errors.should be_empty
   end
-  
+
   it "should accept method names ending an equals sign" do
     content = <<-END
     def good_method_name=
@@ -51,7 +51,7 @@ describe Roodi::Checks::MethodNameCheck do
   end
 
   describe "when processing non-text based method names" do
-    ['<<', '>>', '==', '=', '<', '<=', '>', '>=', '[]', '[]='].each do |each|
+    ['<<', '>>', '==', '<', '<=', '>', '>=', '[]', '[]='].each do |each|
       it "should accept #{each} as a method name" do
         content = <<-END
         def #{each}

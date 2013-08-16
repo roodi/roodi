@@ -4,7 +4,7 @@ describe Roodi::Checks::ClassLineCountCheck do
   before(:each) do
     @roodi = Roodi::Core::Runner.new(Roodi::Checks::ClassLineCountCheck.make({'line_count' => 1}))
   end
-  
+
   it "should accept classes with less lines than the threshold" do
     content = <<-END
     class ZeroLineClass
@@ -16,7 +16,7 @@ describe Roodi::Checks::ClassLineCountCheck do
 
   it "should accept classes with the same number of lines as the threshold" do
     content = <<-END
-    Class OneLineClass
+    class OneLineClass
       @foo = 1
     end
     END
