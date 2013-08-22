@@ -35,23 +35,20 @@ module Roodi
       private
 
       def count_assignments(node)
-        count = 0
-        count = count + 1 if assignment?(node)
-        node.children.each {|node| count += count_assignments(node)}
+        count = assignment?(node) ? 1 : 0
+        node.children.each {|child_node| count += count_assignments(child_node)}
         count
       end
 
       def count_branches(node)
-        count = 0
-        count = count + 1 if branch?(node)
-        node.children.each {|node| count += count_branches(node)}
+        count = branch?(node) ? 1 : 0
+        node.children.each {|child_node| count += count_branches(child_node)}
         count
       end
 
       def count_conditionals(node)
-        count = 0
-        count = count + 1 if conditional?(node)
-        node.children.each {|node| count += count_conditionals(node)}
+        count = conditional?(node) ? 1 : 0
+        node.children.each {|child_node| count += count_conditionals(child_node)}
         count
       end
 
