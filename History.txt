@@ -1,3 +1,8 @@
+= 3.1.0
+* Loosen ruby_parser version dependency (PR from Benjamin Fleischer)
+* Files that can't be parsed are no longer silently skipped
+* Empty rescue body check not failing when block contains empty arrays etc
+
 = 3.0.1
 
 * Added brief class level documentation on all checks
