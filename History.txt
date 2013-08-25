@@ -1,3 +1,8 @@
+= 3.1.1
+* Merge pull request #23 from metricfu/remove_rubygems_require
+  * Fix ruby warnings
+  * Remove unnecessary require of rubygems
+
 = 3.1.0
 * Loosen ruby_parser version dependency (PR from Benjamin Fleischer)
 * Files that can't be parsed are no longer silently skipped
