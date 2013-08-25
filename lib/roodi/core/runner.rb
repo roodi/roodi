@@ -60,7 +60,7 @@ module Roodi
       def parse(filename, content)
         begin
           Parser.new.parse(content, filename)
-        rescue Exception => e
+        rescue Exception
           parsing_errors << "#{filename} looks like it's not a valid Ruby file."
           nil
         end
