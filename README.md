@@ -5,11 +5,17 @@
 
 ## Description
 
-Roodi stands for Ruby Object Oriented Design Inferometer. It parses your Ruby code and warns you about design issues you have based on the checks that is has configured.
+Roodi stands for Ruby Object Oriented Design Inferometer. It parses your Ruby code and warns you about design issues you have based on the checks that it has configured.
 
 ## Install
 
-`$ sudo gem install roodi`
+Open your terminal and type this:
+
+`$ gem install roodi`
+
+Alternatively, you can put it in your Gemfile:
+
+`gem "roodi"`
 
 ## Synopsis
 
