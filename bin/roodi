@@ -10,12 +10,12 @@ config_param = ARGV.detect {|arg| arg =~ /-config=.*/}
 runner.config = config_param.split("=")[1] if config_param
 ARGV.delete config_param
 
-ARGV.each do |arg|
-  Dir.glob(arg).each { |file| runner.check_file(file) }
-end
+puts "\nRunning Roodi checks"
 
+runner.start(ARGV)
 runner.errors.each {|error| puts error}
 
-puts "\nFound #{runner.errors.size} errors."
+puts "\nChecked #{runner.files_checked} files"
+puts "Found #{runner.errors.size} errors"
 
 exit runner.errors.size

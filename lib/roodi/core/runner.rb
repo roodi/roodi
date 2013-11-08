@@ -11,10 +11,34 @@ module Roodi
       DEFAULT_CONFIG = File.join(File.dirname(__FILE__), "..", "..", "..", "roodi.yml")
 
       attr_writer :config
+      attr_reader :files_checked
 
       def initialize(*checks)
         @config = DEFAULT_CONFIG
         @checks = checks unless checks.empty?
+      end
+
+      def start(paths)
+        paths = ['.'] if paths == []
+        all_files = collect_files(paths)
+        @files_checked = all_files.count
+        all_files.each do |path|
+          check_file(path)
+        end
+      end
+
+      def collect_files(paths)
+        files = []
+        paths.each do |path|
+          if File.file?(path)
+            files << path
+          elsif File.directory?(path)
+            files += Dir.glob(File.join(path, '**/*.{rb,erb}'))
+          else
+            raise ArgumentError.new("#{path} is neither a File nor a directory!")
+          end
+        end
+        files
       end
 
       def check(filename, content)

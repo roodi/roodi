@@ -32,6 +32,25 @@ describe Roodi::Core::Runner do
       expect(subject.errors).to_not be_empty
       expect(subject.errors[0]).to eq "dummy-file.rb looks like it's not a valid Ruby file."
     end
+
+    it "checks that one file" do
+      subject.start(['lib/roodi.rb'])
+      expect(subject.files_checked).to eq 1
+    end
+  end
+
+  describe "running against a directory" do
+    it "checks all files in that directory recursively" do
+      subject.start(['.'])
+      expect(subject.files_checked).to be > 1
+    end
+  end
+
+  describe "running without specifying files or directory" do
+    it "checks all files in that directory recursively" do
+      subject.start([])
+      expect(subject.files_checked).to be > 1
+    end
   end
 
 end
