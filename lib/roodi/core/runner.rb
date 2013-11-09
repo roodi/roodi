@@ -8,7 +8,7 @@ require 'roodi/core/visitable_sexp'
 module Roodi
   module Core
     class Runner
-      DEFAULT_CONFIG = File.join(File.dirname(__FILE__), "..", "..", "..", "roodi.yml")
+      DEFAULT_CONFIG = "roodi.yml"
 
       attr_writer :config
       attr_reader :files_checked
