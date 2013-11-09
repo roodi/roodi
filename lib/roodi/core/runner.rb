@@ -19,11 +19,27 @@ module Roodi
       end
 
       def start(paths)
+        puts "\nRunning Roodi checks"
+
         paths = ['.'] if paths == []
         all_files = collect_files(paths)
         @files_checked = all_files.count
         all_files.each do |path|
           check_file(path)
+        end
+
+        output_result(errors, @files_checked)
+      end
+
+      def output_result(errors, files_checked)
+        errors.each {|error| puts "\e[31m#{error}\e[0m"}
+
+        puts "\nChecked #{files_checked} files"
+        result = "Found #{errors.size} errors."
+        if errors.empty?
+          puts "\e[32m#{result}\e[0m"
+        else
+          raise "\e[31m#{result}\e[0m"
         end
       end
 
