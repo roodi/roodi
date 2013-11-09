@@ -59,7 +59,7 @@ module Roodi
           if File.file?(path)
             files << path
           elsif File.directory?(path)
-            files += Dir.glob(File.join(path, '**/*.{rb,erb}'))
+            files += Dir.glob(File.join(path, '**/*.{rb}'))
           else
             files += Dir.glob(path)
           end
