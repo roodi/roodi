@@ -49,6 +49,14 @@ If you're writing a check, it is useful to see the structure of a file the way t
 
 `$ roodi-describe [filename]`
 
+## Running it as part of your build
+
+Add the following to your Rakefile:
+
+    require 'roodi_task'
+    RoodiTask.new
+    task :default => [:roodi]
+
 ## Custom Configuration
 
 To change the set of checks included, or to change the default values of the checks, you can provide your own config file.  The config file is a YAML file that lists the checks to be included.  Each check can optionally include a hash of options that are passed to the check to configure it.  For example, the default config file looks like this:
