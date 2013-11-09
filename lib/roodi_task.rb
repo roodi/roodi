@@ -1,4 +1,5 @@
 require 'rake/tasklib'
+require 'roodi'
 
 class RoodiTask < Rake::TaskLib
   attr_accessor :name
