@@ -1,3 +1,7 @@
+= 3.2.1
+* Using the roodi.yml in the current folder by default if it exists
+* Added coloured output
+
 = 3.2.0
 * Checks all files under current directory by default
 * Made it easier to run for the whole project as a rake task
