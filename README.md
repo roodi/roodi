@@ -25,6 +25,10 @@ To check one or more files using the default configuration that comes with Roodi
 
 ## Example Usage
 
+Check all ruby files recursively under the current directory:
+
+`$ roodi` or `$ roodi .`
+
 Check all ruby files in a rails app:
 
 `$ roodi "rails_app/**/*.rb"`
