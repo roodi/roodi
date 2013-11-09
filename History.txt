@@ -1,3 +1,11 @@
+= 3.2.0
+* Checks all files under current directory by default
+* Made it easier to run for the whole project as a rake task
+* Added instructions for how to add Roodi to your Rakefile
+* Removed support for Ruby Enterprise Edition
+* Removed support for Ruby 1.8
+* Improved installation instructions and corrected spelling error
+
 = 3.1.1
 * Merge pull request #23 from metricfu/remove_rubygems_require
   * Fix ruby warnings
