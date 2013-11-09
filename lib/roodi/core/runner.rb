@@ -8,14 +8,24 @@ require 'roodi/core/visitable_sexp'
 module Roodi
   module Core
     class Runner
-      DEFAULT_CONFIG = "roodi.yml"
-
       attr_writer :config
       attr_reader :files_checked
 
       def initialize(*checks)
-        @config = DEFAULT_CONFIG
+        @config = default_config
         @checks = checks unless checks.empty?
+      end
+
+      def default_config
+        project_config ? project_config : roodi_gem_config
+      end
+
+      def roodi_gem_config
+        File.join(File.dirname(__FILE__), "..", "..", "..", "roodi.yml")
+      end
+
+      def project_config
+        File.exists?("roodi.yml") ? "roodi.yml" : nil
       end
 
       def start(paths)
@@ -112,7 +122,7 @@ module Roodi
 
       def load_checks
         check_objects = []
-        checks = YAML.load_file @config
+        checks = load_config(@config)
         checks.each do |check_class_name, options|
           check_class = Roodi::Checks.const_get(check_class_name)
           check_objects << check_class.make(options || {})
@@ -120,6 +130,9 @@ module Roodi
         check_objects
       end
 
+      def load_config(config_file)
+        YAML.load_file config_file
+      end
     end
   end
 end
