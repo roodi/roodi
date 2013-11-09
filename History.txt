@@ -1,3 +1,6 @@
+= 3.3.1
+* Not checking .erb files by default
+
 = 3.3.0
 * Using the roodi.yml in the current folder by default if it exists
 * Added coloured output
