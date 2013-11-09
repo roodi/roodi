@@ -1,3 +1,5 @@
+require 'rake/tasklib'
+
 class RoodiTask < Rake::TaskLib
   attr_accessor :name
   attr_accessor :patterns
@@ -6,7 +8,7 @@ class RoodiTask < Rake::TaskLib
 
   def initialize name = :roodi, patterns = nil, config = nil
     @name      = name
-    @patterns  = patterns || %w(app/**/*.rb lib/**/*.rb spec/**/*.rb test/**/*.rb)
+    @patterns  = patterns || []
     @config    = config
     @verbose   = Rake.application.options.trace
 
@@ -16,17 +18,19 @@ class RoodiTask < Rake::TaskLib
   end
 
   def define
-    desc "Check for design issues in: #{patterns.join(', ')}"
+    desc "Run Roodi against all source files"
     task name do
+      puts "\nRunning Roodi checks"
+
       runner = Roodi::Core::Runner.new
 
       runner.config = config if config
 
-      patterns.each do |pattern|
-        Dir.glob(pattern).each { |file| runner.check_file(file) }
-      end
+      runner.start(@patterns)
 
       runner.errors.each {|error| puts error}
+
+      puts "\nChecked #{runner.files_checked} files"
 
       raise "Found #{runner.errors.size} errors." unless runner.errors.empty?
     end

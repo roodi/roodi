@@ -35,7 +35,7 @@ module Roodi
           elsif File.directory?(path)
             files += Dir.glob(File.join(path, '**/*.{rb,erb}'))
           else
-            raise ArgumentError.new("#{path} is neither a File nor a directory!")
+            files += Dir.glob(path)
           end
         end
         files
