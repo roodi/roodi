@@ -61,6 +61,7 @@ Add the following to your Rakefile:
 
 To change the set of checks included, or to change the default values of the checks, you can provide your own config file.  The config file is a YAML file that lists the checks to be included.  Each check can optionally include a hash of options that are passed to the check to configure it.  For example, the default config file looks like this:
 
+    AbcMetricMethodCheck:
     AssignmentInConditionalCheck:
     CaseMissingElseCheck:
     ClassLineCountCheck:
@@ -87,6 +88,7 @@ To change the set of checks included, or to change the default values of the che
 
 ## Supported Checks
 
+* AbcMetricMethodCheck - Check that the number of Assignments, Branches and Conditionals in your code is below the threshold
 * AssignmentInConditionalCheck - Check for an assignment inside a conditional.  It's probably a mistaken equality comparison.
 * CaseMissingElseCheck - Check that case statements have an else statement so that all cases are covered.
 * ClassLineCountCheck - Check that the number of lines in a class is below the threshold.
