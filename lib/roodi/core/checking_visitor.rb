@@ -15,19 +15,10 @@ module Roodi
 
       def visit(node)
         checks = @checks[node.node_type]
-
-        evaluate_node_start(checks, node)
+        checks.each {|check| check.evaluate_node_start(node)} unless checks.nil?
 
         node.visitable_children.each {|sexp| sexp.accept(self)}
 
-        evaluate_node_end(checks, node)
-      end
-
-      def evaluate_node_start(checks, node)
-        checks.each {|check| check.evaluate_node_start(node)} unless checks.nil?
-      end
-
-      def evaluate_node_end(checks, node)
         checks.each {|check| check.evaluate_node_end(node)} unless checks.nil?
       end
     end
