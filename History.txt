@@ -1,3 +1,6 @@
+= 4.0.0
+* Send args to roodi_task will make it easier to add custom configuration (breaking backwards compatibility)
+
 = 3.3.1
 * Not checking .erb files by default
 
