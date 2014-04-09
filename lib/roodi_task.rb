@@ -7,11 +7,11 @@ class RoodiTask < Rake::TaskLib
   attr_accessor :config
   attr_accessor :verbose
 
-  def initialize args = {}
-    @name      = args[:name] || :roodi
-    @patterns  = args[:patterns] || []
-    @config    = args[:config]
-    @verbose   = Rake.application.options.trace
+  def initialize(args = {})
+    @name = args[:name] || :roodi
+    @patterns = args[:patterns] || []
+    @config = args[:config]
+    @verbose = Rake.application.options.trace
 
     yield self if block_given?
 
