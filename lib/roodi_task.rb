@@ -30,3 +30,6 @@ class RoodiTask < Rake::TaskLib
     self
   end
 end
+
+# Ensure that :roodi task is always available
+RoodiTask.new
