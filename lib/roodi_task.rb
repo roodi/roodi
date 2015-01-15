@@ -19,6 +19,8 @@ class RoodiTask < Rake::TaskLib
   end
 
   def define
+    prevent_multiple_runs!
+
     desc "Run Roodi against all source files"
     task name do
       runner = Roodi::Core::Runner.new
@@ -29,7 +31,15 @@ class RoodiTask < Rake::TaskLib
     end
     self
   end
+
+  private
+
+  def prevent_multiple_runs!
+    if Rake::Task.task_defined?(name)
+      Rake::Task[name].clear
+    end
+  end
 end
 
-# Ensure that :roodi task is always available
+# Ensure that a default :roodi task is always available
 RoodiTask.new
