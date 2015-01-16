@@ -54,7 +54,6 @@ If you're writing a check, it is useful to see the structure of a file the way t
 Add the following to your Rakefile:
 
     require 'roodi_task'
-    RoodiTask.new
     task :default => [:roodi]
 
 or if you want to supply your own config file...
