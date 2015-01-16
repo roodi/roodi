@@ -3,7 +3,7 @@ require 'yaml'
 
 require 'roodi/core/checking_visitor'
 require 'roodi/core/parser'
-require 'roodi/core/visitable_sexp'
+require 'roodi/core/sexp'
 
 module Roodi
   module Core
