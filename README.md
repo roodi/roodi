@@ -123,6 +123,11 @@ Fantastic! Please follow this procedure:
 - Write meaningful commit messages explaining why this change is needed
 - Create a pull request.
 
+### How to publish a new version (maintainers only)
+1. Bump the version in version.rb
+1. `$ gem build roodi.gemspec`
+1. `$ gem push roodi-X.X.X.gem`
+
 ## License
 
 (The MIT License)
