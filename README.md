@@ -62,6 +62,9 @@ or if you want to supply your own config file...
     RoodiTask.new :config => 'config/roodi.yml'
     task :default => [:roodi]
 
+## Editor integration
+You can run Roodi in Atom using the [linter-roodi](https://atom.io/packages/linter-roodi) package.
+
 ## Custom Configuration
 
 To change the set of checks included, or to change the default values of the checks, you can provide your own config file.  The config file is a YAML file that lists the checks to be included.  Each check can optionally include a hash of options that are passed to the check to configure it.  For example, the default config file looks like this:
