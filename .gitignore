@@ -2,6 +2,4 @@ doc
 pkg
 Gemfile.lock
 coverage
-
-# Editor files
-.idea
+.ruby-version
