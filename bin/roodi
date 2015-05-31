@@ -4,12 +4,26 @@ $LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
 
 require 'roodi'
 
-runner = Roodi::Core::Runner.new
 
-config_param = ARGV.detect {|arg| arg =~ /-config=.*/}
-runner.config = config_param.split("=")[1] if config_param
-ARGV.delete config_param
+if ARGV.detect { |arg| arg == "-h" || arg == "--help" }
+  puts "Usage: roodi [options] [path1 path2 ...]"
+  puts
+  puts "By default Roodi looks for all **/*.rb files in the current directory."
+  puts
+  puts "Options are ..."
+  puts "-c, --config=FILE         use FILE as the config file."
+  puts "-h, --help                display this help."
+  puts "-v, --version             display the program version."
+elsif ARGV.detect { |arg| arg == "-v" || arg == "--version" }
+  puts Roodi::VERSION
+else
+  runner = Roodi::Core::Runner.new
 
-runner.start(ARGV)
+  config_param = ARGV.detect { |arg| arg=~ /-c=.*/ || arg =~ /--config=.*/ }
+  runner.config = config_param.split("=")[1] if config_param
+  ARGV.delete config_param
 
-exit runner.errors.size
+  runner.start(ARGV)
+
+  exit runner.errors.size
+end
