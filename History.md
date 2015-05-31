@@ -1,3 +1,7 @@
+# 5.0.0
+* The syntax to specify a config file is now '-c=FILE' or '--config=FILE', not '-config=FILE'
+* Added the command line parameters -v/--version and -h/--help
+
 # 4.0.0
 * Send args to roodi_task will make it easier to add custom configuration (breaking backwards compatibility)
 
