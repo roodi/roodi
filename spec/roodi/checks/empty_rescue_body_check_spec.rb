@@ -206,7 +206,10 @@ describe Roodi::Checks::EmptyRescueBodyCheck do
     @roodi.check_content(content)
     errors = @roodi.errors
     errors.should_not be_empty
-    errors[0].to_s.should match(/dummy-file.rb:[5] - Rescue block should not be empty./)
+    # OLDER versions of Ruby apparently report this as file.rb:[5]
+    # (at least, I ass-u-me that's how the old version of this test passed!),
+    # and LATER ones as file.rb:3 (at least, 2.3.0 does).
+    errors[0].to_s.should match(/dummy-file.rb:(\[5\]|3) - Rescue block should not be empty./)
   end
 
 end
