@@ -2,6 +2,6 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "rake"
-gem "rspec", "~> 2.14.1"
-gem 'coveralls', :require => false
+gem "rake", "~> 12.3.1"
+gem "rspec", "~> 3.8.0"
+gem 'coveralls', "~> 0.8.22", :require => false
