@@ -1,6 +1,6 @@
 # roodi
 
-[![Build Status](https://travis-ci.org/roodi/roodi.png?branch=master)](https://travis-ci.org/roodi/roodi)
+[![Build Status](https://travis-ci.com/roodi/roodi.svg?branch=master)](https://travis-ci.com/roodi/roodi)
 [![Coverage Status](https://coveralls.io/repos/roodi/roodi/badge.png?branch=master)](https://coveralls.io/r/roodi/roodi?branch=master)
 
 ## Description
