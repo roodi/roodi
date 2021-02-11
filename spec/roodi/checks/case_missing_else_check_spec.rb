@@ -8,7 +8,7 @@ describe Roodi::Checks::CaseMissingElseCheck do
   it "should accept case statements that do have an else" do
     content = <<-END
     case foo
-      when "bar": "ok"
+      when "bar" then "ok"
       else "good"
     end
     END
@@ -20,8 +20,8 @@ describe Roodi::Checks::CaseMissingElseCheck do
   it "should reject case statements that do have an else" do
     content = <<-END
     case foo
-      when "bar": "ok"
-      when "bar": "bad"
+      when "bar" then "ok"
+      when "bar" then "bad"
     end
     END
     @roodi.check_content(content)
